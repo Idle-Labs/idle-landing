@@ -1,0 +1,1 @@
+(self.webpackChunkidlefinance=self.webpackChunkidlefinance||[]).push([[946],{24593:()=>{}},e=>{"use strict";e.O(0,[594,429],(()=>(24593,e(e.s=24593)))),e.O()}]);
