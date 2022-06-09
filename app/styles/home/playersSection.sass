@@ -1,0 +1,124 @@
+.players-section
+    padding: gem(90) 0
+    background: url("../../assets/img/bg/blurBg.png")
+    .players-background
+        .bg-circles
+            position: absolute
+            right: 0
+            top: gem(-66)
+            z-index: -1
+            width: gem(599)
+            height: gem(974)
+            transform-origin: center right
+            img
+                width: 100%
+                height: 100%
+                display: block
+    .text-block
+        width: gem(430)
+        display: flex
+        flex-direction: column
+        margin-bottom: gem(74)
+        &__subtitle
+            display: flex
+        .subtitle-1
+            opacity: 0.4
+            margin-bottom: gem(14)
+    .points
+        display: flex
+        justify-content: space-between
+    .point
+        width: gem(286)
+        &:first-child
+            .point__title
+                width: gem(130)
+        &__logo
+            margin-bottom: gem(30)
+            display: flex
+            width: gem(70)
+            height: gem(70)
+            img
+                width: 100%
+                height: 100%
+        &__title
+            margin-bottom: gem(39)
+            min-height: gem(64)
+            display: flex
+            flex-direction: column
+        &__desc
+            width: gem(254)
+            .desc-3
+                opacity: 0.8
+
+
+@media only screen and (max-width : 1024px)
+    .players-section
+        padding: gem(88) 0
+        .players-background
+            .bg-circles
+                right: 0
+                top: gem(190)
+                width: gem(427)
+                height: gem(739)
+        .text-block
+            width: gem(560)
+            margin: 0 auto gem(64)
+            text-align: center
+            &__subtitle
+                justify-content: center
+            .subtitle-1
+                margin-bottom: gem(16)
+        .points
+            flex-direction: column
+            justify-content: flex-start
+        .point
+            display: flex
+            flex-direction: column
+            align-items: center
+            width: auto
+            &:first-child
+                .point__title
+                    width: auto
+            &:not(:last-child)
+                margin-bottom: gem(64)
+            &__logo
+                margin-bottom: gem(20)
+            &__desc
+                width: gem(550)
+                text-align: center
+            &__title
+                min-height: auto
+                margin-bottom: gem(12)
+
+
+@media all and (max-width: 480px)
+
+    .players-section
+        padding: gem(80) 0
+        .players-background
+            .bg-circles
+                right: gem(-35)
+                top: gem(190)
+                width: gem(310)
+                height: gem(683)
+        .text-block
+            width: 100%
+            margin-bottom: gem(55)
+            text-align: left
+            &__subtitle
+                justify-content: flex-start
+        .point
+            width: 100%
+            align-items: flex-start
+            &:not(:last-child)
+                margin-bottom: gem(45)
+        .point__logo
+            width: gem(56)
+            height: gem(56)
+            margin-bottom: gem(16)
+        .point__title
+            width: gem(235)
+        .point__desc
+            width: 100%
+            text-align: left
+

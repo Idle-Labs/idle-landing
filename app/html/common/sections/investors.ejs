@@ -1,0 +1,86 @@
+<%
+    const Sitemap = require('sitemap');
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy.investorsSection;
+    const BaseUrl = page.output.href;
+%>
+<section class="investors-section" id="investors">
+    <div class="investors-background">
+        <div class="bg-circles">
+            <picture>
+                <source data-srcset="../../../assets/img/bg/bgCircles-tablet5.svg"
+                    media="(max-width: 1024px)"/>
+                <source data-srcset="../../../assets/img/bg/bgCircles-desktop5.svg"
+                    media="(min-width: 1025px)"/>
+                <img class="lazy" data-load-priority="5" alt="">
+            </picture>
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-block">
+            <div class="text-block__subtitle-wrap anim-item-js">
+                <span class="subtitle-1"><%= Strings.subtitle %></span>
+            </div>
+            <h2 class="title-h2 anim-item-js"><%= Strings.title %></h2>
+        </div>
+        <div class="investors">
+            <div class="investors-wrap desktop">
+                <div class="row">
+                    <% Strings.investors.forEach((item, i) => { if(i<3) {
+                        const logoDesktopPng = require(`../../../assets/img/investors/${item.logoSrc}-desktop.png`);
+                        const logoDesktopWebp = require(`../../../assets/img/investors/${item.logoSrc}-desktop.webp`);
+                        const logoTabletPng = require(`../../../assets/img/investors/${item.logoSrc}-tablet.png`);
+                        const logoTabletWebp = require(`../../../assets/img/investors/${item.logoSrc}-tablet.webp`);%>
+                        <div class="investors__item desktop-anim-item-js">
+                            <a class="investors__logo" href="<%= item.linkSrc %>" target="_blank">
+                                <picture>
+                                    <source type="image/webp" media="(min-width: 481px) and (max-width: 1024px)" data-srcset="<%=logoTabletWebp%>">
+                                    <source type="image/png" media="(min-width: 481px) and (max-width: 1024px)" data-srcset="<%=logoTabletPng%>">
+
+                                    <source type="image/webp" media="(min-width: 1025px)" data-srcset="<%=logoDesktopWebp%>">
+                                    <source type="image/png" media="(min-width: 1025px)" data-srcset="<%=logoDesktopPng%>">
+                                    <img src="#" class="lazy" data-load-priority="4" alt="Investor logo">
+                                </picture>
+                            </a>
+                        </div>
+                    <% }}) %>
+                </div>
+                <div class="row">
+                    <% Strings.investors.forEach((item, i) => { if(i>=3) {
+                        const logoDesktopPng = require(`../../../assets/img/investors/${item.logoSrc}-desktop.png`);
+                        const logoDesktopWebp = require(`../../../assets/img/investors/${item.logoSrc}-desktop.webp`);
+                        const logoTabletPng = require(`../../../assets/img/investors/${item.logoSrc}-tablet.png`);
+                        const logoTabletWebp = require(`../../../assets/img/investors/${item.logoSrc}-tablet.webp`);%>
+                        <div class="investors__item desktop-anim-item-js">
+                            <a class="investors__logo" href="<%= item.linkSrc %>" target="_blank">
+                                <picture>
+                                    <source type="image/webp" media="(min-width: 481px) and (max-width: 1024px)" data-srcset="<%=logoTabletWebp%>">
+                                    <source type="image/png" media="(min-width: 481px) and (max-width: 1024px)" data-srcset="<%=logoTabletPng%>">
+
+                                    <source type="image/webp" media="(min-width: 1025px)" data-srcset="<%=logoDesktopWebp%>">
+                                    <source type="image/png" media="(min-width: 1025px)" data-srcset="<%=logoDesktopPng%>">
+                                    <img src="#" class="lazy" data-load-priority="4" alt="Investor logo">
+                                </picture>
+                            </a>
+                        </div>
+                    <% }}) %>
+                </div>
+            </div>
+            <div class="investors-wrap mobile">
+                <% Strings.investors.forEach((item, i) => {
+                    const logoMobilePng = require(`../../../assets/img/investors/${item.logoSrc}-mobile.png`);
+                    const logoMobileWebp = require(`../../../assets/img/investors/${item.logoSrc}-mobile.webp`);%>
+                    <a class="investors__logo mobile-anim-item-js" href="<%= item.linkSrc %>" target="_blank">
+                        <picture>
+                            <source type="image/webp" media="(max-width: 480px)" data-srcset="<%=logoMobileWebp%>">
+                            <source type="image/png" media="(max-width: 480px)" data-srcset="<%=logoMobilePng%>">
+                            <img src="#" class="lazy" data-load-priority="4" alt="Investor logo">
+                        </picture>
+                    </a>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</section>

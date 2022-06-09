@@ -1,0 +1,123 @@
+<%
+    const Sitemap = require('sitemap');
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy.productSection;
+    const BaseUrl = page.output.href;
+%>
+
+<section class="product-section" id="product">
+    <div class="product-background">
+        <div class="bg-circles">
+            <picture>
+                <source data-srcset="../../../assets/img/bg/bgCircles-tablet2.svg"
+                    media="(max-width: 1024px)"/>
+                <source data-srcset="../../../assets/img/bg/bgCircles-desktop2.svg"
+                    media="(min-width: 1025px)"/>
+                <img class="lazy" data-load-priority="5" alt="">
+            </picture>
+        </div>
+        <div class="bg-ellipse">
+            <img data-src="../../../assets/img/bg/Ellipse3.png" class="lazy" data-load-priority="5" alt="">
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-block">
+            <div class="left-wrap">
+                <h5 class="subtitle-anim-js"><span class="subtitle-1"><%= Strings.subtitle %></span></h5>
+                <h2 class="title-anim-js title-h2"><%= Strings.title %></h2>
+            </div>
+            <div class="right-wrap desc-anim-js">
+                <p class="desc-2"><%= Strings.desc %></p>
+            </div>
+        </div>
+    </div>
+    <div class="slider-container">
+        <div class="splide">
+            <div class="splide__arrows nav-anim-js">
+                <button class="splide__arrow splide__arrow--prev">
+                    <%= require('../../../assets/img/product/arrowLeft.svg?raw') %>
+                </button>
+                <button class="splide__arrow splide__arrow--next">
+                    <%= require('../../../assets/img/product/arrowRight.svg?raw') %>
+                </button>
+          </div>
+            <div class="splide__track">
+                <div class="splide__list">
+                    <% Strings.cards.forEach(item => {
+                        const cardLogoPng = require(`../../../assets/img/product/${item.cardLogoSrc}.png`);
+                        const cardLogoWebp = require(`../../../assets/img/product/${item.cardLogoSrc}.webp`);%>
+                        <div id="<%= item.id %>-strategy" class="splide__slide card card-anim-js card-lottie">
+                            <div class="card__bg-gradient"></div>
+                            <div class="card__bg-lines"></div>
+                            <div class="card__logo-wrap">
+                                <div
+                                    class="logo-lottie lazy"
+                                    data-lottie-path="../../../assets/lottie/robot-<%= item.id %>/lottie.json"
+                                    data-load-priority="1"
+                                >
+                                </div>
+                                <div class="logo">
+                                    <picture>
+                                        <source type="image/webp" data-srcset="<%=cardLogoWebp%>">
+                                        <source type="image/png" data-srcset="<%=cardLogoPng%>">
+                                        <img src="#" class="lazy" data-load-priority="1" alt="<%= item.cardTitle %> logo">
+                                    </picture>
+                                </div>
+                            </div>
+                            <div class="card__text">
+                                <span class="card__subtitle subtitle-3"><%= item.cardSubTitle %></span>
+                                <h2 class="card__title title-h3"><%= item.cardTitle %></h2>
+                                <p class="card__desc desc-3"><%= item.cardDesc %></p>
+                            </div>
+                            <div class="card__info">
+                                <div class="left-wrap">
+                                    <div class="apy">
+                                        <span class="subtitle-3"><%= item.apy %></span>
+                                        <div class="tooltip">
+                                            <div class="tooltip__icon">
+                                                <%= require('../../../assets/img/icons/infoCircle.svg?raw') %>
+                                            </div>
+                                            <div class="tooltip__dropdown">
+                                                <div class="tooltip__info">
+                                                    <p class="desc-3"><%= item.infoTooltip %></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="percent value-2">-</span>
+                                    <!--span class="subtitle-2"><%= item.apyDesc %></span-->
+                                </div>
+                                <div class="right-wrap">
+                                    <span class="subtitle-3"><%= item.token.title %></span>
+                                    <div class="token">
+                                        <span class="value-2">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card__buttons">
+                                <a class="btn btn-main" href="<%= item.btnLaunch.btnSrc %>" target="_blank" aria-label="<%= item.btnLaunch.btnTitle %>">
+                                    <span class="btn-label btn-label-2"><%= item.btnLaunch.btnTitle %></span>
+                                </a>
+                                <a class="btn btn-border" href="<%= item.btnIntegrate.btnSrc %>" target="_blank" aria-label="<%= item.btnIntegrate.btnTitle %>">
+                                    <span class="btn-label btn-label-2"><%= item.btnIntegrate.btnTitle %></span>
+                                </a>
+                            </div>
+                            <div class="card__poweredby">
+                                <span class="card__subtitle subtitle-3">Powered By:</span>
+                            </div>
+                            <div class="card__partners">
+                                <% item.partnersIcons.forEach(item => { %>
+                                    <div class="card__partner-logo">
+                                        <%= require(`../../../assets/img/product/${item.iconSrc}?raw`) %>
+                                    </div>
+                                <% }) %>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

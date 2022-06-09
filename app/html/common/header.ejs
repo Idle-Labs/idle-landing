@@ -1,0 +1,90 @@
+<%
+    const Sitemap = require('sitemap');
+    // get the page directly to hook it into webpack dev build process
+    const page = Sitemap.getPage(Page);
+
+    const Strings = page.common.header;
+    const Locale = page.output.locale;
+    const BaseUrl = page.output.href;
+    const getLocaleHref = (lang) => Sitemap.getLocaleHref(page, lang, true);
+
+    // here are all options for the language dropdown
+    const allLocales = [
+        {
+            language: 'en',
+            img:'🇬🇧',
+            url: getLocaleHref('en'),
+        },
+    ];
+
+    // choosing the selected one and filtering the list
+    const [locale] = allLocales.splice(allLocales.findIndex(l => l.language == page.output.locale), 1);
+%>
+
+<header id="header" class="header"
+<% if (typeof hideheader !== 'undefined' && hideheader) { %>
+style="visibility: hidden;"
+<% } %>
+>
+<% if (typeof removeheader === 'undefined' || !removeheader) { %>
+    <div class="bg"></div>
+    <a class="logo" href="<%= Strings.logoLink %>" aria-label="Idle finance" onclick="location.reload()">
+        <%= require('../../assets/img/idle-logo.svg?raw') %>
+    </a>
+    <div class="navigation">
+        <!--div class="navigation__link">
+            <div class="navigation__link-text label-1 anchor-item" data-anchor="<%= Strings.links[0].dataAnchor %>" href="">
+                <%= Strings.links[0].linkTitle %>
+            </div>
+        </div-->
+        <div class="navigation__link">
+            <a class="navigation__link-text label-1" href="<%= Strings.links[1].linkSrc %>" target="_blank">
+                <%= Strings.links[1].linkTitle %>
+            </a>
+        </div>
+        <div class="navigation__link">
+            <a class="navigation__link-text label-1" href="<%= Strings.links[2].linkSrc %>" target="_blank">
+                <%= Strings.links[2].linkTitle %>
+            </a>
+        </div>
+        <!--div class="navigation__link dropdown has-drop-down">
+            <div class="drop-down-link js-btn-switch">
+                <div class="navigation__link-text label-1 js-btn-switch"><%= Strings.links[3].linkTitle %></div>
+                <div class="drop-down-arrow js-btn-switch">
+                    <%= require('../../assets/img/icons/arrowDropdown.svg?raw') %>
+                </div>
+            </div>
+
+            <ul class="dropdown__list">
+                <% Strings.links[3].dropdownLinks.forEach(link => { %>
+                    <li class="dropdown__item">
+                        <a class="drop-down-link--sub js-btn-switch" href="<%= link.src %>" target="_blank">
+                            <span class="label-1"><%= link.title %></span>
+                        </a>
+                    </li>
+                <% }) %>
+            </ul>
+        </div-->
+        <div class="navigation__link">
+            <div class="navigation__link-text label-1 anchor-item" data-anchor="<%= Strings.links[4].dataAnchor %>" href="">
+                <%= Strings.links[4].linkTitle %>
+            </div>
+        </div>
+        <div class="navigation__link">
+            <a class="navigation__link-text label-1" href="<%= Strings.links[2].linkSrc %>" target="_blank">
+                <%= Strings.links[5].linkTitle %>
+            </a>
+        </div>
+    </div>
+    <div class="buttons-block">
+        <a class="btn btn-main" href="<%= Strings.btnEnter.btnSrc %>" target="_blank">
+            <span class="btn-label btn-label-1"><%= Strings.btnEnter.btnTitle %></span>
+        </a>
+        <div class="mobile-menu-button">
+            <div class="burger-btn"></div>
+        </div>
+    </div>
+
+<% } %>
+
+</header>

@@ -1,0 +1,203 @@
+.footer
+    position: relative
+    padding: gem(80) 0 gem(110)
+    padding-bottom: 0
+    background: url("../assets/img/bg/blurBg.png")
+    &__bg
+        z-index: 0
+        width: 100%
+        height: 100%
+        position: absolute
+        background-image: url("../assets/img/bg/bgLine.png")
+        background-position-y: bottom
+        background-repeat: repeat-x
+        bottom: 0
+        left: 0
+    p.copyright
+        font-weight: bold
+    .footer-background
+        .bg-ellipse1
+            position: absolute
+            left: gem(-10)
+            bottom: 0
+            width: gem(584)
+            height: gem(1265)
+            overflow: hidden
+            z-index: -2
+            img
+                width: 100%
+                height: 100%
+        .bg-ellipse2
+            position: absolute
+            right: gem(-10)
+            bottom: 0
+            width: gem(656)
+            height: gem(1215)
+            overflow: hidden
+            z-index: -2
+            img
+                width: 100%
+                height: 100%
+    .container
+        display: flex
+        justify-content: space-between
+        &.copyright
+            padding-top: 0.8rem
+            align-items: baseline
+            justify-content: initial
+            a
+              font-size: 0.14rem  
+            p,
+            li
+                font-size: 0.14rem
+                padding-right: 0.5rem
+    .navigation
+        display: flex
+        width: gem(675)
+        &__list
+            display: flex
+            flex-direction: column
+            min-width: gem(105)
+            &:not(:last-child)
+                margin-right: gem(58)
+        &__header
+            margin-bottom: gem(30)
+        &__link
+            display: flex
+            margin-bottom: gem(16)
+            opacity: 0.5
+            @include unhoverTransition(opacity)
+            cursor: pointer
+            width: max-content
+            &:hover
+                @include hoverTransition(opacity)
+                opacity: 1
+    .logo
+        display: flex
+        width: gem(90)
+        height: gem(35)
+        margin-bottom: gem(40)
+        svg
+            width: 100%
+            height: 100%
+    .email
+        display: flex
+        flex-direction: column
+        &.email-tablet,
+        &.email-mobile
+            display: none
+        &__input
+            display: flex
+            justify-content: space-between
+            margin-bottom: gem(20)
+            width: gem(362)
+            height: gem(42)
+            background: rgba(70, 77, 102, 0.15)
+            border: 1px solid #ffffff10
+            border-radius: gem(4)
+            padding-left: gem(20)
+            color: var(--color-white)
+            input
+                border: none
+                background: none
+                width: gem(190)
+                font-family: var(--main-font)
+                &:focus
+                    outline: none
+                    color: var(--color-white)
+                &:not(:focus)
+                    color: var(--color-white)
+        .subtitle-2
+            opacity: 0.4
+            font-size: gem(14)
+            line-height: gem(28)
+
+@media only screen and (max-width : 1024px)
+    .footer
+        padding: gem(80) 0
+        .footer-background
+            .bg-ellipse1
+                left: gem(-10)
+                bottom: gem(370)
+                width: gem(296)
+                height: gem(832)
+            .bg-ellipse2
+                right: gem(-10)
+                bottom: gem(430)
+                width: gem(304)
+                height: gem(760)
+        .container
+            flex-direction: column
+        .email
+            &.email-desktop
+                display: none
+            &.email-tablet
+                display: flex
+            &__input
+                width: auto
+                margin-bottom: gem(11)
+        .logo
+            margin-bottom: gem(44)
+        .navigation
+            margin-bottom: gem(30)
+            &__list
+                &:not(:last-child)
+                    margin-right: gem(60)
+
+@media all and (max-width: 480px)
+
+    .footer
+        padding: gem(60) 0 0
+        .footer-background
+            .bg-ellipse1
+                left: gem(-10)
+                bottom: gem(750)
+                width: gem(216)
+                height: auto
+            .bg-ellipse2
+                right: gem(-10)
+                bottom: gem(1030)
+                width: gem(214)
+                height: auto
+        .navigation
+            width: 100%
+            flex-wrap: wrap
+            justify-content: space-between
+            margin-bottom: 0
+        .logo
+            margin-bottom: gem(32)
+        .navigation__list
+            margin: 0
+            &:last-child
+                margin-right: gem(47)
+            &:not(:last-child)
+                margin: 0
+                margin-bottom: gem(38)
+            &:nth-child(2)
+                margin-right: gem(7)
+        .navigation__header
+            margin-bottom: gem(22)
+        .email
+            &.email-tablet
+                display: none
+            &.email-mobile
+                margin-bottom: gem(32)
+                display: flex
+                width: 100%
+                .email__input
+                    height: auto
+                    padding: gem(9)
+                    margin-bottom: gem(5)
+                    input
+                        width: 100%
+                        font-weight: 400
+                        font-size: gem(12)
+                        line-height: gem(18)
+                .btn
+                    width: 100%
+                    justify-content: center
+                    margin-bottom: gem(15)
+                .subtitle-2
+                    font-weight: 400
+                    font-size: gem(12)
+                    line-height: gem(26)

@@ -1,0 +1,106 @@
+<%
+    const Sitemap = require('sitemap');
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy.securitySection;
+    const BaseUrl = page.output.href;
+%>
+<section class="security-section" id="security">
+    <div class="security-background">
+        <div class="bg-circles">
+            <picture>
+                <source data-srcset="../../../assets/img/bg/bgCircles-tablet3.svg"
+                    media="(max-width: 1024px)"/>
+                <source data-srcset="../../../assets/img/bg/bgCircles-desktop3.svg"
+                    media="(min-width: 1025px)"/>
+                <img class="lazy" data-load-priority="5" alt="">
+            </picture>
+        </div>
+        <div class="bg-ellipse">
+            <img data-src="../../../assets/img/bg/Ellipse4.png" class="lazy" data-load-priority="5" alt="">
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-block">
+            <div class="subtitle-anim-js"></div>
+            <h2 class="title-h2 title-anim-js"><%= Strings.title %></h2>
+            <p class="desc-2 desc-anim-js"><%= Strings.desc %></p>
+        </div>
+        <div class="card-block">
+            <div class="card left-card card-anim-js">
+                <div class="card__bg"></div>
+                <div class="card-text">
+                    <h2 class="title-h2"><%= Strings.leftCard.title %></h2>
+                    <p class="desc-2"><%= Strings.leftCard.desc %></p>
+                </div>
+                <div class="audits">
+                    <span class="audits__subtitle subtitle-2"><%= Strings.leftCard.latest %></span>
+                    <ul class="audits__list">
+                        <% Strings.leftCard.audits.forEach((item, i) => { ;%>
+                            <li class="audits__item">
+                                <a href="<%= item.src %>" class="audits__link" target="_blank" aria-label="<%= item.title %>"></a>
+                                <div
+                                    class="audits__logo logo-lottie lazy"
+                                    data-lottie-path="../../../assets/lottie/icons/security/icon<%=i+1%>/lottie.json"
+                                    data-load-priority="2"
+                                >
+                                </div>
+                                <div class="audits__text">
+                                    <span class="audits__data subtitle-4"><%= item.date %></span>
+                                    <h3 class="title-h4"><%= item.title %></h3>
+                                    <span class="audits__by subtitle-4"><%= item.by %></span>
+                                </div>
+                                <div class="audits__arrow">
+                                    <%= require('../../../assets/img/icons/arrow.svg?raw') %>
+                                </div>
+                            </li>
+                        <% }) %>
+                    </ul>
+                    <div class="audits__info">
+                        <div class="tooltip">
+                            <div class="tooltip__icon">
+                                <%= require('../../../assets/img/icons/infoCircle.svg?raw') %>
+                            </div>
+                            <div class="tooltip__dropdown">
+                                <div class="tooltip__info">
+                                    <p class="desc-3"><%= Strings.leftCard.infoTooltip %></p>
+                                    <a href="<%= Strings.leftCard.tooltipLink.link %>" class="tooltip__link" target="_blank">
+                                        <%= Strings.leftCard.tooltipLink.title %>
+                                        <%= require('../../../assets/img/security/tooltipArrowLeft.svg?raw') %>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="subtitle-2"><%= Strings.leftCard.info %></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card right-card card-anim-js">
+                <div class="card__bg"></div>
+                <h2 class="title-h2"><%= Strings.rightCard.title %></h2>
+
+                <div class="card-logo">
+                    <picture>
+                        <source type="image/webp" media="(max-width: 480px)" data-srcset="../../../assets/img/security/safe-mobile.webp">
+                        <source type="image/png" media="(max-width: 480px)" data-srcset="../../../assets/img/security/safe-mobile.png">
+
+                        <source type="image/webp" media="(min-width: 481px) and (max-width: 1024px)" data-srcset="../../../assets/img/security/safe-tablet.webp">
+                        <source type="image/png" media="(min-width: 481px) and (max-width: 1024px)" data-srcset="../../../assets/img/security/safe-tablet.png">
+
+                        <source type="image/webp" media="(min-width: 1025px)" data-srcset="../../../assets/img/security/safe-desktop.webp">
+                        <source type="image/png" media="(min-width: 1025px)" data-srcset="../../../assets/img/security/safe-desktop.png">
+                        <img src="#" class="lazy" data-load-priority="2" alt="Safe picture">
+                    </picture>
+                </div>
+                <div class="desc-large"><%= Strings.rightCard.desc %></div>
+
+                <div class="button">
+                    <a class="btn btn-main" href="<%= Strings.rightCard.btnRead.btnSrc %>" target="_blank" aria-label="<%= Strings.rightCard.btnRead.btnTitle %>">
+                        <span class="btn-label btn-label-1"><%= Strings.rightCard.btnRead.btnTitle %></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

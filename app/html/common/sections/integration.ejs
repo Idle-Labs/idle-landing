@@ -1,0 +1,37 @@
+<%
+    const Sitemap = require('sitemap');
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy.integrationSection;
+    const BaseUrl = page.output.href;
+%>
+
+<section class="integration-section" id="inegration">
+    <div class="container">
+        <div class="text-block">
+            <h2 class="title-h2 title-anim-js"><%= Strings.title %></h2>
+            <div class="desc-anim-js">
+                <p class="desc-2"><%= Strings.desc %></p>
+            </div>
+        </div>
+        <div class="integration-block">
+            <% Strings.integrations.forEach((item, i) => { ;%>
+                <div class="integration">
+                    <div class="integration__logo card-icon-anim-js">
+                        <div
+                            class="logo-lottie lazy"
+                            data-lottie-path="../../../assets/lottie/icons/integration/icon<%=i+1%>/lottie.json"
+                            data-load-priority="2"
+                        >
+                        </div>
+                    </div>
+                    <h4 class="integration__title title-h4 card-title-anim-js"><%= item.title %></h4>
+                    <div class="card-desc-anim-js">
+                        <p class="desc-3"><%= item.desc %></p>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section>

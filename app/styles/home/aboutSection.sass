@@ -1,0 +1,175 @@
+.about-section
+    padding-bottom: gem(180)
+    .about-background
+        .bg-ellipse
+            position: absolute
+            left: gem(-10)
+            top: gem(90)
+            z-index: -2
+            width: gem(662)
+            height: gem(1584)
+            img
+                width: 100%
+                height: 100%
+    .text-block
+        padding-bottom: gem(50)
+        display: flex
+        flex-direction: column
+        position: relative
+        &__subtitle
+            display: flex
+        .divider
+            position: absolute
+            bottom: 0
+            content: ''
+            width: 100%
+            height: 1px
+            background: #ffffff10
+        .subtitle-1
+            opacity: 0.4
+            margin-bottom: gem(12)
+    .tabs-block
+        display: flex
+        justify-content: space-between
+        padding-top: gem(50)
+    .links-list
+        width: gem(200)
+        .link
+            display: flex
+            align-items: center
+            height: gem(40)
+            margin-bottom: gem(25)
+            cursor: pointer
+            &:hover
+                .tab-desc-1
+                    opacity: 1
+                    &::after
+                        opacity: 1
+                        visibility: visible
+            &.active
+                .tab-desc-1
+                    @include hoverTransition(all)
+                    background: var(--color-white)
+                    opacity: 1
+                    color: var(--color-secondary-dark)
+                    &::after
+                        opacity: 0
+            .tab-desc-1
+                @include unhoverTransition(all)
+                opacity: 0.7
+                padding: gem(5) gem(20)
+                border-radius: gem(60)
+                cursor: pointer
+                position: relative
+                &::after
+                    @include hoverTransition(opacity)
+                    position: absolute
+                    top: 0
+                    left: 0
+                    content: ''
+                    width: 100%
+                    height: 100%
+                    border: 1px solid #ffffff50
+                    border-radius: gem(60)
+                    opacity: 0
+                    visibility: hidden
+    .right-wrap
+        width: gem(714)
+        min-height: gem(395)
+        position: relative
+        margin-top: gem(6)
+        .tab
+            position: absolute
+            left: 0
+            top: 0
+            width: 100%
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+            &__item
+                width: gem(282)
+                display: flex
+                flex-direction: column
+                margin-bottom: gem(80)
+                .title-h4
+                    margin-bottom: gem(15)
+                .desc-3
+                    opacity: 0.8
+
+@media only screen and (max-width : 1024px)
+    .about-section
+        padding-bottom: gem(169)
+        .about-background
+            .bg-ellipse
+                top: gem(300)
+                width: gem(450)
+                height: gem(1300)
+        .text-block
+            text-align: center
+            padding-bottom: gem(47)
+            width: gem(600)
+            margin: 0 auto
+            &__subtitle
+                justify-content: center
+            .subtitle-1
+                margin-bottom: gem(16)
+        .tabs-block
+            flex-direction: column
+            justify-content: flex-start
+            padding-top: gem(31)
+        .links-list
+            width: auto
+            display: flex
+            justify-content: center
+        .right-wrap
+            width: gem(596)
+            min-height: gem(395)
+            margin: gem(30) auto 0
+            position: relative
+            .tab
+                &__item
+                    width: gem(248)
+                    margin-bottom: gem(62)
+
+@media all and (max-width: 480px)
+    .about-section
+        padding-bottom: gem(100)
+        .about-background
+            .bg-ellipse
+                top: inherit
+                bottom: gem(-283)
+                width: gem(170)
+                height: auto
+        .text-block
+            width: 100%
+            padding-bottom: gem(39)
+            text-align: left
+            &__subtitle
+                justify-content: flex-start
+            .subtitle-1
+                margin-bottom: gem(15)
+        .tabs-block
+            padding-top: gem(44)
+        .left-wrap
+            margin-left: gem(-30)
+        .links-list
+            width: gem(375)
+            justify-content: flex-start
+            overflow-x: scroll
+            overflow-y: visible
+            padding-left: gem(30)
+            &::-webkit-scrollbar
+                display: none
+            .link
+                margin-bottom: 0
+                .tab-desc-1
+                    white-space: nowrap
+        .right-wrap
+            width: 100%
+            min-height: gem(718)
+            margin-top: gem(43)
+            .tab__item
+                width: 100%
+                margin-bottom: gem(32)
+                .title-h4
+                    margin-bottom: gem(10)

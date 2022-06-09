@@ -1,0 +1,47 @@
+<%
+    const Sitemap = require('sitemap');
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy.playersSection;
+    const BaseUrl = page.output.href;
+%>
+<section class="players-section" id="players">
+    <div class="players-background">
+        <div class="bg-circles">
+            <picture>
+                <source data-srcset="../../../assets/img/bg/bgCircles-tablet4.svg"
+                    media="(max-width: 1024px)"/>
+                <source data-srcset="../../../assets/img/bg/bgCircles-desktop4.svg"
+                    media="(min-width: 1025px)"/>
+                <img class="lazy" data-load-priority="5" alt="">
+            </picture>
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-block">
+            <div class="text-block__subtitle subtitle-anim-js">
+                <span class="subtitle-1"><%= Strings.subtitle %></span>
+            </div>
+            <h2 class="title-h2 title-anim-js"><%= Strings.title %></h2>
+        </div>
+        <div class="points">
+            <% Strings.points.forEach((item, i) => { ;%>
+                <div class="point">
+                    <div
+                        class="point__logo card-icon-anim-js logo-lottie lazy"
+                        data-lottie-path="../../../assets/lottie/icons/players/icon<%=i+1%>/lottie.json"
+                        data-load-priority="3"
+                    >
+                    </div>
+                    <div class="point__title card-title-anim-js">
+                        <h4 class="title-h4"><%= item.title %></h4>
+                    </div>
+                    <div class="point__desc card-desc-anim-js">
+                        <p class="desc-3"><%= item.desc %></p>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section>

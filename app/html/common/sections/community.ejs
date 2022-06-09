@@ -1,0 +1,49 @@
+<%
+    const Sitemap = require('sitemap');
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy.communitySection;
+    const BaseUrl = page.output.href;
+%>
+<section class="community-section" id="community">
+    <div class="community-background">
+        <div class="bg-ellipse">
+            <img data-src="../../../assets/img/bg/Ellipse9.png" class="lazy" data-load-priority="5" alt="">
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-block">
+            <h2 class="title-h2 anim-item-js"><%= Strings.title %></h2>
+            <p class="desc-2 anim-item-js"><%= Strings.subtitle %></p>
+        </div>
+
+        <div class="values-block">
+            <div class="value">
+                <h2 class="value__title value-1 anim-item-js"><%= Strings.values[0].title %></h2>
+                <div class="value__subtitle anim-item-js"><span class="subtitle-2"><%= Strings.values[0].subtitle %></span></div>
+            </div>
+            <div class="value">
+                <h2 class="value__title value-1 anim-item-js"><%= Strings.values[1].title %></h2>
+                <div class="value__subtitle anim-item-js"><span class="subtitle-2"><%= Strings.values[1].subtitle %></span></div>
+            </div>
+            <div class="value">
+                <h2 class="value__title value-1 anim-item-js"><%= Strings.values[2].title %></h2>
+                <div class="value__subtitle anim-item-js"><span class="subtitle-2"><%= Strings.values[2].subtitle %></span></div>
+            </div>
+            <div class="value">
+                <h2 class="value__title value-1 anim-item-js"><%= Strings.values[3].title %></h2>
+                <div class="value__subtitle anim-item-js"><span class="subtitle-2"><%= Strings.values[3].subtitle %></span></div>
+            </div>
+        </div>
+
+        <div class="buttons-block">
+            <a class="btn btn-border anim-item-js" href="<%= Strings.btnAboutCommunity.btnSrc %>" target="_blank" aria-label="<%= Strings.btnAboutCommunity.btnTitle %>">
+                <span class="btn-label btn-label-2"><%= Strings.btnAboutCommunity.btnTitle %></span>
+            </a>
+            <a class="btn btn-main anim-item-js" href="<%= Strings.btnAboutGovernance.btnSrc %>" target="_blank" aria-label="<%= Strings.btnAboutGovernance.btnTitle %>">
+                <span class="btn-label btn-label-2"><%= Strings.btnAboutGovernance.btnTitle %></span>
+            </a>
+        </div>
+    </div>
+</section>

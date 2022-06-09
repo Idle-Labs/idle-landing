@@ -1,0 +1,122 @@
+.investors-section
+    padding-bottom: gem(141)
+    .investors-background
+        .bg-circles
+            position: absolute
+            right: gem(33)
+            top: gem(-210)
+            width: gem(1375)
+            height: gem(1318)
+            z-index: -1
+            transform-origin: center
+            img
+                width: 100%
+                height: 100%
+    .text-block
+        width: gem(835)
+        margin: 0 auto
+        text-align: center
+        margin-bottom: gem(143)
+        display: flex
+        flex-direction: column
+        &__subtitle-wrap
+            display: flex
+            justify-content: center
+        .subtitle-1
+            opacity: 0.4
+            margin-bottom: gem(15)
+    .investors
+        display: flex
+        justify-content: center
+        .investors-wrap
+            display: flex
+            flex-direction: column
+            align-items: center
+            &.mobile
+                display: none
+        &__item
+            display: flex
+            &:not(:last-child)
+                margin-right: gem(55)
+        &__logo
+            width: gem(198)
+            height: gem(70)
+            opacity: 1
+            @include unhoverTransition(opacity)
+            img
+                width: 100%
+                height: 100%
+                display: block
+                object-fit: contain
+            &:first-child
+                margin-bottom: gem(79)
+            &:hover
+                @include hoverTransition(opacity)
+                opacity: 0.6
+
+@media only screen and (max-width : 1024px)
+    .investors-section
+        padding-bottom: gem(133)
+        .investors-background
+            .bg-circles
+                right: 0
+                top: gem(-93)
+                width: gem(768)
+                height: gem(838)
+        .text-block
+            width: auto
+            margin-bottom: gem(88)
+            .title-h2
+                width: gem(600)
+                margin: 0 auto
+        .investors
+            &__item
+                &:not(:last-child)
+                    margin-right: gem(8)
+            &__logo
+                width: gem(154)
+                height: gem(46)
+                padding: 0
+                &:first-child
+                    margin-bottom: gem(47)
+
+@media all and (max-width: 480px)
+    .investors-section
+        padding-bottom: gem(100)
+        .investors-background
+            .bg-circles
+                right: gem(-70)
+                top: gem(-63)
+                width: gem(518)
+                height: auto
+        .text-block
+            margin-bottom: gem(48)
+            text-align: left
+            &__subtitle-wrap
+                justify-content: flex-start
+            .title-h2
+                width: 100%
+        .investors
+            &__item
+                &:not(:last-child)
+                    margin-right: gem(8)
+            .investors-wrap
+                &.mobile
+                    width: 100%
+                    display: flex
+                    flex-direction: row
+                    align-items: center
+                    justify-content: space-between
+                    flex-wrap: wrap
+                &.desktop
+                    display: none
+            &__logo
+                width: gem(140)
+                height: gem(42)
+                margin-right: 0
+                margin-bottom: gem(20)
+                &:first-child
+                    margin-bottom: gem(20)
+
+
+

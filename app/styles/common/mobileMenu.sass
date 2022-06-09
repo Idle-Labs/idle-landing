@@ -1,0 +1,170 @@
+.mobile-menu
+    position: fixed
+    overflow-x: hidden
+    top: 0
+    background: var(--color-main-dark)
+    transform: translateY(-100%)
+    transition: transform 375ms ease
+    width: 100%
+    height: 100vh
+    z-index: 30
+    padding: gem(22) gem(44) gem(10)
+    &.opened
+        transform: translateY(0)
+    .bg-noise
+        width: 100%
+        height: 100%
+        background-image: url("../assets/img/bg/bgNoise.png")
+        background-repeat: repeat
+        mix-blend-mode: soft-light
+        position: absolute
+        left: 0
+        top: 0
+        z-index: 0
+        pointer-events: none
+    &-background
+        .bg-ellipse
+            position: absolute
+            right: gem(-10)
+            top: gem(-130)
+            z-index: -2
+            width: gem(720)
+            height: gem(1020)
+            img
+                width: 100%
+                height: 100%
+    .close-btn
+        width: gem(20)
+        height: gem(20)
+        position: relative
+        cursor: pointer
+        &:before
+            content: ''
+            height: gem(3)
+            width: gem(20)
+            border-radius: gem(15)
+            position: absolute
+            background: var(--color-white)
+            top: 50%
+            left: 0
+            transform: rotate(45deg)
+        &:after
+            content: ''
+            height: gem(3)
+            width: gem(20)
+            border-radius: gem(15)
+            position: absolute
+            background: var(--color-white)
+            top: 50%
+            left: 0
+            transform: rotate(-45deg)
+    .logo
+        display: flex
+        justify-content: center
+        align-items: center
+        width: gem(65)
+        height: gem(30)
+        svg,
+        path
+            width: 100%
+            height: 100%
+            display: block
+    &__header
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin-bottom: gem(96)
+    &__content
+        width: gem(564)
+        margin: 0 auto
+    .navigation
+        padding-bottom: gem(83)
+        height: gem(616)
+        overflow-y: scroll
+        -ms-overflow-style: none
+        scrollbar-width: none
+        &::-webkit-scrollbar
+            display: none
+        &__link
+            display: flex
+            padding: gem(24) 0
+            &:not(:last-child)
+                border-bottom: 1px solid #ffffff14
+            cursor: pointer
+            &-text
+                opacity: 0.62
+                transition: opacity 375ms ease
+            &:hover
+                .navigation__link-text
+                    opacity: 1
+    .dropdown
+        flex-direction: column
+        .drop-down-link
+            display: flex
+            align-items: center
+        .drop-down-arrow
+            display: flex
+            height: gem(26)
+            width: gem(26)
+            margin-left: gem(7)
+            svg
+                width: 100%
+                height: 100%
+                display: block
+                transition: transform 375ms ease
+                pointer-events: none
+        &.active
+            .drop-down-link
+                .label-1
+                    opacity: 1
+                svg
+                    opacity: 1
+                    transform: rotate(180deg)
+            .dropdown__list
+                display: block
+        &__list
+            margin-top: gem(24)
+            display: none
+        &__item
+            a
+                display: flex
+                margin-bottom: gem(20)
+            &:hover
+                .label-1
+                    opacity: 1
+            .label-1
+                font-size: gem(24)
+                line-height: gem(32)
+                font-weight: 400
+                opacity: 0.62
+                transition: opacity 375ms ease
+    .button
+        .btn
+            width: gem(564)
+            height: gem(81)
+            display: flex
+            justify-content: center
+            &-label
+                font-size: gem(24)
+                line-height: gem(33)
+                font-weight: 700
+
+@media all and (max-width: 480px)
+
+    .mobile-menu
+        padding: gem(22) gem(30) gem(10)
+        &__header
+            margin-bottom: gem(70)
+        &__content
+            width: 100%
+        .navigation
+            padding: 0 gem(27)
+            height: gem(506)
+        .navigation__link
+            padding: gem(20) 0
+        .button
+            .btn
+                width: 100%
+                height: gem(60)
+            .btn-label
+                font-size: gem(16)

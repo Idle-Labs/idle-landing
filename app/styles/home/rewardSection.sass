@@ -1,0 +1,77 @@
+.reward-section
+    padding-top: gem(180)
+    padding-bottom: gem(180)
+    .container
+        display: flex
+        justify-content: space-between
+        padding: 0 gem(28)
+    .left-wrap
+        .reward-logo
+            width: gem(481)
+            height: gem(386)
+            img
+                width: 100%
+                height: 100%
+                display: block
+    .right-wrap
+        width: gem(486)
+        .text-block
+            padding-top: gem(40)
+            .title-h2
+                margin-bottom: gem(30)
+            .desc-2
+                width: gem(422)
+                margin-bottom: gem(40)
+
+@media only screen and (max-width : 1024px)
+    .reward-section
+        padding-top: gem(140)
+        padding-bottom: gem(140)
+        .container
+            flex-direction: column
+        .left-wrap
+            order: 2
+            .reward-logo
+                margin: 0 auto
+        .right-wrap
+            order: 1
+            width: auto
+            margin-bottom: gem(58)
+            .text-block
+                padding-top: 0
+                text-align: center
+                .title-h2
+                    width: gem(480)
+                    margin: 0 auto gem(20)
+                .desc-2
+                    width: gem(550)
+                    margin: 0 auto gem(57)
+                .button
+                    display: flex
+                    justify-content: center
+
+@media all and (max-width: 480px)
+    .reward-section
+        padding-top: gem(100)
+        padding-bottom: gem(52)
+        .container
+            padding: 0
+        .right-wrap
+            .text-block
+                text-align: left
+                .title-h2,
+                .desc-2
+                    width: 100%
+                .title-h2
+                    margin-bottom: gem(287)
+                .desc-2
+                    margin-bottom: gem(41)
+                .button
+                    justify-content: flex-start
+        .left-wrap
+            position: absolute
+            width: 100%
+            top: gem(143)
+            .reward-logo
+                width: 100%
+                height: auto

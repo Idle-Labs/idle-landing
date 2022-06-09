@@ -1,0 +1,34 @@
+<%
+    const Sitemap = require('sitemap');
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy.statsSection;
+    const BaseUrl = page.output.href;
+%>
+<section class="stats-section" id="stats">
+    <div class="stats-background">
+        <div class="bg-ellipse">
+            <img data-src="../../../assets/img/bg/Ellipse7.png" class="lazy" data-load-priority="5" alt="">
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-block">
+            <h2 class="title-h2 anim-item-js"><%= Strings.title %></h2>
+        </div>
+        <div class="values-block">
+            <div class="value">
+                <h2 id="total-locked-value" class="value__title value-1 anim-item-js"><%= Strings.totalValue.title %></h2>
+                <div class="value__subtitle anim-item-js"><span class="subtitle-2"><%= Strings.totalValue.subtitle %></span></div>
+            </div>
+            <div class="value">
+                <h2 id="interests-value" class="value__title value-1 anim-item-js"><%= Strings.interestValue.title %></h2>
+                <div class="value__subtitle anim-item-js"><span class="subtitle-2"><%= Strings.interestValue.subtitle %></span></div>
+            </div>
+            <div class="value">
+                <h2 id="gas-saved-value" class="value__title value-1 anim-item-js"><%= Strings.gasValue.title %></h2>
+                <div class="value__subtitle anim-item-js"><span class="subtitle-2"><%= Strings.gasValue.subtitle %></span></div>
+            </div>
+        </div>
+    </div>
+</section>

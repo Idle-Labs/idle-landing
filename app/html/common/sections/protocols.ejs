@@ -1,0 +1,39 @@
+<%
+    const Sitemap = require('sitemap');
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy.protocolsSection;
+    const BaseUrl = page.output.href;
+%>
+<section class="protocols-section" id="protocols">
+    <div class="protocols-background">
+        <div class="bg-ellipse1">
+            <img data-src="../../../assets/img/bg/Ellipse5.png" class="lazy" data-load-priority="5" alt="">
+        </div>
+
+        <div class="bg-ellipse2">
+            <img data-src="../../../assets/img/bg/Ellipse6.png" class="lazy" data-load-priority="5" alt="">
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-block">
+            <h2 class="title-h2 anim-item-js"><%=Strings.title %></h2>
+            <p class="desc-2 anim-item-js"><%= Strings.desc %></p>
+        </div>
+        <div class="protocols">
+            <% Strings.protocols.forEach((item, i) => {
+                const protocolLogoSrc = require(`../../../assets/img/protocols/${item.logoSrc}`);
+                // if (item.logoSrc.match(/svg$/)){
+                //     require(protocolLogoSrc);
+                // }
+            %>
+            <a class="protocols__logo" href="<%= item.linkSrc %>" target="_blank" aria-label="<%= item.linkSrc %>">
+                <div class="logo logo-anim-js-<%= i+1 %>">
+                    <img data-src="<%= protocolLogoSrc %>" class="lazy" data-load-priority="3" alt="">
+                </div>
+            </a>
+            <% }) %>
+        </div>
+    </div>
+</section>

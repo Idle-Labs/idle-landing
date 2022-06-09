@@ -1,0 +1,77 @@
+.integration-section
+    padding-bottom: gem(95)
+    .text-block
+        width: gem(682)
+        margin: 0 auto
+        text-align: center
+        margin-bottom: gem(90)
+        .title-h2
+            margin-bottom: gem(15)
+        .desc-2
+            opacity: 0.8
+            width: gem(500)
+            margin: 0 auto
+    .integration-block
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        .integration
+            width: gem(316)
+            min-height: gem(206)
+            display: flex
+            flex-direction: column
+            align-items: center
+            text-align: center
+            margin-bottom: gem(84)
+            &__logo
+                width: gem(70)
+                height: gem(70)
+                margin-bottom: gem(15)
+                .logo-lottie
+                    width: 100%
+                    height: 100%
+                    display: flex
+            &__title
+                margin-bottom: gem(17)
+            .desc-3
+                opacity: 0.8
+
+@media only screen and (max-width : 1024px)
+    .integration-section
+        padding-bottom: gem(100)
+        .text-block
+            margin-bottom: gem(89)
+            .desc-2
+                width: gem(500)
+                margin: 0 auto
+        .integration-block
+            justify-content: space-around
+            .integration
+                width: gem(254)
+                min-height: gem(202)
+                margin-bottom: gem(64)
+                &__title
+                    margin-bottom: gem(12)
+
+@media all and (max-width: 480px)
+
+    .integration-section
+        padding-bottom: gem(70)
+        .text-block
+            width: 100%
+            margin-bottom: gem(27)
+            text-align: left
+            .title-h2
+                width: gem(300)
+            .desc-2
+                width: 100%
+        .integration-block
+            justify-content: flex-start
+            .integration
+                width: 100%
+                margin-bottom: gem(30)
+                align-items: flex-start
+                text-align: left
+            .integration__logo
+                width: gem(56)
+                height: gem(56)

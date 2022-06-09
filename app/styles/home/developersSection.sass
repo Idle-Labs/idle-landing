@@ -1,0 +1,227 @@
+.developers-section
+    padding: gem(100) 0 gem(131)
+    background: url("../../assets/img/bg/blurBg.png")
+    .text-block
+        width: gem(450)
+        margin: 0 auto
+        text-align: center
+        margin-bottom: gem(104)
+        &__desc-wrap
+            display: flex
+            justify-content: center
+        .title-h2
+            margin-bottom: gem(20)
+        .desc-2
+            opacity: 0.8
+    .cards-block
+        display: flex
+        justify-content: space-between
+        .left-wrap
+            width: gem(469)
+            display: flex
+            flex-direction: column
+        .title-block
+            display: flex
+            flex-direction: column
+            margin-bottom: gem(49)
+            .title-h4
+                margin-bottom: gem(15)
+            .desc-2
+                opacity: 0.8
+        .assets-block
+            display: flex
+            flex-direction: column
+            &__subtitle-wrap
+                display: flex
+            .subtitle-3
+                opacity: 0.5
+                margin-bottom: gem(15)
+            .assets
+                display: flex
+                margin-bottom: gem(60)
+                &__logo
+                    width: gem(36)
+                    height: gem(36)
+                    display: flex
+                    &:not(:last-child)
+                        margin-right: gem(11)
+                    svg
+                        width: 100%
+                        height: 100%
+                        display: block
+        .buttons-block
+            display: flex
+        .right-wrap
+    .code-wrap
+        padding-top: gem(5)
+        width: gem(545)
+        height: gem(318)
+        display: flex
+        flex-direction: column
+        .code-controller
+            width: 100%
+            display: flex
+            justify-content: space-between
+            padding: gem(9) gem(18) gem(0) gem(10)
+            background: #002240
+            border-top-left-radius: gem(6)
+            border-top-right-radius: gem(6)
+            .mac-icons
+                width: gem(50)
+                height: gem(13)
+                display: flex
+                svg
+                    width: 100%
+                    height: 100%
+            .copy-button
+                cursor: pointer
+                width: gem(18)
+                height: gem(26)
+                svg
+                    width: 100%
+                    height: 100%
+                .copy-icon
+                    visibility: hidden
+                    opacity: 0
+                    display: flex
+                .checked-icon
+                    visibility: hidden
+                    opacity: 0
+                    display: flex
+                .copy-icon.active,
+                .checked-icon.active
+                    visibility: visible
+                    opacity: 1
+                .copy-icon,
+                .checked-icon
+                    position: absolute
+                    transition: opacity 375ms ease
+        .code-editor
+            resize: none
+            width: gem(545)
+            height: gem(318)
+            font-size: gem(13)
+            font-family: 'Fira Code', 'monospace'
+            color: #fff
+            background: #002240
+            border: none
+            outline: none
+            -ms-overflow-style: none
+            scrollbar-width: none
+            padding-left: gem(12)
+            border-bottom-left-radius: gem(6)
+            border-bottom-right-radius: gem(6)
+            padding-right: gem(40)
+            &::-webkit-scrollbar
+                display: none
+            .var
+                color: #ffee80
+            .def
+                color: #fff
+            .string
+                color: #3ad900
+            .comment
+                color: #08f
+            .atom
+                color: #845dc4
+
+@media only screen and (max-width : 1024px)
+    .developers-section
+        padding: gem(88) 0
+        .text-block
+            margin-bottom: gem(60)
+            .title-h2
+                margin-bottom: gem(24)
+        .cards-block
+            flex-direction: column
+            .left-wrap
+                order: 2
+                width: auto
+                text-align: center
+                align-items: center
+            .right-wrap
+                order: 1
+                margin-bottom: gem(90)
+            .title-block
+                margin-bottom: gem(63)
+                .desc-2
+                    width: gem(580)
+            .assets-block
+                &__subtitle-wrap
+                    margin: 0 auto
+                .subtitle-3
+                    margin-bottom: gem(20)
+                .assets
+                    margin-bottom: gem(65)
+        .code-wrap
+            width: gem(564)
+            margin: 0 auto
+            .code-editor
+                width: gem(564)
+
+@media all and (max-width: 480px)
+
+     .developers-section
+        padding: gem(80) 0
+        .text-block
+            width: 100%
+            margin-bottom: gem(30)
+            text-align: left
+            .title-h2
+                margin-bottom: gem(15)
+        .code-wrap
+            width: 100%
+            height: gem(184)
+            .code-editor
+                width: 100%
+                height: gem(184)
+                overflow-y: scroll
+                font-size: gem(8)
+                padding-right: gem(30)
+            .code-controller
+                padding: gem(6) gem(9) 0 gem(7)
+                .mac-icons
+                    width: gem(28)
+                .copy-button
+                    position: relative
+                    width: gem(11)
+                    height: gem(17)
+                    margin-top: gem(3)
+                .copy-icon
+                    width: 100%
+            .CodeMirror-sizer
+                margin-top: gem(-3)
+                padding-top: 0
+                padding-left: gem(4)
+            .CodeMirror pre.CodeMirror-line,
+            .CodeMirror pre.CodeMirror-line-like
+                font-size: gem(8)
+                line-height: gem(10)
+        .cards-block
+            .right-wrap
+                margin-bottom: gem(66)
+            .left-wrap
+                width: 100%
+                text-align: left
+            .title-block
+                width: 100%
+                margin-bottom: gem(56)
+                .desc-2
+                    width: 100%
+            .assets-block
+                &__subtitle-wrap
+                    margin: 0
+                .assets
+                    flex-wrap: wrap
+                    justify-content: center
+                    margin-bottom: gem(21)
+                .assets__logo
+                    margin-bottom: gem(17)
+                    &:not(:last-child)
+                        margin-right: gem(33)
+                    &:nth-last-child(-n+4)
+                        margin-right: gem(34)
+                    &:nth-child(5),
+                    &:last-child
+                        margin-right: 0
+

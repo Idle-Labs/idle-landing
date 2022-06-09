@@ -1,0 +1,46 @@
+.tooltip
+    display: flex
+    position: relative
+    &:hover
+        .tooltip__dropdown
+            opacity: 1
+            visibility: visible
+    &__icon
+        display: flex
+        justify-content: center
+        align-items: center
+        cursor: pointer
+        &:hover
+            circle
+                opacity: 1
+            path
+                fill: var(--color-secondary-dark)
+        svg
+            width: gem(9)
+            height: gem(9)
+            circle,
+            path
+                transition: all 375ms ease
+    &__dropdown
+        position: absolute
+        width: gem(288)
+        min-height: gem(160)
+        background: #fefefe
+        border-radius: gem(8)
+        bottom: gem(18)
+        left: gem(-93)
+        z-index: 11
+        padding: gem(12) gem(12) gem(16)
+        opacity: 0
+        visibility: hidden
+        transition: opacity 375ms ease
+        &::after
+            content: ''
+            position: absolute
+            width: 0
+            height: 0
+            top: 99%
+            left: gem(90)
+            border-left: gem(8) solid transparent
+            border-right: gem(8) solid transparent
+            border-top: gem(8) solid #fefefe

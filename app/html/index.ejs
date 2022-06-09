@@ -1,0 +1,32 @@
+@require('./common/structure/head.ejs')
+@require('./common/preloader.ejs')
+@require('./common/header.ejs')
+
+<%
+    const Sitemap = require('sitemap');
+    // get the page directly to hook it into webpack dev build process
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy;
+    const BaseUrl = page.output.href;
+
+    const logoURL = require('assets/img/logo.png');
+%>
+
+<div class="bg-noise"></div>
+<main id="main" data-page-id="home">
+    @require('./common/sections/hero.ejs')
+    @require('./common/sections/product.ejs')
+    @require('./common/sections/stats.ejs')
+    @require('./common/sections/integration.ejs')
+    @require('./common/sections/security.ejs')
+    @require('./common/sections/protocols.ejs')
+    @require('./common/sections/players.ejs')
+    @require('./common/sections/community.ejs')
+    @require('./common/sections/investors.ejs')
+</main>
+
+@require('./common/scrollToTop.ejs')
+@require('./common/footer.ejs')
+@require('./common/structure/foot.ejs')

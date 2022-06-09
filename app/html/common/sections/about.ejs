@@ -1,0 +1,49 @@
+<%
+    const Sitemap = require('sitemap');
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy.aboutSection;
+    const BaseUrl = page.output.href;
+%>
+<section class="about-section" id="about">
+    <div class="about-background">
+        <div class="bg-ellipse">
+            <img data-src="../../../assets/img/bg/Ellipse8.png" class="lazy" data-load-priority="5" alt="">
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-block">
+            <div class="text-block__subtitle subtitle-anim-js">
+                <span class="subtitle-1"><%= Strings.subtitle %></span>
+            </div>
+            <h2 class="title-h2 title-anim-js"><%= Strings.title %></h2>
+            <div class="divider divider-anim-js"></div>
+        </div>
+        <div class="tabs-block">
+            <div class="left-wrap">
+                <ul class="links-list">
+                    <% Strings.tabs.forEach((item, i) => { %>
+                        <li class="link tab-link <%=i === 0 ? 'active' : null %> link-anim-js" data-target-id="<%=i+1%>">
+                            <div class="tab-desc-1"><%= item.link %></div>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+            <div class="right-wrap">
+                <% Strings.tabs.forEach((tab, i) => { %>
+                    <ul class="tab tab-item" data-nav-id="<%=i+1%>">
+                        <% tab.items.forEach(item => { %>
+                            <li class="tab__item">
+                                <h4 class="title-h4 tab-title-anim-js"><%= item.title %></h4>
+                                <div class="tab__desc tab-desc-anim-js">
+                                    <p class="desc-3"><%= item.desc %></p>
+                                </div>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</section>

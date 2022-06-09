@@ -1,0 +1,240 @@
+.community-section
+    padding-top: gem(90)
+    padding-bottom: gem(180)
+    .community-background
+        .bg-ellipse
+            position: absolute
+            right: gem(-10)
+            top: gem(-430)
+            z-index: -2
+            width: gem(412)
+            height: gem(1168)
+            img
+                width: 100%
+                height: 100%
+    .text-block
+        display: flex
+        text-align: center
+        flex-direction: column
+        margin-bottom: gem(60)
+        &__subtitle
+            display: flex
+
+    .values-block
+        display: flex
+        margin: 0 auto
+        width: gem(838)
+        align-items: center
+        margin-bottom: gem(60)
+        justify-content: space-between
+        .value
+            display: flex
+            flex-direction: column
+            text-align: center
+            .value-1
+                margin-bottom: gem(21)
+            .subtitle-2
+                opacity: 0.8
+            &__subtitle
+                display: flex
+                justify-content: center
+
+    .governance
+        display: flex
+        justify-content: space-between
+        align-items: center
+        background: url("../../assets/img/bg/blurBg.png")
+        border-radius: gem(6)
+        max-height: gem(200)
+        padding: gem(65)
+        margin-bottom: gem(23)
+        position: relative
+        &::after
+            content: ''
+            height: gem(117)
+            width: 1px
+            background: #c4c4c410
+            position: absolute
+            left: gem(260)
+        &__logo
+            display: flex
+            width: gem(130)
+            height: gem(60)
+            svg
+                width: 100%
+                height: 100%
+                display: block
+        &__text
+            display: flex
+            flex-direction: column
+            width: gem(437)
+            margin-right: gem(22)
+            .title-h4
+                margin-bottom: gem(8)
+            .desc-2
+                width: gem(400)
+                opacity: 0.8
+    .socials
+        display: flex
+        justify-content: space-between
+        margin-bottom: gem(54)
+        &__link
+            width: gem(544)
+            height: gem(168)
+            border-radius: gem(6)
+            padding: gem(23)
+            background: url("../../assets/img/bg/blurBg.png")
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            &:hover
+                .socials__logo
+                    path
+                        @include hoverTransition(fill)
+                        fill: var(--color-white)
+                .socials__title
+                    @include hoverTransition(opacity)
+                    opacity: 1
+        &__logo
+            display: flex
+            width: gem(50)
+            height: gem(50)
+            svg,
+            path
+                @include unhoverTransition(fill)
+                width: 100%
+                height: 100%
+                display: block
+        &__title
+            margin-left: gem(6)
+            opacity: 0.8
+            @include unhoverTransition(opacity)
+    .buttons-block
+        display: flex
+        justify-content: center
+        align-items: center
+        .btn
+            &:not(:last-child)
+                margin-right: gem(20)
+
+@media only screen and (max-width : 1024px)
+    .community-section
+        padding-top: gem(88)
+        padding-bottom: gem(140)
+        .community-background
+            .bg-ellipse
+                top: gem(-930)
+        .text-block
+            text-align: center
+            margin-bottom: gem(73)
+            &__subtitle
+                justify-content: center
+        .values-block
+            width: gem(533)
+            .value
+                .value-1
+                    margin-bottom: gem(11)
+        .governance
+            max-height: gem(244)
+            height: gem(244)
+            padding: gem(40)
+            margin-bottom: gem(16)
+            align-items: flex-start
+            &::after
+                height: gem(164)
+                left: gem(227)
+            &__logo
+                margin-top: gem(52)
+                margin-left: gem(10)
+            &__text
+                width: gem(344)
+                .title-h4
+                    margin-bottom: gem(6)
+                .desc-2
+                    width: gem(350)
+                    font-size: gem(14)
+                    line-height: gem(24)
+                    margin-bottom: gem(37)
+        .socials
+            margin-bottom: gem(48)
+            &__link
+                padding: gem(20) gem(25) gem(24)
+                width: gem(332)
+                height: gem(166)
+
+@media all and (max-width: 480px)
+    .community-section
+        padding-top: gem(80)
+        padding-bottom: gem(99)
+        .community-background
+            .bg-ellipse
+                width: gem(322)
+                height: auto
+                top: gem(-380)
+        .text-block
+            text-align: left
+            margin-bottom: gem(39)
+            &__subtitle
+                justify-content: flex-start
+        .values-block
+            width: 100%
+            flex-wrap: wrap
+            margin-bottom: gem(10);
+            .value
+                width: 50%
+                margin-bottom: gem(42)
+                text-align: left
+                .value-1
+                    margin-bottom: gem(8)
+            .value__subtitle
+                justify-content: flex-start
+        .governance
+            flex-direction: column
+            max-height: inherit
+            height: auto
+            margin-bottom: gem(8)
+            padding: gem(21) gem(21) gem(33) gem(21)
+            &::after
+                display: none
+        .governance__logo
+            width: gem(93)
+            height: auto
+            margin: 0
+            margin-bottom: gem(20)
+        .governance__text
+            position: relative
+            width: 100%
+            padding-top: gem(22)
+            margin-left: gem(6)
+            margin-right: 0
+            .desc-2
+                width: 100%
+                margin-bottom: gem(33)
+            &::before
+                content: ''
+                position: absolute
+                height: 1px
+                width: 100%
+                top: 0
+                left: 0
+                background: #c4c4c410
+        .socials
+            flex-wrap: wrap
+            margin-bottom: gem(33)
+        .socials__link
+            width: gem(154)
+            height: gem(142)
+            margin-bottom: gem(8)
+            padding: gem(17) gem(21) gem(18)
+        .socials__logo
+            width: gem(40)
+            height: gem(40)
+        .buttons-block
+            flex-wrap: wrap
+            .btn
+                width: gem(261)
+                justify-content: center
+                &:not(:last-child)
+                    margin-right: 0
+                    margin-bottom: gem(10)
+

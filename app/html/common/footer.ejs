@@ -1,0 +1,127 @@
+<%
+    const Sitemap = require('sitemap');
+    // get the page directly to hook it into webpack dev build process
+    const page = Sitemap.getPage(Page);
+
+    const Strings = page.common.footer;
+    const BaseUrl = page.output.href;
+    const year = new Date().getFullYear();
+%>
+
+<footer class="footer">
+    <div class="footer-background">
+        <div class="bg-ellipse1">
+            <picture>
+                <source data-srcset="../../assets/img/bg/Ellipse10-mobile.png"
+                    media="(max-width: 1024px)"/>
+                <source data-srcset="../../assets/img/bg/Ellipse10.png"
+                    media="(min-width: 1025px)"/>
+                <img class="lazy" data-load-priority="5" alt="">
+            </picture>
+        </div>
+        <div class="bg-ellipse2">
+            <picture>
+                <source data-srcset="../../assets/img/bg/Ellipse11-mobile.png"
+                    media="(max-width: 1024px)"/>
+                <source data-srcset="../../assets/img/bg/Ellipse11.png"
+                    media="(min-width: 1025px)"/>
+                <img class="lazy" data-load-priority="5" alt="">
+            </picture>
+        </div>
+    </div>
+    <div class="footer__bg"></div>
+    <div class="container">
+        <div class="left-wrap">
+            <div class="logo">
+                <%= require('../../assets/img/footerLogo.svg?raw') %>
+            </div>
+            <div class="email email-desktop">
+                <div class="email__input">
+                    <input type="text" placeholder="<%= Strings.inputPlaceholder %>">
+                    <a class="btn btn-main" href="<%= Strings.btnUpdates.btnSrc %>" target="_blank" aria-label="<%= Strings.btnUpdates.btnTitle %>">
+                        <span class="btn-label btn-label-2"><%= Strings.btnUpdates.btnTitle %></span>
+                    </a>
+                </div>
+                <span class="subtitle-2"><%= Strings.subtitle %></span>
+            </div>
+            <div class="email email-mobile">
+                <div class="email__input">
+                    <input type="text" placeholder="<%= Strings.inputPlaceholder %>">
+                </div>
+                <a class="btn btn-main" href="<%= Strings.btnUpdates.btnSrc %>" target="_blank" aria-label="<%= Strings.btnUpdates.btnTitle %>">
+                    <span class="btn-label btn-label-2"><%= Strings.btnUpdates.btnTitle %></span>
+                </a>
+                <span class="subtitle-2"><%= Strings.subtitle %></span>
+            </div>
+        </div>
+        <div class="right-wrap">
+            <div class="navigation">
+                <ul class="navigation__list main">
+                    <li class="navigation__header label-3"><%= Strings.socialLinks.main.title %></li>
+                    <% Strings.socialLinks.main.links.forEach(item => {
+                        if (item.dataAnchor) { %>
+                            <li class="navigation__link">
+                                <div class="label-2 anchor-item" target="_self" data-anchor="<%=item.dataAnchor %>"><%= item.title %></div>
+                            </li>
+                        <% return } %>
+                            <li class="navigation__link">
+                                <a class="label-2" target="_blank" href="<%= item.link %>"><%= item.title %></a>
+                            </li>
+                    <% }) %>
+                </ul>
+
+                <ul class="navigation__list about">
+                    <li class="navigation__header label-3"><%= Strings.socialLinks.about.title %></li>
+                    <% Strings.socialLinks.about.links.forEach(item => {
+                        if (item.dataAnchor) { %>
+                            <li class="navigation__link">
+                                <div class="label-2 anchor-item" target="_self" data-anchor="<%=item.dataAnchor %>"><%= item.title %></div>
+                            </li>
+                        <% return } %>
+                            <li class="navigation__link">
+                                <a class="label-2" target="_blank" href="<%= item.link %>"><%= item.title %></a>
+                            </li>
+                    <% }) %>
+                </ul>
+
+                <ul class="navigation__list community">
+                    <li class="navigation__header label-3"><%= Strings.socialLinks.community.title %></li>
+                    <% Strings.socialLinks.community.links.forEach(item => { %>
+                        <li class="navigation__link">
+                            <a class="label-2" href="<%= item.link %>" target="_blank"><%= item.title %></a>
+                        </li>
+                    <% }) %>
+                </ul>
+
+                <ul class="navigation__list developers">
+                    <li class="navigation__header label-3"><%= Strings.socialLinks.developers.title %></li>
+                    <% Strings.socialLinks.developers.links.forEach(item => { %>
+                        <li class="navigation__link">
+                            <a class="label-2" href="<%= item.link %>" target="_blank"><%= item.title %></a>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+            <div class="email email-tablet">
+                <div class="email__input">
+                    <input type="text" placeholder="<%= Strings.inputPlaceholder %>">
+                    <a class="btn btn-main" href="<%= Strings.btnUpdates.btnSrc %>" target="_blank" aria-label="<%= Strings.btnUpdates.btnTitle %>">
+                        <span class="btn-label btn-label-2"><%= Strings.btnUpdates.btnTitle %></span>
+                    </a>
+                </div>
+                <span class="subtitle-2"><%= Strings.subtitle %></span>
+            </div>
+        </div>
+    </div>
+    <div class="container copyright">
+        <p class="desc-2 copyright">© 2022 IdleLab</p>
+        <% Strings.copyrightBar.links.forEach(item => { %>
+            <li class="navigation__link">
+                <a class="label-2" href="<%= item.link %>" target="_blank"><%= item.title %></a>
+            </li>
+        <% }) %>
+    </div>
+</footer>
+
+@require('./mobile-menu-modal.ejs')
+

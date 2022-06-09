@@ -1,0 +1,97 @@
+<%
+    const Sitemap = require('sitemap');
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy.developersSection;
+    const BaseUrl = page.output.href;
+%>
+<section class="developers-section" id="developers">
+    <div class="container">
+        <div class="text-block">
+            <h2 class="title-h2 title-anim-js"><%= Strings.title %></h2>
+            <div class="text-block__desc subtitle-anim-js">
+                <p class="desc-2"><%= Strings.desc %></p>
+            </div>
+        </div>
+        <div class="cards-block">
+            <div class="left-wrap">
+                <div class="title-block">
+                    <h4 class="title-h4 second-title-anim-js"><%= Strings.leftWrap.title %></h4>
+                    <div class="title-block__desc-wrap desc-anim-js">
+                        <p class="desc-2"><%= Strings.leftWrap.desc %></p>
+                    </div>
+                </div>
+
+                <div class="assets-block">
+                    <div class="assets-block__subtitle-wrap span-anim-js">
+                        <span class="subtitle-3"><%= Strings.leftWrap.supportAssets %></span>
+                    </div>
+                    <div class="assets">
+                        <% Strings.leftWrap.assetsLogo.forEach(item => { ;%>
+                            <div class="assets__logo logo-anim-js">
+                                <%=require(`../../../assets/img/developers/${item}?raw`)%>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+
+                <div class="buttons-block">
+                    <div class="button button-anim-js">
+                        <a class="btn btn-main" href="<%= Strings.leftWrap.btnLaunch.btnSrc %>" target="_blank" aria-label="<%= Strings.leftWrap.btnLaunch.btnTitle %>">
+                            <span class="btn-label btn-label-1"><%= Strings.leftWrap.btnLaunch.btnTitle %></span>
+                        </a>
+                    </div>
+                    <div class="button button-anim-js">
+                        <a class="btn btn-arrow" href="<%= Strings.leftWrap.btnContact.btnSrc %>" target="_blank" aria-label="<%= Strings.leftWrap.btnContact.btnTitle %>">
+                            <span class="btn-label btn-label-1"><%= Strings.leftWrap.btnContact.btnTitle %></span>
+                            <div class="btn-icon">
+                                <div class="btn-icon__image">
+                                    <%= require('../../../assets/img/icons/arrow.svg?raw') %>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="right-wrap">
+                <div class="code-wrap">
+                    <div class="code-controller">
+                        <div class="mac-icons">
+                            <%= require('../../../assets/img/developers/macIcons.svg?raw') %>
+                        </div>
+                        <div class="copy-button">
+                            <div class="copy-icon active">
+                                <%= require('../../../assets/img/developers/copyButton.svg?raw') %>
+                            </div>
+                            <div class="checked-icon">
+                                <%= require('../../../assets/img/developers/chekedButton.svg?raw') %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code-editor">
+                        <br>
+                        <span class="var">const</span> DAIAbi = require(<span class="string">'DAI.json'</span>); <span class="comment">// DAI ABI</span> <br>
+                        <span class="var">const</span> idleTokenAbi = require(<span class="string">'idleToken.json'</span>); <span class="comment">// idleToken ABI</span> <br>
+                        <br>
+                        <span class="var">const</span> user = <span class="string">'0x...'</span>; <span class="comment">// set user address</span> <br>
+                        <span class="var">const</span> idleDAI = <span class="string">'0x3fE7940616e5Bc47b0775a0dccf6237893353bB4'</span>; <br><span class="comment">// idleDAIYield address</span> <br>
+                        <span class="var">const</span> DAIAddress = <span class="string">'0x6b175474e89094c44da98b954eedeac495271d0f'</span> <br>
+                        <br>
+                        <span class="comment">// Initialize web3 contract</span> <br>
+                        <span class="var">const</span> DAI = <span class="var">new</span> web3.eth.Contract(DAIAbi, DAIAddress); <br>
+                        <span class="var">const</span> idleToken = <span class="var">new</span> web3.eth.Contract(idleTokenAbi, idleDAI); <br>
+                        <br>
+                        <span class="comment">// Approve contract</span> <br>
+                        <span class="var">const</span> _amount = <span class="string">'1000000000000000000'</span>; <span class="comment">// 1 DAI</span> <br>
+                        <span class="var">await</span> DAI.approve(idleTokenAddress, _amount, { from: user } <br>
+                        <br>
+                        <span class="comment">// Deposit tokens</span> <br>
+                        <span class="var">await</span> idleToken.mintIdleToken(_amount, <span class="atom">true</span>, user, { from: user });<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

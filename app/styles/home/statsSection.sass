@@ -1,0 +1,77 @@
+.stats-section
+    padding-bottom: gem(259)
+    .stats-background
+        .bg-ellipse
+            position: absolute
+            right: gem(-10)
+            top: gem(180)
+            z-index: -2
+            width: gem(432)
+            height: gem(1076)
+            img
+                width: 100%
+                height: 100%
+    .text-block
+        width: gem(823)
+        margin: 0 auto
+        text-align: center
+        margin-bottom: gem(80)
+    .values-block
+        width: gem(838)
+        margin: 0 auto
+        display: flex
+        justify-content: space-between
+        align-items: center
+        .value
+            display: flex
+            flex-direction: column
+            text-align: center
+            .value-1
+                margin-bottom: gem(21)
+            .subtitle-2
+                opacity: 0.8
+            &__subtitle
+                display: flex
+                justify-content: center
+
+@media only screen and (max-width : 1024px)
+    .stats-section
+        padding-bottom: gem(140)
+        .stats-background
+            .bg-ellipse
+                top: gem(80)
+        .text-block
+            width: auto
+            margin-bottom: gem(73)
+        .values-block
+            width: gem(533)
+            .value
+                .value-1
+                    margin-bottom: gem(11)
+
+@media all and (max-width: 480px)
+    .stats-section
+        padding-bottom: gem(100)
+        .stats-background
+            position: relative
+            .bg-ellipse
+                top: gem(-40)
+                right: gem(-2)
+                width: gem(342)
+                height: auto
+        .text-block
+            width: gem(300)
+            margin: 0
+            margin-bottom: gem(49)
+            text-align: left
+        .values-block
+            width: 100%
+            flex-wrap: wrap
+            .value
+                width: 100%
+                margin-bottom: gem(42)
+                text-align: left
+                .value-1
+                    margin-bottom: gem(8)
+            .value__subtitle
+                justify-content: flex-start

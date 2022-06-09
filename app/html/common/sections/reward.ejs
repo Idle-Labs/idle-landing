@@ -1,0 +1,36 @@
+<%
+    const Sitemap = require('sitemap');
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy.rewardSection;
+    const BaseUrl = page.output.href;
+%>
+<section class="reward-section" id="reward">
+    <div class="container">
+        <div class="left-wrap">
+            <div class="reward-logo logo-anim-js">
+                <picture>
+                    <source type="image/webp" media="(max-width: 480px)" data-srcset="../../../assets/img/reward/arrows-mobile.webp">
+                    <source type="image/png" media="(max-width: 480px)" data-srcset="../../../assets/img/reward/arrows-mobile.png">
+                    <source type="image/webp" media="(min-width: 481px)" data-srcset="../../../assets/img/reward/arrows.webp">
+                    <source type="image/png" media="(min-width: 481px)" data-srcset="../../../assets/img/reward/arrows.png">
+                    <img src="#" class="lazy" data-load-priority="4" alt="Arrows picture">
+                </picture>
+            </div>
+        </div>
+        <div class="right-wrap">
+            <div class="text-block">
+                <h2 class="title-h2 title-anim-js"><%= Strings.title %></h2>
+
+                <p class="desc-2 desc-anim-js"><%= Strings.desc %></p>
+
+                <div class="button button-anim-js">
+                    <a class="btn btn-main" href="<%= Strings.btnLearn.btnSrc %>" target="_blank" aria-label="<%= Strings.btnLearn.btnTitle %>">
+                        <span class="btn-label btn-label-2"><%= Strings.btnLearn.btnTitle %></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

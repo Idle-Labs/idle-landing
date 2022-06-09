@@ -1,0 +1,155 @@
+.header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: gem(17) gem(52)
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: var(--header-height)
+    z-index: 10
+    .bg
+        background: #040F377A
+        backdrop-filter: blur(24px)
+        -webkit-backdrop-filter: blur(24px)
+        z-index: -1
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        opacity: 0
+        visibility: hidden
+        @include hoverTransition(all)
+    &.show-menu
+        .bg
+            opacity: 1
+            visibility: visible
+    .logo
+        display: flex
+        justify-content: center
+        align-items: center
+        width: gem(79)
+        height: gem(36)
+        svg,
+        path
+            width: 100%
+            height: 100%
+            display: block
+    .navigation
+        position: absolute
+        left: 50%
+        transform: translateX(-50%)
+        display: flex
+        justify-content: space-between
+        align-items: center
+        &__link
+            display: flex
+            align-items: center
+            justify-content: center
+            cursor: pointer
+            .navigation__link-text
+                @include unhoverTransition(opacity)
+                opacity: 0.6
+            &:hover
+                .navigation__link-text
+                    @include hoverTransition(opacity)
+                    opacity: 1
+            &:not(:last-child)
+                margin-right: gem(40)
+    .buttons-block
+        display: flex
+        align-items: center
+    .mobile-menu-button
+        display: none
+    .dropdown
+        position: relative
+        .drop-down-arrow
+            display: flex
+        .drop-down-link
+            display: flex
+            align-items: center
+            svg
+                margin-left: gem(8)
+                opacity: 0.6
+                @include unhoverTransition(all)
+                pointer-events: none
+            &:hover
+                cursor: pointer
+                svg
+                    @include hoverTransition(all)
+                    opacity: 1
+        &.active
+            .drop-down-link
+                .label-1
+                    opacity: 1
+                svg
+                    opacity: 1
+                    transform: rotate(180deg)
+            .dropdown__list
+                opacity: 1
+                visibility: visible
+        &__list
+            opacity: 0
+            visibility: hidden
+            position: absolute
+            top: gem(35)
+            left: gem(-17)
+            padding: gem(16)
+            width: gem(197)
+            height: gem(128)
+            background: #464D6656
+            border-radius: gem(4)
+            @include unhoverTransition(opacity)
+        &__item
+            margin-bottom: gem(12)
+            .drop-down-link--sub
+                display: flex
+                opacity: 0.6
+                @include unhoverTransition(opacity)
+                &:hover
+                    @include hoverTransition(opacity)
+                    opacity: 1
+
+@media only screen and (max-width : 1024px)
+    .header
+        padding: gem(8) gem(44) gem(10)
+        .logo
+            width: gem(65)
+            height: gem(30)
+        .navigation
+            display: none
+        .mobile-menu-button
+            display: block
+            margin-left: gem(32)
+        .burger-btn
+            width: gem(24)
+            height: gem(24)
+            position: relative
+            cursor: pointer
+            &:before
+                content: ''
+                height: gem(3)
+                width: gem(20)
+                border-radius: gem(15)
+                position: absolute
+                background: var(--color-white)
+                top: gem(5)
+                left: 1px
+            &:after
+                content: ''
+                height: gem(3)
+                width: gem(20)
+                border-radius: gem(15)
+                position: absolute
+                background: var(--color-white)
+                bottom: gem(6)
+                left: 1px
+
+@media all and (max-width: 480px)
+
+    .header
+        padding: gem(8) gem(30) gem(10)
+        .btn-main
+            display: none

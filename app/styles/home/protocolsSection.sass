@@ -1,0 +1,117 @@
+.protocols-section
+    padding-bottom: gem(180)
+    .protocols-background
+        .bg-ellipse1
+            position: absolute
+            left: gem(-10)
+            top: gem(-300)
+            z-index: -2
+            width: gem(710)
+            height: gem(1664)
+            img
+                width: 100%
+                height: 100%
+        .bg-ellipse2
+            position: absolute
+            right: gem(-10)
+            top: gem(-390)
+            z-index: -2
+            width: gem(790)
+            height: gem(1298)
+            img
+                width: 100%
+                height: 100%
+    .text-block
+        margin: 0 auto
+        width: gem(682)
+        text-align: center
+        margin-bottom: gem(90)
+        .title-h2
+            margin-bottom: gem(20)
+    .protocols
+        width: gem(850)
+        margin: 0 auto
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        &__logo
+            width: gem(176)
+            height: gem(50)
+            opacity: 1
+            @include unhoverTransition(opacity)
+            .logo
+                width: 100%
+                height: auto
+                display: flex
+                svg
+                    width: 100%
+                    height: 100%
+            &:not(:nth-child(3n))
+                margin-right: gem(50)
+            &:first-child
+                margin-bottom: gem(60)
+            &:hover
+                @include hoverTransition(opacity)
+                opacity: 0.6
+            img
+                width: 100%
+                height: 100%
+                display: block
+                min-height: 100%
+@media only screen and (max-width : 1024px)
+    .protocols-section
+        padding-bottom: gem(133)
+        .protocols-background
+            .bg-ellipse1
+                top: gem(-150)
+                width: gem(450)
+                height: gem(1064)
+            .bg-ellipse2
+                top: gem(-490)
+                width: gem(390)
+                height: gem(1098)
+        .text-block
+            width: auto
+            margin-bottom: gem(66)
+            .title-h2
+                margin-bottom: gem(24)
+        .protocols
+            width: gem(570)
+            &__logo
+                width: gem(165)
+                height: gem(48)
+                &:not(:nth-child(3n))
+                    margin-right: gem(30)
+                &:first-child
+                    margin-bottom: gem(50)
+
+@media all and (max-width: 480px)
+    .protocols-section
+        padding-bottom: gem(86)
+        .protocols-background
+            .bg-ellipse1
+                top: gem(-30)
+                left: gem(-2)
+                width: gem(190)
+                height: auto
+            .bg-ellipse2
+                top: gem(70)
+                right: gem(-2)
+                width: gem(225)
+                height: auto
+        .text-block
+            margin-bottom: gem(53)
+            text-align: left
+            .title-h2
+                margin-bottom: gem(15)
+        .protocols
+            width: 100%
+            flex-direction: column;
+            &__logo
+                width: gem(154)
+                height: auto
+                margin-bottom: gem(11)
+                &:first-child
+                    margin-bottom: gem(16)
+                &:nth-child(even)
+                    margin-left: 50%;

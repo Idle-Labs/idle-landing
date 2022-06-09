@@ -1,0 +1,83 @@
+<%
+    const Sitemap = require('sitemap');
+    const page = Sitemap.getPage(Page);
+
+    const Locale = page.output.locale;
+    const Strings = page.output.copy.heroSection;
+    const BaseUrl = page.output.href;
+%>
+
+<section class="hero-section" id="hero">
+    <div class="hero-background">
+        <div class="bg-ellipse1">
+            <img data-src="../../../assets/img/bg/Ellipse1.png" class="lazy" data-load-priority="5" alt="">
+        </div>
+
+        <div class="bg-ellipse2">
+            <img data-src="../../../assets/img/bg/Ellipse2.png" class="lazy" data-load-priority="5" alt="">
+        </div>
+
+        <div class="bg-circles">
+            <picture>
+                <source data-srcset="../../../assets/img/bg/bgCircles-tablet1.svg"
+                    media="(max-width: 1024px)"/>
+                <source data-srcset="../../../assets/img/bg/bgCircles-desktop1.svg"
+                    media="(min-width: 1025px)"/>
+                <img class="lazy" data-load-priority="0" alt="circles">
+            </picture>
+        </div>
+    </div>
+    <div class="video-block">
+        <div class="video-block__placeholder">
+            <img
+                class="img-placeholder imagePreloader0"
+                alt="placeholder image"
+                data-load-priority="0"
+                src="../../../assets/img/video-placeholder.png"
+            >
+        </div>
+        <video class="video-block__hero-video video-js lazy" playsinline autoplay loop muted data-load-priority="0" title="Idle finance">
+            <source type='video/webm; codecs="vp9, vorbis"' src="#"
+                data-src='../../../assets/video/hero-mobile.webm'
+                data-src481="<%= require('../../../assets/video/hero-tablet.webm') %>"
+                data-src1025="<%= require('../../../assets/video/hero-desktop.webm') %>"
+            />
+            <source type='video/mp4' src="#"
+                data-src='../../../assets/video/hero-mobile.mov'
+                data-src481="<%= require('../../../assets/video/hero-tablet.mov') %>"
+                data-src1025="<%= require('../../../assets/video/hero-desktop.mov') %>"
+            />
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="container">
+        <div class="hero-text">
+            <div class="text-block">
+                <h1 class="title-h1 title-anim-js"><%= Strings.title %></h1>
+                <p class="desc-1 anim-item-js"><%= Strings.desc %></p>
+            </div>
+
+            <div class="buttons-block">
+                <div class="button anim-item-js">
+                    <a class="btn btn-main" href="<%= Strings.btnEnter.btnSrc %>" target="_blank" aria-label="<%= Strings.btnEnter.btnTitle %>">
+                        <span class="btn-label btn-label-1"><%= Strings.btnEnter.btnTitle %></span>
+                    </a>
+                </div>
+                <div class="button anim-item-js">
+                    <a class="btn btn-arrow" href="<%= Strings.btnRead.btnSrc %>" target="_blank" aria-label="<%= Strings.btnRead.btnTitle %>">
+                        <span class="btn-label btn-label-1"><%= Strings.btnRead.btnTitle %></span>
+                        <div class="btn-icon">
+                            <div class="btn-icon__image">
+                                <%= require('../../../assets/img/icons/arrow.svg?raw') %>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-discover-more anchor-item" data-anchor="product">
+        <%= require('../../../assets/img/icons/arrowDown.svg?raw') %>
+        <a href="#" class="desc-2"><%= Strings.discover %></a>
+    </div>
+</section>
