@@ -1,0 +1,11 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/dist
+/dist_2
+/package
+
+# Files
+gsap-by-johny.tgz
+.DS_Store
