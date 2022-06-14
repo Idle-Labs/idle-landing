@@ -23,7 +23,7 @@ export default abstract class CommonPage extends Page {
           data,
           dataPolygon
         ] = await Promise.all([
-          axios.get('http://api.idle.finance/pools?api-key=bPrtC2bfnAvapyXLgdvzVzW8u8igKv6E',{}),
+          axios.get('https://api.idle.finance/pools?api-key=bPrtC2bfnAvapyXLgdvzVzW8u8igKv6E',{}),
           axios.get('https://api-polygon.idle.finance/tvls?api-key=bPrtC2bfnAvapyXLgdvzVzW8u8igKv6E',{})
         ]);
 
@@ -73,9 +73,9 @@ export default abstract class CommonPage extends Page {
                 tokenImg.src = require(`../../assets/img/tokens/${tokenName.toUpperCase()}.png`);
             }
 
-            productSectionElement.querySelector('#'+strategy+'-strategy .token').prepend(tokenImg);
-            productSectionElement.querySelector('#'+strategy+'-strategy .percent.value-2').innerHTML = apr;
-            productSectionElement.querySelector('#'+strategy+'-strategy .token .value-2').innerHTML = tokenName;
+            productSectionElement.querySelector('.'+strategy+'-strategy .token').prepend(tokenImg);
+            productSectionElement.querySelector('.'+strategy+'-strategy .percent.value-2').innerHTML = apr;
+            productSectionElement.querySelector('.'+strategy+'-strategy .token .value-2').innerHTML = tokenName;
           });
         }
 
@@ -84,6 +84,27 @@ export default abstract class CommonPage extends Page {
         }
 
         statsSectionElement.querySelector('#total-locked-value').innerHTML = '$'+abbreviateNumber(totalTvl,1);
+
+        const handleFormSubmit = (e) => {
+          const form = e.target;
+          const email = form.querySelector('.email-input').value;
+          const emailInput = form.querySelector('.email__input');
+
+          axios.post('https://dev.lapisgroup.it/idle/newsletter.php', {
+            'email': email
+          }).then(r => {
+            emailInput.innerHTML = '<p class="desc-2">🎉&nbsp;&nbsp;Thanks for the subscription!</p>';
+          })
+          .catch(err => {
+            // this.setState({message:'Error while sending your subscription... Please try again', messageColor:'red' });
+          });
+
+          return false;
+        }
+        
+        document.querySelectorAll('.newsletter-form').forEach( item => {
+          item.addEventListener("submit", handleFormSubmit, { passive: true });
+        });
     }
 
     async start() {

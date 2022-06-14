@@ -1,7 +1,6 @@
 .footer
     position: relative
-    padding: gem(80) 0 gem(110)
-    padding-bottom: 0
+    padding: gem(80) 0 gem(30)
     background: url("../assets/img/bg/blurBg.png")
     &__bg
         z-index: 0
@@ -13,6 +12,9 @@
         background-repeat: repeat-x
         bottom: 0
         left: 0
+    button
+        border: 0
+        outline: 0
     p.copyright
         font-weight: bold
     .footer-background
@@ -43,6 +45,7 @@
         justify-content: space-between
         &.copyright
             padding-top: 0.8rem
+            flex-direction: row
             align-items: baseline
             justify-content: initial
             a
@@ -88,8 +91,9 @@
             display: none
         &__input
             display: flex
+            align-items: center
             justify-content: space-between
-            margin-bottom: gem(20)
+            margin-bottom: gem(5)
             width: gem(362)
             height: gem(42)
             background: rgba(70, 77, 102, 0.15)
@@ -99,8 +103,9 @@
             color: var(--color-white)
             input
                 border: none
-                background: none
                 width: gem(190)
+                background: none
+                font-size: gem(14);
                 font-family: var(--main-font)
                 &:focus
                     outline: none
@@ -108,8 +113,8 @@
                 &:not(:focus)
                     color: var(--color-white)
         .subtitle-2
-            opacity: 0.4
-            font-size: gem(14)
+            opacity: 0.7
+            font-size: gem(12)
             line-height: gem(28)
 
 @media only screen and (max-width : 1024px)
@@ -128,18 +133,29 @@
                 height: gem(760)
         .container
             flex-direction: column
+            &.copyright
+                padding-top: 0.3rem
+                a
+                  font-size: 0.12rem
+                p,
+                li
+                    font-size: 0.12rem
+                    padding-right: gem(22)
         .email
             &.email-desktop
                 display: none
             &.email-tablet
                 display: flex
+                margin-bottom: gem(20)
             &__input
                 width: auto
-                margin-bottom: gem(11)
+                margin-bottom: 0
         .logo
             margin-bottom: gem(44)
         .navigation
             margin-bottom: gem(30)
+            &__header
+                margin-bottom: gem(15)
             &__list
                 &:not(:last-child)
                     margin-right: gem(60)
@@ -164,6 +180,9 @@
             flex-wrap: wrap
             justify-content: space-between
             margin-bottom: 0
+            &__link
+                margin-bottom: 0
+                margin-top: gem(16)
         .logo
             margin-bottom: gem(32)
         .navigation__list
@@ -177,6 +196,16 @@
                 margin-right: gem(7)
         .navigation__header
             margin-bottom: gem(22)
+        .container
+            flex-direction: column
+            &.copyright
+                padding-top: gem(24)
+                margin-bottom: gem(24)
+                flex-direction: column
+                a,
+                p,
+                li
+                    width: 100%
         .email
             &.email-tablet
                 display: none
@@ -199,5 +228,5 @@
                     margin-bottom: gem(15)
                 .subtitle-2
                     font-weight: 400
-                    font-size: gem(12)
+                    font-size: gem(10)
                     line-height: gem(26)

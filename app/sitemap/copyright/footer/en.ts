@@ -1,7 +1,7 @@
 
 export const FooterEnCopy = {
     inputPlaceholder: 'Enter your e-mail',
-    subtitle: 'Sign Up for The Idle Newsletter',
+    subtitle: 'By opting-in you agree to our <a href="https://www.iubenda.com/privacy-policy/61211749" target="_blank">privacy policy</a>',
     btnUpdates: {
         btnTitle: 'Get Updates',
         btnSrc: '#',
@@ -10,11 +10,11 @@ export const FooterEnCopy = {
         links:[
             {
                 title:'Brand assets',
-                link:'https://idlelabs.notion.site/Idle-Brand-Assets-fd63e4161cb64c999531646c7549bc4b'
+                link:'https://docs.idle.finance/other/brand-assets'
             },
             {
-                title: 'Terms of Use',
-                link: 'https://idle.finance/terms-of-use',
+                title: 'Terms of Service',
+                link: 'https://idlelabs.notion.site/Terms-of-Service-25aaae6f48d8451d8b96f06b5e4d59ed',
             },
             {
                 title: 'Privacy Policy',
@@ -127,11 +127,11 @@ export const FooterEnCopy = {
                 },
                 {
                     title: 'GitHub',
-                    link: 'https://github.com/Idle-Labs/',
+                    link: 'https://github.com/Idle-Finance/',
                 },
                 {
                     title: 'Grants (IGP)',
-                    link: 'https://idlelabs.notion.site/IGP-Idle-Grants-Program-a91d2937f24c4539a6538e48777fbfbd',
+                    link: 'https://docs.idle.finance/governance/idle-grants-program',
                 },
             ],
         },

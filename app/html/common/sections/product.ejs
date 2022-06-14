@@ -48,7 +48,7 @@
                     <% Strings.cards.forEach(item => {
                         const cardLogoPng = require(`../../../assets/img/product/${item.cardLogoSrc}.png`);
                         const cardLogoWebp = require(`../../../assets/img/product/${item.cardLogoSrc}.webp`);%>
-                        <div id="<%= item.id %>-strategy" class="splide__slide card card-anim-js card-lottie">
+                        <div class="splide__slide <%= item.id %>-strategy card card-anim-js card-lottie">
                             <div class="card__bg-gradient"></div>
                             <div class="card__bg-lines"></div>
                             <div class="card__logo-wrap">

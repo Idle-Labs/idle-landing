@@ -14,6 +14,7 @@
     "build:ts:w": "tsc --noEmit --watch",
     "build:minify": "yarn build --env fullminify",
     "build:prod": "webpack --node-env production --env fullminify",
+    "deploy": "echo 'idle.finance\nwww.idle.finance' > dist/CNAME;gh-pages -b gh-pages -d dist",
     "build:release:staging": "yarn && (cross-env APP_ENV=staging yarn build:prod)",
     "build:release:production": "yarn && (cross-env APP_ENV=production yarn build:prod)",
     "deploy:firebase:staging": "firebase deploy --only hosting:web-stage",

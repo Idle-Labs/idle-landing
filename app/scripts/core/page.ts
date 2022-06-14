@@ -125,7 +125,7 @@ export default abstract class Page implements IPage {
             await instance.setup();
         }
 
-        logger.log(`Sections (${this._sections.length}):`, this._sections);
+        // logger.log(`Sections (${this._sections.length}):`, this._sections);
     }
 
     start() {
@@ -134,6 +134,7 @@ export default abstract class Page implements IPage {
 
     scroll() {
         // this._scrollDirection = scrollDirection;
+
         const scrollPosition = window.pageYOffset;
         if (this._scrollPosition === scrollPosition) {
             this._scrollDirection = 0.0;
@@ -144,6 +145,7 @@ export default abstract class Page implements IPage {
         }
         this._scrollPosition = scrollPosition;
         this._updateSections();
+
     }
 
     protected resize() {

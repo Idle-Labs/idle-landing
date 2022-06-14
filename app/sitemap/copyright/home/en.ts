@@ -4,7 +4,7 @@ import { span } from './../../helpers';
 export const HomeEnCopy = {
     heroSection: {
         title: 'The Yield Automation Protocol',
-        desc: 'DeFi yields aren’t easy to manage. But Idle makes you feel like they are.',
+        desc: 'DeFi yields aren’t easy to manage.<br />Idle makes you feel like they are',
         discover: 'Discover more',
         btnEnter: {
             btnTitle: 'Enter App',
@@ -18,30 +18,30 @@ export const HomeEnCopy = {
     productSection: {
         title: 'Get the yield best suited for your needs',
         subtitle: 'Yield optimization and risk tranching',
-        desc: 'Money should never sit still. Put your funds to work and achieve capital efficiency with Idle’s products! As a leading DeFi yield aggregator, Idle offers first-rate yield optimization and risk tranching strategies. Get the best yield by using, integrating or building on top of Idle’s products.',
+        desc: 'Achieve capital efficiency with Idle’s products: as a leading DeFi yield aggregator, Idle offers first-rate yield optimization and risk tranching strategies. Get the best yield by using, integrating or building on top of Idle’s products. Money should never sit still.',
         cards: [
             {
+                apy: 'APY',
                 cardSubTitle: '',
                 id: 'best-yield',
-                apy: 'Senior APY',
                 apyPercent: '0.60%',
                 apyDesc: '0.257 IDLE/day',
                 cardTitle: 'Best Yield',
                 cardLogoSrc: 'bestYieldRobot',
                 // cardDesc: 'Maximize your yield across DeFi protocols',
-                cardDesc: 'The flagship yield automation strategy.<br />Funds optimized across multiple DeFi protocols.',
-                infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll)  the current distribution rate of governance tokens provided by underlying lending protocols (lll) the current estimated price of governance tokens from Uniswap spot prices. (lV) IDLE token distribution is referred to the entire pool.',
+                cardDesc: 'The flagship yield automation strategy.<br />Funds optimized across multiple DeFi protocols',
+                infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll)  the current distribution rate of governance tokens provided by underlying lending protocols (lll) the current estimated price of governance tokens from Uniswap spot prices. (lV) IDLE token distribution is referred to the entire pool',
                 token: {
                     title: 'TOKEN',
                     value: 'USDT',
                     logoSrc: 'tusd.svg',
                 },
                 btnLaunch: {
-                    btnTitle: 'Launch Strategy',
+                    btnTitle: 'Launch',
                     btnSrc: 'https://app.idle.finance/#/best',
                 },
                 btnIntegrate: {
-                    btnTitle: 'Integrate Strategy',
+                    btnTitle: 'Integrate',
                     btnSrc: 'https://docs.idle.finance/developers/best-yield',
                 },
                 partnersIcons: [
@@ -59,12 +59,12 @@ export const HomeEnCopy = {
             {
                 id: 'senior',
                 cardLogoSrc: 'seniorRobot',
-                cardTitle: 'Senior Tranche',
+                cardSubTitle: 'Senior Tranche',
                 apy: 'APY',
                 apyPercent: '9.19%',
                 apyDesc: '+382.96 IDLE/day',
-                cardSubTitle: 'Protected Yield',
-                cardDesc: 'The innovative safeguarded strategy covered by the counterpart Junior Tranche.',
+                cardTitle: 'Protected Yield',
+                cardDesc: 'The innovative safeguarded strategy covered by the counterpart Junior Tranche',
                 infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll) the current distribution rate of governance tokens provided by underlying lending protocols (lll) additional APY derived from staking',
                 token: {
                     title: 'TOKEN',
@@ -72,11 +72,11 @@ export const HomeEnCopy = {
                     logoSrc: 'tusd.svg',
                 },
                 btnLaunch: {
-                    btnTitle: 'Launch Strategy',
+                    btnTitle: 'Launch',
                     btnSrc: 'https://app.idle.finance/#/tranches/senior',
                 },
                 btnIntegrate: {
-                    btnTitle: 'Integrate Strategy',
+                    btnTitle: 'Integrate',
                     btnSrc: 'https://docs.idle.finance/developers/perpetual-yield-tranches',
                 },
                 partnersIcons: [
@@ -97,9 +97,9 @@ export const HomeEnCopy = {
                 apyPercent: '7.57%',
                 apyDesc: '0.00 IDLE/day',
                 cardLogoSrc: 'juniorRobot',
-                cardTitle: 'Junior Tranche',
-                cardSubTitle: 'Boosted Yield',
-                cardDesc: 'The forefront yield strategy amplified by the counterpart Senior Tranche.',
+                cardSubTitle: 'Junior Tranche',
+                cardTitle: 'Boosted Yield',
+                cardDesc: 'The forefront yield strategy amplified by the counterpart Senior Tranche',
                 infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll) the current distribution rate of governance tokens provided by underlying lending protocols (lll) additional APY derived from staking',
                 token: {
                     title: 'TOKEN',
@@ -107,11 +107,11 @@ export const HomeEnCopy = {
                     logoSrc: 'tusd.svg',
                 },
                 btnLaunch: {
-                    btnTitle: 'Launch Strategy',
+                    btnTitle: 'Launch',
                     btnSrc: 'https://app.idle.finance/#/tranches/junior',
                 },
                 btnIntegrate: {
-                    btnTitle: 'Integrate Strategy',
+                    btnTitle: 'Integrate',
                     btnSrc: 'https://docs.idle.finance/developers/perpetual-yield-tranches',
                 },
                 partnersIcons: [
@@ -130,46 +130,46 @@ export const HomeEnCopy = {
     },
     integrationSection: {
         title: 'The power of DeFi in a single protocol',
-        desc: 'A one-stop solution for your funds. Stay ahead of the curve with a range of robust DeFi yield products. Scalable, secure and easy to use.',
+        desc: 'A one-stop solution for your funds. Stay ahead of the curve with a range of robust DeFi yield products. Scalable, secure and easy to use',
         integrations: [
             {
                 title: 'Smart optimizations',
-                desc: 'Maximize yields across several DeFi protocols, diversify your risk and shield liquidity providers from losses.',
-            },
-            {
-                title: 'Fast-improving protocol',
-                desc: 'Idle DAO and Leagues release hundreds of features and improvements each year to help you stay ahead of industry shifts.',
-            },
-            {
-                title: 'Battle-tested reliability',
-                // desc: 'Idle DAO has invested considerable effort to create an open and verifiable protocol that we believe is safe, scalable and redundant.',
-                desc: 'Time is the true judge. Considerable effort was invested to create resilient products, with countless reviews and audits.',
-            },
-            {
-                title: 'Easy integration',
-                desc: 'No need to stitch together disparate protocols or spend months integrating and updating yield functionality.',
+                desc: 'Maximize yields across several DeFi protocols, diversify your risk and shield liquidity providers from losses',
             },
             {
                 title: 'Seamless yield monitoring',
-                desc: 'Use our built-in dashboard to easily track and manage your assets. Real-time and historic performance data just one click away.',
+                desc: 'Use our built-in dashboard to easily track and manage your assets. Real-time and historic performance data just one click away',
+            },
+            {
+                title: 'Easy integration',
+                desc: 'No need to stitch together disparate protocols or spend months integrating and updating yield functionality',
+            },
+            {
+                title: 'Battle-tested reliability',
+                // desc: 'Idle DAO has invested considerable effort to create an open and verifiable protocol that we believe is safe, scalable and redundant',
+                desc: 'Time is the true judge. Considerable effort was invested to create resilient products, with countless reviews and audits',
+            },
+            {
+                title: 'Fast-improving protocol',
+                desc: 'Idle DAO and Leagues release hundreds of features and improvements each year to help you stay ahead of industry shifts',
             },
             {
                 title: 'Transparent by design',
-                desc: 'The smart contracts are fully trustless, decentralized and non-custodial. The code is publicly available and data is verifiable on-chain.',
+                desc: 'The smart contracts are trustless, decentralized and non-custodial. The code is publicly available and data is verifiable on-chain',
             },
         ],
     },
     securitySection: {
         title: 'Your assets, secured',
         subtitle: 'Audits have been done by Quantstamp, Diligence and Certik',
-        desc: 'One of the longest-running and battle-tested DeFi protocol, going strong since 2019.',
-        // desc: 'Idle DAO’s smart contracts are easily verifiable and regularly audited, with an addition of a live bug bounty. Going full steam ahead since 2019, Idle DAO is one of the oldest battle-tested DeFi protocols.',
+        desc: 'One of the longest-running and battle-tested DeFi protocol, going strong since 2019',
+        // desc: 'Idle DAO’s smart contracts are easily verifiable and regularly audited, with an addition of a live bug bounty. Going full steam ahead since 2019, Idle DAO is one of the oldest battle-tested DeFi protocols',
         leftCard: {
-            title: 'Security Audits',
+            title: 'Security audits',
             latest: 'Security reports:',
-            desc: 'Performed by world-leading security companies.',
-            info: 'Idle also follows strict integration guidelines.',
-            infoTooltip: 'Minimum standard requirements needed to implement a new yield source or an asset in Idle protocol include meeting the safety criteria in terms of due diligence, audits & performance of the protocol.',
+            desc: 'Performed by world-leading security companies',
+            info: 'Idle also follows strict integration guidelines',
+            infoTooltip: 'Minimum standard requirements needed to implement a new yield source or an asset in Idle protocol include meeting the safety criteria in terms of due diligence, audits & performance of the protocol',
             tooltipLink: {
                 title: 'Security guidelines',
                 link: 'https://docs.idle.finance/developers/security/integration-standard-requirements',
@@ -197,7 +197,7 @@ export const HomeEnCopy = {
         },
         rightCard: {
             title: 'Fortified by $100K bug bounty program',
-            desc: 'Highest security standards mean audits alone are not enough. Find a smart contract bug or a security vulnerability and get rewarded.',
+            desc: 'Highest security standards mean audits alone are not enough. Find a smart contract bug or a security vulnerability and get rewarded',
             btnRead: {
                 btnTitle: 'Bounty details',
                 btnSrc: 'https://immunefi.com/bounty/idlefinance/',
@@ -205,28 +205,28 @@ export const HomeEnCopy = {
         },
     },
     protocolsSection: {
-        title: 'DeFi yield ecosystem',
-        desc: 'By using Idle\'s products, you are working with some of the biggest names in the DeFi industry.<br />Growing list of partners, integrators and protocols collaborating with Idle DAO.',
+        title: 'An ecosystem full of yield',
+        desc: 'Growing list of partners, integrators and protocols collaborating with Idle DAO',
         protocols:  [
-            {
-                logoSrc: 'enzyme.svg',
-                linkSrc: 'https://enzyme.finance/',
-            },
             {
                 logoSrc: 'polygon.svg',
                 linkSrc: 'https://polygon.technology/',
-            },
-            {
-                logoSrc: 'harvest.png',
-                linkSrc: 'https://harvest.finance/',
             },
             {
                 logoSrc: 'lido.svg',
                 linkSrc: 'https://lido.fi/',
             },
             {
+                logoSrc: 'enzyme.svg',
+                linkSrc: 'https://enzyme.finance/',
+            },
+            {
                 logoSrc: 'celsiusx.svg',
                 linkSrc: 'https://celsiusx.io/',
+            },
+            {
+                logoSrc: 'harvest.png',
+                linkSrc: 'https://harvest.finance/',
             },
             {
                 logoSrc: 'pnetwork.png',
@@ -235,19 +235,19 @@ export const HomeEnCopy = {
         ],
     },
     playersSection: {
-        title: 'Made for The Next Generation of Financial Players',
+        title: 'Made for the next generation of financial players',
         subtitle: '',
         points: [
             {
                 title: 'DeFi developers',
-                desc: 'Avoid the need to integrate multiple yield sources, and achieve the best yield with just one integration. Check the <a href="https://docs.idle.finance/developers/introduction" target="_blank">documentation</a> for more info or get help at #dev-support <a href="https://discord.gg/j6QyJQu" target="_blank">Discord</a> channel.',
+                desc: 'Avoid the need to integrate multiple yield sources, and achieve the best risk adjusted yield with just one integration. Check the <a href="https://docs.idle.finance/developers/introduction" target="_blank">documentation</a> for more info or get help at #dev-support <a href="https://discord.gg/j6QyJQu" target="_blank">Discord</a> channel',
             },
             {
                 title: 'Institutionals and DAO treasury managers',
-                desc: 'Perfect treasury diversification and yield automation solution for any risk profile. Idle’s strategies are scalable as the size of the deposit doesn’t affect the sustainability of the yields. Featuring no lockup period, so anyone can enter or exit their position any time. The performance can be tracked in real-time. Visit the <a href="https://app.idle.finance/#/tranches" target="_blank">dashboard</a> or fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1NnQLhy5k07WnbjxSE5kff_XT74Rc3GwMyWFsCDnTcEKz1A/viewform" target="_blank">this form</a>.',
+                desc: 'Perfect treasury diversification and yield automation solution for any risk profile. Idle’s strategies are scalable as the size of the deposit doesn’t affect the sustainability of the yields. The performance can be tracked in real-time. Visit the <a href="https://app.idle.finance/#/tranches" target="_blank">dashboard</a> or fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1NnQLhy5k07WnbjxSE5kff_XT74Rc3GwMyWFsCDnTcEKz1A/viewform" target="_blank">this form</a>',
             },
             {
-                title: 'Individual DeFi users',
+                title: 'Individual<br />DeFi users',
                 desc: 'You want the best yield for your savings? Reliable security? Not to think about your yields on a day-to-day basis? All of that is available in one place. Visit the <a href="https://app.idle.finance/#/tranches" target="_blank">dashboard</a>, connect your wallet and deposit your funds today!',
             },
         ],
@@ -255,7 +255,7 @@ export const HomeEnCopy = {
     statsSection: {
         title: 'Grow, save and automate',
         totalValue: {
-            title: '$200M',
+            title: '-',
             subtitle: 'Total Value Locked (TVL)',
         },
         interestValue: {
@@ -263,8 +263,8 @@ export const HomeEnCopy = {
             subtitle: 'Interest generated for LPs',
         },
         gasValue: {
-            title: '$355K',
-            subtitle: 'Total Gas Saved',
+            title: '+10K',
+            subtitle: 'Rebalance performed',
         },
     },
     aboutSection: {
@@ -276,19 +276,19 @@ export const HomeEnCopy = {
                 items: [
                     {
                         title: '1. Choose Your Strategy',
-                        desc: 'Maximize your returns while keeping your risk tolerance in mind. We have strategies for max yield, and max security. And everything in between. The choice is yours.',
+                        desc: 'Maximize your returns while keeping your risk tolerance in mind. We have strategies for max yield, and max security. And everything in between. The choice is yours',
                     },
                     {
                         title: '2. Deposit Your Crypto Assets',
-                        desc: 'Enter the Dashboard and connect your wallet. Deposit your funds, relax and enjoy watching your earnings grow. Your funds will be automatically allocated among DeFi protocols based on the investment strategy of your choice.',
+                        desc: 'Enter the Dashboard and connect your wallet. Deposit your funds, relax and enjoy watching your earnings grow. Your funds will be automatically allocated among DeFi protocols based on the investment strategy of your choice',
                     },
                     {
                         title: '3. Automated Rebalancing',
-                        desc: 'Idle consistently checks for better opportunities. It automatically keeps the appropriate allocation mix, depending on the strategy you chose. With no additional or hidden costs.',
+                        desc: 'Idle consistently checks for better opportunities. It automatically keeps the appropriate allocation mix, depending on the strategy you chose. With no additional or hidden costs',
                     },
                     {
                         title: '4. On-demand Reports',
-                        desc: 'Visit the dashboard and look at your funds in real-time whenever you want. Monitor your funds’ performance and rebalance events. See your estimated earnings and easily redeem your funds & interest.',
+                        desc: 'Visit the dashboard and look at your funds in real-time whenever you want. Monitor your funds’ performance and rebalance events. See your estimated earnings and easily redeem your funds & interest',
                     },
                 ],
             },
@@ -297,7 +297,7 @@ export const HomeEnCopy = {
                 items: [
                     {
                         title: '1. Check yields',
-                        desc: 'Maximize your returns while keeping your risk tolerance in mind. We have strategies for max yield, and max security. And everything in between. The choice is yours.',
+                        desc: 'Maximize your returns while keeping your risk tolerance in mind. We have strategies for max yield, and max security. And everything in between. The choice is yours',
                     },
                     {
                         title: '2. Connect Your Wallet',
@@ -309,7 +309,7 @@ export const HomeEnCopy = {
                     },
                     {
                         title: '4. Check Your Funds',
-                        desc: 'Visit the dashboard and look at your funds in real-time whenever you want. Monitor your funds’ performance and rebalance events. See your estimated earnings and easily redeem your funds & interest.',
+                        desc: 'Visit the dashboard and look at your funds in real-time whenever you want. Monitor your funds’ performance and rebalance events. See your estimated earnings and easily redeem your funds & interest',
                     },
                 ],
             },
@@ -318,7 +318,7 @@ export const HomeEnCopy = {
                 items: [
                     {
                         title: '1. Check yields',
-                        desc: 'Maximize your returns while keeping your risk tolerance in mind. We have strategies for max yield, and max security. And everything in between. The choice is yours.',
+                        desc: 'Maximize your returns while keeping your risk tolerance in mind. We have strategies for max yield, and max security. And everything in between. The choice is yours',
                     },
                     {
                         title: '2. Connect Your Wallet',
@@ -330,7 +330,7 @@ export const HomeEnCopy = {
                     },
                     {
                         title: '4. Check Your Funds',
-                        desc: 'Visit the dashboard and look at your funds in real-time whenever you want. Monitor your funds’ performance and rebalance events. See your estimated earnings and easily redeem your funds & interest.',
+                        desc: 'Visit the dashboard and look at your funds in real-time whenever you want. Monitor your funds’ performance and rebalance events. See your estimated earnings and easily redeem your funds & interest',
                     },
                 ],
             },
@@ -339,7 +339,7 @@ export const HomeEnCopy = {
                 items: [
                     {
                         title: '1. Check yields',
-                        desc: 'Maximize your returns while keeping your risk tolerance in mind. We have strategies for max yield, and max security. And everything in between. The choice is yours.',
+                        desc: 'Maximize your returns while keeping your risk tolerance in mind. We have strategies for max yield, and max security. And everything in between. The choice is yours',
                     },
                     {
                         title: '2. Check Documentation',
@@ -351,7 +351,7 @@ export const HomeEnCopy = {
                     },
                     {
                         title: '4. Announce Integration',
-                        desc: 'Once the integration has been completed, you can announce it within your community, and reach out to us to work out a co-marketing strategy.',
+                        desc: 'Once the integration has been completed, you can announce it within your community, and reach out to us to work out a co-marketing strategy',
                     },
                 ],
             },
@@ -384,20 +384,20 @@ export const HomeEnCopy = {
         },
     },
     communitySection: {
-        title: 'Governance & Community',
-        subtitle: 'Idle is a fully decentralized, community governed protocol with over 3.6M delegated votes.',
+        title: 'Governance and community',
+        subtitle: 'Idle is a fully decentralized, community-governed protocol',
         values: [
             {
-                title:'3,7K',
+                title:'3.7K',
                 subtitle:'Token holders'
             },
             {
-                title:'3,6M',
+                title:'3.6M',
                 subtitle:'Votes delegated'
             },
             {
                 title:'115',
-                subtitle:'Voting addresses'
+                subtitle:'Delegated addresses'
             },
             {
                 title:'22',
@@ -415,7 +415,7 @@ export const HomeEnCopy = {
 
         governance: {
             title: 'Governance forum',
-            desc: 'Forum is focused on discussions about Idle Governance, new developments, and improvements of Idle protocol.',
+            desc: 'Forum is focused on discussions about Idle Governance, new developments, and improvements of Idle protocol',
             btnLearn: {
                 btnTitle: 'Learn More',
                 btnSrc: 'https://gov.idle.finance/',
@@ -435,8 +435,8 @@ export const HomeEnCopy = {
         ],
     },
     investorsSection: {
-        subtitle: 'Idle has been funded by industry leaders',
-        title: 'Backed by Industry Leading Investors',
+        subtitle: '',
+        title: 'Backed by industry pioneers',
         investors: [
             {
                 logoSrc: 'consensys',

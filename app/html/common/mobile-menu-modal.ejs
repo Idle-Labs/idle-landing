@@ -33,11 +33,6 @@
     <div class="mobile-menu__content">
         <div class="navigation">
             <div class="navigation__link">
-                <div class="navigation__link-text label-1 anchor-item" data-anchor="<%= HeaderLinks[0].dataAnchor %>" href="">
-                    <%= HeaderLinks[0].linkTitle %>
-                </div>
-            </div>
-            <div class="navigation__link">
                 <a class="navigation__link-text label-1" href="<%= HeaderLinks[1].linkSrc %>" target="_blank">
                     <%= HeaderLinks[1].linkTitle %>
                 </a>
@@ -47,33 +42,15 @@
                     <%= HeaderLinks[2].linkTitle %>
                 </a>
             </div>
-            <div class="navigation__link dropdown has-drop-down">
-                <div class="drop-down-link js-btn-switch">
-                    <div class="navigation__link-text label-1 js-btn-switch"><%= HeaderLinks[3].linkTitle %></div>
-                    <div class="drop-down-arrow js-btn-switch">
-                        <%= require('../../assets/img/icons/arrowDropdown.svg?raw') %>
-                    </div>
-                </div>
-
-                <ul class="dropdown__list">
-                    <% HeaderLinks[3].dropdownLinks.forEach(link => { %>
-                        <li class="dropdown__item">
-                            <a class="drop-down-link--sub js-btn-switch" href="<%= link.src %>" target="_blank">
-                                <span class="label-1"><%= link.title %></span>
-                            </a>
-                        </li>
-                    <% }) %>
-                </ul>
-            </div>
             <div class="navigation__link">
                 <div class="navigation__link-text label-1 anchor-item" data-anchor="<%= HeaderLinks[4].dataAnchor %>" href="">
                     <%= HeaderLinks[4].linkTitle %>
                 </div>
             </div>
             <div class="navigation__link">
-                <div class="navigation__link-text label-1 anchor-item" data-anchor="<%= HeaderLinks[5].dataAnchor %>" href="">
+                <a class="navigation__link-text label-1" href="<%= HeaderLinks[5].linkSrc %>" target="_blank">
                     <%= HeaderLinks[5].linkTitle %>
-                </div>
+                </a>
             </div>
         </div>
 

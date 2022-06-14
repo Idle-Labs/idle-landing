@@ -80,6 +80,7 @@ export default class Section<TConfig extends SectionConfig = SectionConfig>
         this._scrollPosition = yPos / totalHeight;
         // console.log(this,'___scrol section')
         /* override me if you want */
+        // console.log('scroll');
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
