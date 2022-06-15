@@ -33,10 +33,10 @@
     <div class="container">
         <div class="left-wrap">
             <div class="logo">
-                <%= require('../../assets/img/footerLogo.svg?raw') %>
+                <%= require('../../assets/img/idle-logo.svg?raw') %>
             </div>
             <form class="newsletter-form" method="POST" action="https://dev.lapisgroup.it/idle/newsletter.php" onSubmit="return false;">
-                <div class="email email-desktop">
+                <div class="email email-desktop email-container">
                     <div class="email__input">
                         <input class="email-input" type="email" placeholder="<%= Strings.inputPlaceholder %>" required>
                         <button type="submit" class="btn btn-main" href="<%= Strings.btnUpdates.btnSrc %>" aria-label="<%= Strings.btnUpdates.btnTitle %>">
@@ -47,7 +47,7 @@
                 </div>
             </form>
             <form class="newsletter-form" method="POST" action="https://dev.lapisgroup.it/idle/newsletter.php" onSubmit="return false;">
-                <div class="email email-tablet">
+                <div class="email email-tablet email-container">
                     <div class="email__input">
                         <input class="email-input" type="email" placeholder="<%= Strings.inputPlaceholder %>" required>
                         <button type="submit" class="btn btn-main" href="<%= Strings.btnUpdates.btnSrc %>" target="_blank" aria-label="<%= Strings.btnUpdates.btnTitle %>">
@@ -58,7 +58,7 @@
                 </div>
             </form>
             <form class="newsletter-form" method="POST" action="https://dev.lapisgroup.it/idle/newsletter.php" onSubmit="return false;">
-                <div class="email email-mobile">
+                <div class="email email-mobile email-container">
                     <div class="email__input">
                         <input class="email-input" type="email" placeholder="<%= Strings.inputPlaceholder %>" required>
                     </div>

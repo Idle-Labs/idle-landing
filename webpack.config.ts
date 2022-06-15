@@ -62,6 +62,7 @@ const siteConfig = (env: any): webpack.Configuration => {
     const htmlBuilder = new helpers.HtmlBuilder(Sitemap.DependenciesPriorities, true);
 
     const config: webpack.Configuration = {
+        stats: { children: true },
         devtool: isProd ? undefined : 'source-map',
         entry: Sitemap.ApplicationEntryPoints,
         output: {
@@ -292,7 +293,6 @@ const siteConfig = (env: any): webpack.Configuration => {
         devServer: {
             contentBase: outputPath,
             compress: true,
-            // host: '192.168.0.179',
             host: '0.0.0.0',
             port: 8080,
             staticOptions: {

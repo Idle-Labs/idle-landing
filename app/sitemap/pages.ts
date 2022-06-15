@@ -70,7 +70,7 @@ const NoScript: SitePage = {
         locale: 'en',
         copy: undefined,
     },
-    inlineCss: true,
+    inlineCss: false,
     disableScripts: 'force',
     noIndex: true,
 };

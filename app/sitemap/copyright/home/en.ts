@@ -177,7 +177,7 @@ export const HomeEnCopy = {
             audits: [
                 {
                     title: 'Protocol audit',
-                    date: 'December 2019 through April 2021',
+                    date: 'December 2019 - April 2021',
                     src: 'https://certificate.quantstamp.com/full/idle-finance',
                     by: 'by Quantstamp',
                 },

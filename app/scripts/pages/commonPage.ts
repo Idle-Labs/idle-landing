@@ -88,7 +88,7 @@ export default abstract class CommonPage extends Page {
         const handleFormSubmit = (e) => {
           const form = e.target;
           const email = form.querySelector('.email-input').value;
-          const emailInput = form.querySelector('.email__input');
+          const emailInput = form.querySelector('.email-container');
 
           axios.post('https://dev.lapisgroup.it/idle/newsletter.php', {
             'email': email
