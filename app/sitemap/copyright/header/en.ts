@@ -1,6 +1,6 @@
 
 export const HeaderEnCopy = {
-    logoLink: '#',
+    logoLink: '/',
     links: [
         {
             linkTitle: 'Products',

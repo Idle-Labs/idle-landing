@@ -42,6 +42,7 @@ export default abstract class Page implements IPage {
 
     static async RunPage(PageType: PageCtor) {
         const page = new PageType();
+        // logger.log('RunPage',page);
         try {
             await page.setupAsync();
             page.start();

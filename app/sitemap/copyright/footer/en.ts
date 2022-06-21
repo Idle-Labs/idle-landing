@@ -1,7 +1,7 @@
 
 export const FooterEnCopy = {
     inputPlaceholder: 'Enter your e-mail',
-    subtitle: 'By opting-in you agree to our <a href="https://www.iubenda.com/privacy-policy/61211749" target="_blank">privacy policy</a>',
+    subtitle: 'By opting-in you agree to our <a href="/privacy-policy" target="_blank">privacy policy</a>',
     btnUpdates: {
         btnTitle: 'Get Updates',
         btnSrc: '#',
@@ -9,18 +9,22 @@ export const FooterEnCopy = {
     copyrightBar: {
         links:[
             {
+                target: '_blank',
                 title:'Brand assets',
                 link:'https://docs.idle.finance/other/brand-assets'
             },
             {
+                target: '_self',
                 title: 'Terms of Service',
-                link: 'https://idlelabs.notion.site/Terms-of-Service-25aaae6f48d8451d8b96f06b5e4d59ed',
+                link: '/terms-of-service',
             },
             {
+                target: '_self',
                 title: 'Privacy Policy',
-                link: 'https://www.iubenda.com/privacy-policy/61211749',
+                link: '/privacy-policy',
             },
             {
+                target: '_blank',
                 title: 'Cookie Policy',
                 link: 'https://www.iubenda.com/privacy-policy/61211749/cookie-policy',
             }
@@ -53,11 +57,11 @@ export const FooterEnCopy = {
                 /*
                 {
                     title: 'Privacy Policy',
-                    link: 'https://www.idle.finance.com/privacy-policy',
+                    link: '/privacy-policy',
                 },
                 {
                     title: 'Terms of Use',
-                    link: 'https://idle.finance/terms-of-use',
+                    link: '/terms-of-service',
                 },
                 */
             ],

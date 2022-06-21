@@ -209,8 +209,8 @@ export const HomeEnCopy = {
         desc: 'Growing list of partners, integrators and protocols collaborating with Idle DAO',
         protocols:  [
             {
-                logoSrc: 'polygon.svg',
-                linkSrc: 'https://polygon.technology/',
+                logoSrc: 'ethereum.svg',
+                linkSrc: 'https://ethereum.org/',
             },
             {
                 logoSrc: 'lido.svg',
@@ -221,8 +221,8 @@ export const HomeEnCopy = {
                 linkSrc: 'https://enzyme.finance/',
             },
             {
-                logoSrc: 'celsiusx.svg',
-                linkSrc: 'https://celsiusx.io/',
+                logoSrc: 'polygon.svg',
+                linkSrc: 'https://polygon.technology/',
             },
             {
                 logoSrc: 'harvest.png',

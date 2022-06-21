@@ -123,7 +123,7 @@
         <p class="desc-2 copyright">© 2022 Idle Labs Inc</p>
         <% Strings.copyrightBar.links.forEach(item => { %>
             <li class="navigation__link">
-                <a class="label-2" href="<%= item.link %>" target="_blank"><%= item.title %></a>
+                <a class="label-2" href="<%= item.link %>" target="<%= item.target %>"><%= item.title %></a>
             </li>
         <% }) %>
     </div>

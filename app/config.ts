@@ -19,11 +19,11 @@ const Configs: Partial<Record<Environments, EnvironmentConfig>> = {
         EnableLogger: true,
     },
     staging: {
-        Hostname: 'https://idle-finance-staging.web.app/',
+        Hostname: 'https://beta.idle.finance/',
         EnableLogger: true,
     },
     production: {
-        Hostname: 'https://idle-finance-staging.web.app/',
+        Hostname: 'https://idle.finance/',
         EnableLogger: false,
     },
 };

@@ -1,3 +1,7 @@
+import 'styles/base.sass';
+import 'styles/tos';
+
+import logger from 'app/logger';
 import Section from '../core/section';
 import CommonPage from './commonPage';
 
@@ -36,3 +40,6 @@ export default function CreateDefaultPage(options) {
         }
     };
 }
+
+const DefaultPage = CreateDefaultPage({});
+DefaultPage.RunPage(DefaultPage);

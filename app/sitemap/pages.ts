@@ -1,5 +1,6 @@
 import {
-    HomeCopyright,
+    TosCopyright,
+    HomeCopyright
 } from './copyright';
 import { HomeCopyrightShape } from './copyright/home';
 import { PageDependency, SitePage } from './types';
@@ -11,11 +12,41 @@ const Home: SitePage<HomeCopyrightShape> = {
     output: {
         path: 'index.html',
         href: '/',
-        title: 'Idle Finance',
-        description: 'Idle Finance.',
         image: 'og-image.png',
         locale: HomeCopyright.default,
         copy: HomeCopyright[HomeCopyright.default],
+        title: 'Idle Finance - The Yield Automation Protocol',
+        description: 'Idle offers first-rate yield optimization and risk tranching strategies. Get the best yield by using, integrating or building on top of Idle’s products.',
+    },
+};
+
+const PageTos: SitePage = {
+    id: 'terms-of-service',
+    templateName: 'app/html/terms-of-service.ejs',
+    entryPoint: './app/scripts/pages/tosPage.ts',
+    output: {
+        image: 'og-image.png',
+        href: '/terms-of-service',
+        locale: TosCopyright.default,
+        path: 'terms-of-service.html',
+        title: 'Idle Finance - Terms of Service',
+        copy: TosCopyright[TosCopyright.default],
+        description: 'Idle offers first-rate yield optimization and risk tranching strategies. Get the best yield by using, integrating or building on top of Idle’s products.'
+    },
+};
+
+const PagePP: SitePage = {
+    id: 'privacy-policy',
+    templateName: 'app/html/privacy-policy.ejs',
+    entryPoint: './app/scripts/pages/ppPage.ts',
+    output: {
+        locale: 'en',
+        copy: undefined,
+        image: 'og-image.png',
+        href: '/privacy-policy',
+        path: 'privacy-policy.html',
+        title: 'Idle Finance - Privacy Policy',
+        description: 'Idle offers first-rate yield optimization and risk tranching strategies. Get the best yield by using, integrating or building on top of Idle’s products.'
     },
 };
 
@@ -83,9 +114,11 @@ export const Dependencies: PageDependency[] = [
 
 const pages: SitePage[] = [
     Home,
+    PagePP,
+    PageTos,
     Page404,
-    NotSupported,
     NoScript,
+    NotSupported,
 ];
 
 export default pages;

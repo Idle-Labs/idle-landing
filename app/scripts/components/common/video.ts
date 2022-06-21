@@ -49,7 +49,7 @@ function getObjectDataSrc(source: VideoSource) {
         data['0'] = fallbackLink || '#';
     }
 
-    logger.log('getObjectDataSrc', data);
+    // logger.log('getObjectDataSrc', data);
     return data;
 }
 
