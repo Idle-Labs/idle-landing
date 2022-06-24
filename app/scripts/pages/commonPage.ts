@@ -119,8 +119,24 @@ export default abstract class CommonPage extends Page {
         });
     }
 
+    checkUrlRedirects(){
+      let redirectUrl = 'https://app.idle.finance/';
+      const urlHash = window.location.hash;
+      // Redirect to governance
+      if (urlHash.match((/^#\/(governance)/))){
+        redirectUrl += urlHash;
+        window.location.href = redirectUrl;
+      // Redirect to Dashboard
+      } else if (urlHash.match((/^#\/(dashboard)/))){
+        redirectUrl += '#/'+urlHash.split('/').splice(2).join("/");
+        window.location.href = redirectUrl;
+      }
+    }
+
     async start() {
         super.start();
+
+        this.checkUrlRedirects();
 
         Lazy.SetMainElememt(this.root);
         Lazy.RegisterAllImages();
