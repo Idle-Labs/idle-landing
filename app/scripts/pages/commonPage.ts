@@ -2,6 +2,7 @@ import axios from 'axios';
 import Page from 'app/core/page';
 import Lazy from 'app/components/lazy';
 import anchors from 'app/modules/anchors';
+import { IDLE_API_KEY } from 'app/core/configs';
 import stickyHeader from 'app/modules/stickyHeader';
 import { createDropdowns } from 'app/modules/dropDown';
 import ScrollTopButton from 'app/modules/scrollTopButton';
@@ -21,18 +22,32 @@ export default abstract class CommonPage extends Page {
     async loadApiData() {
         if (this._sections[2] && this._sections[1]){
           const [
-            data,
-            dataPolygon,
+            dataResult,
+            dataPolygonResult
             // dataTokenTerminal
-          ] = await Promise.all([
-            axios.get('https://api.idle.finance/pools?api-key=bPrtC2bfnAvapyXLgdvzVzW8u8igKv6E',{}),
-            axios.get('https://api-polygon.idle.finance/tvls?api-key=bPrtC2bfnAvapyXLgdvzVzW8u8igKv6E',{}),
+          // @ts-ignore
+          ] = await Promise.allSettled([
+            axios.get('https://api.idle.finance/pools', {
+              headers: {
+                Authorization: `Bearer ${IDLE_API_KEY}`
+              }
+            }),
+            axios.get('https://api-polygon.idle.finance/tvls', {
+              headers: {
+                Authorization: `Bearer ${IDLE_API_KEY}`
+              }
+            })
             // axios.get('https://api.tokenterminal.com/v2/projects/idle-finance/metrics?timestamp_granularity=monthly',{
             //   headers: {
             //     Authorization: `Bearer b781852e-554f-4c19-bafb-75ff6d45529a`
             //   }
             // })
           ]);
+
+          // console.log('dataTokenTerminal', dataTokenTerminal)
+
+          const data = dataResult.status === 'fulfilled' ? dataResult.value : null;
+          const dataPolygon = dataPolygonResult.status === 'fulfilled' ? dataPolygonResult.value : null;
 
           let totalTvl = 0;
           const statsSectionElement = this._sections[2]._config.el;

@@ -32,13 +32,13 @@ export const HomeEnCopy = {
                 cardDesc: 'The flagship yield automation strategy.<br />Funds optimized across multiple DeFi protocols',
                 infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll)  the current distribution rate of governance tokens provided by underlying lending protocols (lll) the current estimated price of governance tokens from Uniswap spot prices. (lV) IDLE token distribution is referred to the entire pool',
                 token: {
-                    title: 'TOKEN',
                     value: 'USDT',
+                    title: 'TOKEN',
                     logoSrc: 'tusd.svg',
                 },
                 btnLaunch: {
                     btnTitle: 'Launch',
-                    btnSrc: 'https://app.idle.finance/#/best',
+                    btnSrc: 'https://app.idle.finance/#/earn/best-yield',
                 },
                 btnIntegrate: {
                     btnTitle: 'Integrate',
@@ -57,23 +57,23 @@ export const HomeEnCopy = {
                 ],
             },
             {
+                apy: 'APY',
                 id: 'senior',
                 cardLogoSrc: 'seniorRobot',
                 cardSubTitle: 'Senior Tranche',
-                apy: 'APY',
                 apyPercent: '9.19%',
                 apyDesc: '+382.96 IDLE/day',
                 cardTitle: 'Protected Yield',
                 cardDesc: 'The innovative safeguarded strategy covered by the counterpart Junior Tranche',
                 infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll) the current distribution rate of governance tokens provided by underlying lending protocols (lll) additional APY derived from staking',
                 token: {
-                    title: 'TOKEN',
                     value: 'USDT',
+                    title: 'TOKEN',
                     logoSrc: 'tusd.svg',
                 },
                 btnLaunch: {
                     btnTitle: 'Launch',
-                    btnSrc: 'https://app.idle.finance/#/tranches/senior',
+                    btnSrc: 'https://app.idle.finance/#/earn/protected-yield',
                 },
                 btnIntegrate: {
                     btnTitle: 'Integrate',
@@ -102,13 +102,13 @@ export const HomeEnCopy = {
                 cardDesc: 'The forefront yield strategy amplified by the counterpart Senior Tranche',
                 infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll) the current distribution rate of governance tokens provided by underlying lending protocols (lll) additional APY derived from staking',
                 token: {
-                    title: 'TOKEN',
                     value: 'USDT',
+                    title: 'TOKEN',
                     logoSrc: 'tusd.svg',
                 },
                 btnLaunch: {
                     btnTitle: 'Launch',
-                    btnSrc: 'https://app.idle.finance/#/tranches/junior',
+                    btnSrc: 'https://app.idle.finance/#/earn/boosted-yield',
                 },
                 btnIntegrate: {
                     btnTitle: 'Integrate',
@@ -259,7 +259,7 @@ export const HomeEnCopy = {
             subtitle: 'Total Value Locked (TVL)',
         },
         interestValue: {
-            title: '$9.1M',
+            title: '$9.5M',
             subtitle: 'Interest generated for LPs',
         },
         gasValue: {
@@ -406,7 +406,7 @@ export const HomeEnCopy = {
         ],
         btnAboutGovernance: {
             btnTitle: 'Enter Governance',
-            btnSrc: 'https://app.idle.finance/#/governance',
+            btnSrc: 'https://www.tally.xyz/gov/eip155:1:0x3D5Fc645320be0A085A32885F078F7121e5E5375',
         },
         btnAboutCommunity: {
             btnTitle: 'Visit Forum',

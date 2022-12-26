@@ -79,7 +79,7 @@ const siteConfig = (env: any): webpack.Configuration => {
                 app: pathResolve('./app/scripts/'),
                 assets: pathResolve('./app/assets/'),
                 styles: pathResolve('./app/styles/'),
-            },
+            }
         },
         module: {
             rules: [

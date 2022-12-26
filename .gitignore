@@ -9,3 +9,10 @@
 # Files
 gsap-by-johny.tgz
 .DS_Store
+
+# Configs
+app/scripts/core/configs.ts
+
+yarn-error.log
+
+.env
