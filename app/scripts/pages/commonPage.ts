@@ -69,7 +69,7 @@ export default abstract class CommonPage extends Page {
               } else {
                 key = 'best-yield';
               }
-              if (key && !output[key] || output[key].apr<item.apr) {
+              if (key && parseFloat(item.underlyingTVL)>=10000 && (!output[key] || output[key].apr<item.apr)) {
                 output[key] = item;
               }
 
