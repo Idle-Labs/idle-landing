@@ -29,7 +29,7 @@ export const HomeEnCopy = {
                 cardTitle: 'Best Yield',
                 cardLogoSrc: 'bestYieldRobot',
                 // cardDesc: 'Maximize your yield across DeFi protocols',
-                cardDesc: 'The flagship yield automation strategy.<br />Funds optimized across multiple DeFi protocols',
+                cardDesc: 'Best Yield vaults are designed to maximize yields. Like robo-advisors, deposits are routed through different strategies which seek out the highest yield available in DeFi. Users benefit from gas cost socialization, automated rebalancing process and algorithmic capital reallocation as opportunities arise.',
                 infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll)  the current distribution rate of governance tokens provided by underlying lending protocols (lll) the current estimated price of governance tokens from Uniswap spot prices. (lV) IDLE token distribution is referred to the entire pool',
                 token: {
                     value: 'USDT',
@@ -37,13 +37,23 @@ export const HomeEnCopy = {
                     logoSrc: 'tusd.svg',
                 },
                 btnLaunch: {
-                    btnTitle: 'Launch',
+                    btnTitle: 'Enter',
                     btnSrc: 'https://app.idle.finance/#/earn/best-yield',
                 },
                 btnIntegrate: {
                     btnTitle: 'Integrate',
                     btnSrc: 'https://docs.idle.finance/developers/best-yield',
                 },
+                lotties: {
+                    'best-yield': {
+                        className: ''
+                    }
+                },
+                features: [
+                    'Automated and algorithmic rebalance',
+                    'Battle-tested infrastructure',
+                    'Aggregated Senior/Junior risk exposure'
+                ],
                 partnersIcons: [
                     {
                         iconSrc: 'logoCompound.svg',
@@ -58,13 +68,13 @@ export const HomeEnCopy = {
             },
             {
                 apy: 'APY',
-                id: 'senior',
-                cardLogoSrc: 'seniorRobot',
-                cardSubTitle: 'Senior Tranche',
+                id: 'tranches',
+                cardLogoSrc: 'tranches',
+                cardSubTitle: '',
                 apyPercent: '9.19%',
                 apyDesc: '+382.96 IDLE/day',
-                cardTitle: 'Protected Yield',
-                cardDesc: 'The innovative safeguarded strategy covered by the counterpart Junior Tranche',
+                cardTitle: 'Tranches',
+                cardDesc: 'Idle Tranches split any DeFi yield source into two new risk-adjusted classes: Senior, with a rather stable but lower return in exchange of a built-in coverage protection. On the other side, the Junior class has higher yield, as it protects the Senior class from any loss.',
                 infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll) the current distribution rate of governance tokens provided by underlying lending protocols (lll) additional APY derived from staking',
                 token: {
                     value: 'USDT',
@@ -72,48 +82,26 @@ export const HomeEnCopy = {
                     logoSrc: 'tusd.svg',
                 },
                 btnLaunch: {
-                    btnTitle: 'Launch',
-                    btnSrc: 'https://app.idle.finance/#/earn/protected-yield',
+                    btnTitle: 'Enter',
+                    btnSrc: 'https://app.idle.finance/#/earn/tranches',
                 },
                 btnIntegrate: {
                     btnTitle: 'Integrate',
                     btnSrc: 'https://docs.idle.finance/developers/perpetual-yield-tranches',
                 },
-                partnersIcons: [
-                    {
-                        iconSrc: 'logoConvex.svg',
+                lotties: {
+                    'senior': {
+                        className: 'pos-1'
                     },
-                    {
-                        iconSrc: 'logoLido.svg',
-                    },
-                    {
-                        iconSrc: 'logoEuler.svg',
-                    },
+                    'junior': {
+                        className: 'pos-2'
+                    }
+                },
+                features: [
+                    'DeFi risk diversification',
+                    'Fully on-chain default settlement',
+                    'Adaptive yield split to scale liquidity'
                 ],
-            },
-            {
-                id: 'junior',
-                apy: 'Junior APY',
-                apyPercent: '7.57%',
-                apyDesc: '0.00 IDLE/day',
-                cardLogoSrc: 'juniorRobot',
-                cardSubTitle: 'Junior Tranche',
-                cardTitle: 'Boosted Yield',
-                cardDesc: 'The forefront yield strategy amplified by the counterpart Senior Tranche',
-                infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll) the current distribution rate of governance tokens provided by underlying lending protocols (lll) additional APY derived from staking',
-                token: {
-                    value: 'USDT',
-                    title: 'TOKEN',
-                    logoSrc: 'tusd.svg',
-                },
-                btnLaunch: {
-                    btnTitle: 'Launch',
-                    btnSrc: 'https://app.idle.finance/#/earn/boosted-yield',
-                },
-                btnIntegrate: {
-                    btnTitle: 'Integrate',
-                    btnSrc: 'https://docs.idle.finance/developers/perpetual-yield-tranches',
-                },
                 partnersIcons: [
                     {
                         iconSrc: 'logoConvex.svg',

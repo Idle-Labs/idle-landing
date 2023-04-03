@@ -46,66 +46,58 @@
             <div class="splide__track">
                 <div class="splide__list">
                     <% Strings.cards.forEach(item => {
+                        const gradientBg = require(`../../../assets/img/bg/${item.id}-bg.png`);
                         const cardLogoPng = require(`../../../assets/img/product/${item.cardLogoSrc}.png`);
                         const cardLogoWebp = require(`../../../assets/img/product/${item.cardLogoSrc}.webp`);%>
                         <div class="splide__slide <%= item.id %>-strategy card card-anim-js card-lottie">
-                            <div class="card__bg-gradient"></div>
+                            <div class="card__bg-gradient" style="background-image: url(<%= gradientBg %>)"></div>
                             <div class="card__bg-lines"></div>
                             <div class="card__logo-wrap">
-                                <div
-                                    class="logo-lottie lazy"
-                                    data-lottie-path="../../../assets/lottie/robot-<%= item.id %>/lottie.json"
-                                    data-load-priority="1"
-                                >
-                                </div>
+                                <%
+                                    Object.keys(item.lotties).forEach( lottieId => {
+                                        %>
+                                        <div
+                                            class="logo-lottie lazy <%= item.lotties[lottieId].className %>"
+                                            data-lottie-path="../../../assets/lottie/robot-<%= lottieId %>/lottie.json"
+                                            data-load-priority="1"
+                                        >
+                                        </div>
+                                        <%
+                                    })
+                                %>
                                 <div class="logo">
                                     <picture>
-                                        <source type="image/webp" data-srcset="<%=cardLogoWebp%>">
-                                        <source type="image/png" data-srcset="<%=cardLogoPng%>">
+                                        <source type="image/webp" data-srcset="<%= cardLogoWebp %>">
+                                        <source type="image/png" data-srcset="<%= cardLogoPng %>">
                                         <img src="#" class="lazy" data-load-priority="1" alt="<%= item.cardTitle %> logo">
                                     </picture>
                                 </div>
                             </div>
                             <div class="card__text">
-                                <span class="card__subtitle subtitle-3"><%= item.cardSubTitle %></span>
                                 <h2 class="card__title title-h3"><%= item.cardTitle %></h2>
                                 <p class="card__desc desc-3"><%= item.cardDesc %></p>
                             </div>
-                            <div class="card__info">
-                                <div class="left-wrap">
-                                    <div class="apy">
-                                        <span class="subtitle-3"><%= item.apy %></span>
-                                        <div class="tooltip">
-                                            <div class="tooltip__icon">
-                                                <%= require('../../../assets/img/icons/infoCircle.svg?raw') %>
-                                            </div>
-                                            <div class="tooltip__dropdown">
-                                                <div class="tooltip__info">
-                                                    <p class="desc-3"><%= item.infoTooltip %></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <span class="percent value-2">-</span>
-                                    <!--span class="subtitle-2"><%= item.apyDesc %></span-->
+                            <div class="card__carousel">
+                                <div class="carousel_slider">
+
                                 </div>
-                                <div class="right-wrap">
-                                    <span class="subtitle-3"><%= item.token.title %></span>
-                                    <div class="token">
-                                        <span class="value-2">-</span>
+                                <div class="carousel_progress <%= item.id %>"></div>
+                            </div>
+                            <div class="card__features">
+                                <% item.features.forEach( feature => { %>
+                                    <div class="card__feature">
+                                        <%= require(`../../../assets/img/check.svg?raw`) %>
+                                        <span class="desc-3"><%= feature %></span>
                                     </div>
-                                </div>
+                                <% }) %>
                             </div>
                             <div class="card__buttons">
-                                <a class="btn btn-main" href="<%= item.btnLaunch.btnSrc %>" target="_blank" aria-label="<%= item.btnLaunch.btnTitle %>">
-                                    <span class="btn-label btn-label-2"><%= item.btnLaunch.btnTitle %></span>
-                                </a>
                                 <a class="btn btn-border" href="<%= item.btnIntegrate.btnSrc %>" target="_blank" aria-label="<%= item.btnIntegrate.btnTitle %>">
                                     <span class="btn-label btn-label-2"><%= item.btnIntegrate.btnTitle %></span>
                                 </a>
-                            </div>
-                            <div class="card__poweredby">
-                                <span class="card__subtitle subtitle-3">Powered By:</span>
+                                <a class="btn btn-main" href="<%= item.btnLaunch.btnSrc %>" target="_blank" aria-label="<%= item.btnLaunch.btnTitle %>">
+                                    <span class="btn-label btn-label-2"><%= item.btnLaunch.btnTitle %></span>
+                                </a>
                             </div>
                             <div class="card__partners">
                                 <% item.partnersIcons.forEach(item => { %>

@@ -23,8 +23,8 @@ export default abstract class CommonPage extends Page {
         if (this._sections[2] && this._sections[1]){
           const [
             dataResult,
-            dataPolygonResult
-            // dataTokenTerminal
+            dataPolygonResult,
+            dataTokenTerminalResult
           // @ts-ignore
           ] = await Promise.allSettled([
             axios.get('https://api.idle.finance/pools', {
@@ -36,28 +36,146 @@ export default abstract class CommonPage extends Page {
               headers: {
                 Authorization: `Bearer ${IDLE_API_KEY}`
               }
-            })
-            // axios.get('https://api.tokenterminal.com/v2/projects/idle-finance/metrics?timestamp_granularity=monthly',{
+            }),
+            // axios.get('https://api.tokenterminal.com/v2/internal/metrics/fees?project_ids=idle-finance&interval=365d',{
             //   headers: {
             //     Authorization: `Bearer b781852e-554f-4c19-bafb-75ff6d45529a`
             //   }
             // })
           ]);
 
-          // console.log('dataTokenTerminal', dataTokenTerminal)
+          // console.log('dataTokenTerminalResult', dataTokenTerminalResult)
 
           const data = dataResult.status === 'fulfilled' ? dataResult.value : null;
           const dataPolygon = dataPolygonResult.status === 'fulfilled' ? dataPolygonResult.value : null;
+          // const dataTokenTerminal = dataTokenTerminalResult.status === 'fulfilled' ? dataTokenTerminalResult.value : null;
 
           let totalTvl = 0;
           const statsSectionElement = this._sections[2]._config.el;
           const productSectionElement = this._sections[1]._config.el;
 
-          // const totalRevenue = dataTokenTerminal && dataTokenTerminal.data ? dataTokenTerminal.data.reduce( (total,t) => (total+=t.revenue_supply_side), 0 ) : 10000000;
-          // statsSectionElement.querySelector('#interests-value').innerHTML = '$'+abbreviateNumber(totalRevenue,1);
-          // console.log('totalRevenue',totalRevenue);
-
           if (data && data.data){
+
+            const insertedItems = {};
+
+            data.data.forEach( (item, index) => {
+              let strategy = null;
+              if (/Tranche/i.test(item.strategy)) {
+                strategy = 'tranches'
+              } else {
+                strategy = 'best-yield';
+              }
+
+              if (parseFloat(item.tvl)){
+                totalTvl += parseFloat(item.tvl);
+              }
+
+              if (!strategy || item.isPaused || parseFloat(item.tvl)<10000) return;
+
+              if (!insertedItems[strategy]){
+                insertedItems[strategy] = 0;
+              }
+              insertedItems[strategy]++;
+
+              const carouselItem = document.createElement("div");
+              carouselItem.className = 'carousel_item';
+
+              const carouselItemToken = document.createElement("div");
+              carouselItemToken.className = 'carousel_item__token';
+
+              const tokenImg = document.createElement("img");
+              tokenImg.className="token__logo";
+
+              try {
+                tokenImg.src = require(`../../assets/img/tokens/${item.tokenName.toUpperCase()}.svg`);
+              } catch (err) {
+                tokenImg.src = require(`../../assets/img/tokens/${item.tokenName.toUpperCase()}.png`);
+              }
+
+              // Add token image
+              carouselItemToken.append(tokenImg);
+
+              // Carousel item TVL
+              const carouselItemTvl = document.createElement("div");
+              carouselItemTvl.className = 'carousel_item__tvl';
+
+              const carouselItemTvlLabel = document.createElement("div");
+              carouselItemTvlLabel.className = 'subtitle-3';
+              carouselItemTvlLabel.innerHTML = 'TVL';
+
+              const carouselItemTvlValue = document.createElement("div");
+              carouselItemTvlValue.className = 'title-h4';
+              carouselItemTvlValue.innerHTML = '$'+abbreviateNumber(item.tvl, 1);
+
+              carouselItemTvl.append(carouselItemTvlLabel);
+              carouselItemTvl.append(carouselItemTvlValue);
+
+              // Carousel item TVL
+              const carouselItemApr = document.createElement("div");
+              carouselItemApr.className = 'carousel_item__apr';
+
+              const carouselItemAprLabel = document.createElement("div");
+              carouselItemAprLabel.className = 'subtitle-3';
+              carouselItemAprLabel.innerHTML = 'APR';
+
+              const carouselItemAprValue = document.createElement("div");
+              carouselItemAprValue.className = 'title-h4';
+
+              let apr = parseFloat(item.apr).toFixed(2)+'%'
+              if (parseFloat(item.apr)>9999){
+                apr = '>9999%';
+              }
+
+              carouselItemAprValue.innerHTML = apr;
+
+              carouselItemApr.append(carouselItemAprLabel);
+              carouselItemApr.append(carouselItemAprValue);
+
+              // Append all elements
+              carouselItem.append(carouselItemToken);
+              carouselItem.append(carouselItemTvl);
+              carouselItem.append(carouselItemApr);
+
+              productSectionElement.querySelector('.'+strategy+'-strategy .carousel_slider').append(carouselItem);
+            })
+
+            const activeItems = {};
+
+            const startCarousel = (strategy) => {
+              const itemEl = productSectionElement.querySelector('.'+strategy+'-strategy .carousel_item');
+              const sliderEl = productSectionElement.querySelector('.'+strategy+'-strategy .carousel_slider');
+              const progressEl = productSectionElement.querySelector('.'+strategy+'-strategy .carousel_progress');
+              progressEl.className += ' start';
+
+              if (activeItems[strategy] === undefined){
+                activeItems[strategy] = 0;
+              }
+
+              window.setTimeout(() => {
+                if (activeItems[strategy]==insertedItems[strategy]-1){
+                  activeItems[strategy] = 0;
+                } else {
+                  activeItems[strategy]++;
+                }
+
+                // Move slider
+                // @ts-ignore
+                sliderEl.style.left = -(activeItems[strategy]*itemEl.offsetWidth)+'px';
+                // Remove start element
+                // @ts-ignore
+                progressEl.className = progressEl.className.replace(' start','');
+                
+                // Resume carousel
+                setTimeout(() => {
+                  startCarousel(strategy);
+                }, 20);
+              }, 5000);
+            }
+
+            Object.keys(insertedItems).forEach( strategy => {
+              startCarousel(strategy)
+            })
+            /*
             const bestTokens = data.data.reduce( (output,item) => {
               let key = null;
               if (item.poolName.match(/Tranche/)) {
@@ -73,7 +191,9 @@ export default abstract class CommonPage extends Page {
                 output[key] = item;
               }
 
-              totalTvl += parseFloat(item.tvl);
+              if (parseFloat(item.tvl)){
+                totalTvl += parseFloat(item.tvl);
+              }
 
               return output;
             },{
@@ -103,6 +223,7 @@ export default abstract class CommonPage extends Page {
               productSectionElement.querySelector('.'+strategy+'-strategy .percent.value-2').innerHTML = apr;
               productSectionElement.querySelector('.'+strategy+'-strategy .token .value-2').innerHTML = tokenName;
             });
+            */
           }
 
           if (dataPolygon && dataPolygon.data && parseFloat(dataPolygon.data.totalTVL)){

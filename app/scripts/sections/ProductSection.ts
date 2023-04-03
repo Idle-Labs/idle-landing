@@ -29,30 +29,33 @@ export default class ProductSection extends Section {
         const cards = this.element.querySelectorAll<HTMLElement>('.card-lottie');
 
         cards.forEach(async(card) => {
-            const container = card.querySelector<HTMLImageElement>('.logo-lottie');
             const logo = card.querySelector<HTMLElement>('.logo');
             this._cardLogos.push(logo);
 
-            const lottie = await new LottieComponent({
-                el: container,
-                autoplay: false,
-                renderer: 'canvas',
-                loop: false,
-                playOnActivate: false,
-            }).setup();
+            const containers = card.querySelectorAll<HTMLImageElement>('.logo-lottie');
+            containers.forEach (async(container) => {
+                const lottie = await new LottieComponent({
+                    el: container,
+                    autoplay: false,
+                    renderer: 'canvas',
+                    loop: false,
+                    playOnActivate: false,
+                }).setup();
+                
+                lottie.activate();
+
+                card.addEventListener('mouseenter', () => {
+                    lottie.animation.setDirection(1);
+                    lottie.animation.play();
+                });
+                card.addEventListener('mouseleave', () => {
+                    lottie.animation.setDirection(-1);
+                    lottie.animation.play();
+                });
+            })
 
             logo.classList.add('hidden');
 
-            lottie.activate();
-
-            card.addEventListener('mouseenter', () => {
-                lottie.animation.setDirection(1);
-                lottie.animation.play();
-            });
-            card.addEventListener('mouseleave', () => {
-                lottie.animation.setDirection(-1);
-                lottie.animation.play();
-            });
         });
     }
     private _setupSlider() {
