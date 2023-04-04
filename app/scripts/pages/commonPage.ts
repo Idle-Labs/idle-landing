@@ -142,6 +142,11 @@ export default abstract class CommonPage extends Page {
             const activeItems = {};
 
             const startCarousel = (strategy) => {
+
+              if (insertedItems[strategy]<=1){
+                return;
+              }
+
               const itemEl = productSectionElement.querySelector('.'+strategy+'-strategy .carousel_item');
               const sliderEl = productSectionElement.querySelector('.'+strategy+'-strategy .carousel_slider');
               const progressEl = productSectionElement.querySelector('.'+strategy+'-strategy .carousel_progress');

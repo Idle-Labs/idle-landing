@@ -29,7 +29,7 @@ export const HomeEnCopy = {
                 cardTitle: 'Best Yield',
                 cardLogoSrc: 'bestYieldRobot',
                 // cardDesc: 'Maximize your yield across DeFi protocols',
-                cardDesc: 'Best Yield vaults are designed to maximize yields. Like robo-advisors, deposits are routed through different strategies which seek out the highest yield available in DeFi. Users benefit from gas cost socialization, automated rebalancing process and algorithmic capital reallocation as opportunities arise.',
+                cardDesc: 'Best Yield vaults are designed to maximize yields. Like robo-advisors, deposits are routed through different strategies which seek out the highest yield available in DeFi.',
                 infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll)  the current distribution rate of governance tokens provided by underlying lending protocols (lll) the current estimated price of governance tokens from Uniswap spot prices. (lV) IDLE token distribution is referred to the entire pool',
                 token: {
                     value: 'USDT',
@@ -51,7 +51,7 @@ export const HomeEnCopy = {
                 },
                 features: [
                     'Automated and algorithmic rebalance',
-                    'Battle-tested infrastructure',
+                    'Zero gas cost for optimization',
                     'Aggregated Senior/Junior risk exposure'
                 ],
                 partnersIcons: [
@@ -74,7 +74,7 @@ export const HomeEnCopy = {
                 apyPercent: '9.19%',
                 apyDesc: '+382.96 IDLE/day',
                 cardTitle: 'Tranches',
-                cardDesc: 'Idle Tranches split any DeFi yield source into two new risk-adjusted classes: Senior, with a rather stable but lower return in exchange of a built-in coverage protection. On the other side, the Junior class has higher yield, as it protects the Senior class from any loss.',
+                cardDesc: 'Diversify your DeFi exposure with Yield Tranches - split your yield source into Senior for stable returns with built-in coverage, and Junior for higher returns while minimizing the risk of loss to the Senior class.',
                 infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll) the current distribution rate of governance tokens provided by underlying lending protocols (lll) additional APY derived from staking',
                 token: {
                     value: 'USDT',
