@@ -73,7 +73,7 @@ export const HomeEnCopy = {
                 cardSubTitle: '',
                 apyPercent: '9.19%',
                 apyDesc: '+382.96 IDLE/day',
-                cardTitle: 'Tranches',
+                cardTitle: 'Yield Tranches',
                 cardDesc: 'Diversify your DeFi exposure with Yield Tranches - split your yield source into Senior for stable returns with built-in coverage, and Junior for higher returns while minimizing the risk of loss to the Senior class.',
                 infoTooltip: 'APY is based on (l) the current yield advertised by the underlying protocol, (ll) the current distribution rate of governance tokens provided by underlying lending protocols (lll) additional APY derived from staking',
                 token: {
