@@ -83,7 +83,7 @@ export const HomeEnCopy = {
                 },
                 btnLaunch: {
                     btnTitle: 'Enter',
-                    btnSrc: 'https://app.idle.finance/#/earn/tranches',
+                    btnSrc: 'https://app.idle.finance/#/earn/yield-tranches',
                 },
                 btnIntegrate: {
                     btnTitle: 'Integrate',
@@ -232,11 +232,11 @@ export const HomeEnCopy = {
             },
             {
                 title: 'Institutionals and DAO treasury managers',
-                desc: 'Perfect treasury diversification and yield automation solution for any risk profile. Idle’s strategies are scalable as the size of the deposit doesn’t affect the sustainability of the yields. The performance can be tracked in real-time. Visit the <a href="https://app.idle.finance/#/tranches" target="_blank">dashboard</a> or fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1NnQLhy5k07WnbjxSE5kff_XT74Rc3GwMyWFsCDnTcEKz1A/viewform" target="_blank">this form</a>',
+                desc: 'Perfect treasury diversification and yield automation solution for any risk profile. Idle’s strategies are scalable as the size of the deposit doesn’t affect the sustainability of the yields. The performance can be tracked in real-time. Visit the <a href="https://app.idle.finance/#/earn/yield-tranches" target="_blank">dashboard</a> or fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1NnQLhy5k07WnbjxSE5kff_XT74Rc3GwMyWFsCDnTcEKz1A/viewform" target="_blank">this form</a>',
             },
             {
                 title: 'Individual<br />DeFi users',
-                desc: 'You want the best yield for your savings? Reliable security? Not to think about your yields on a day-to-day basis? All of that is available in one place. Visit the <a href="https://app.idle.finance/#/tranches" target="_blank">dashboard</a>, connect your wallet and deposit your funds today!',
+                desc: 'You want the best yield for your savings? Reliable security? Not to think about your yields on a day-to-day basis? All of that is available in one place. Visit the <a href="https://app.idle.finance/#/earn/yield-tranches" target="_blank">dashboard</a>, connect your wallet and deposit your funds today!',
             },
         ],
     },
