@@ -104,13 +104,13 @@ export const HomeEnCopy = {
                 ],
                 partnersIcons: [
                     {
-                        iconSrc: 'logoConvex.svg',
+                        iconSrc: 'logoMorpho.svg',
                     },
                     {
                         iconSrc: 'logoLido.svg',
                     },
                     {
-                        iconSrc: 'logoEuler.svg',
+                        iconSrc: 'logoClearpool.svg',
                     },
                 ],
             },
