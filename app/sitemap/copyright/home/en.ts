@@ -11,8 +11,8 @@ export const HomeEnCopy = {
             btnSrc: 'https://app.idle.finance/',
         },
         btnRead: {
-            btnTitle: 'Read The Documentation',
-            btnSrc: 'https://docs.idle.finance/',
+            btnTitle: 'Get involved',
+            btnSrc: 'https://docs.idle.finance/products/get-involved',
         },
     },
     productSection: {
@@ -197,8 +197,8 @@ export const HomeEnCopy = {
         desc: 'Growing list of partners, integrators and protocols collaborating with Idle DAO',
         protocols:  [
             {
-                logoSrc: 'ethereum.svg',
-                linkSrc: 'https://ethereum.org/',
+                logoSrc: 'clearpool.svg',
+                linkSrc: 'https://clearpool.finance/',
             },
             {
                 logoSrc: 'lido.svg',
@@ -209,16 +209,16 @@ export const HomeEnCopy = {
                 linkSrc: 'https://enzyme.finance/',
             },
             {
-                logoSrc: 'polygon.svg',
-                linkSrc: 'https://polygon.technology/',
+                logoSrc: 'shapeshift.svg',
+                linkSrc: 'https://shapeshift.com/',
             },
             {
                 logoSrc: 'harvest.png',
                 linkSrc: 'https://harvest.finance/',
             },
             {
-                logoSrc: 'pnetwork.png',
-                linkSrc: 'https://p.network/',
+                logoSrc: 'balancer.svg',
+                linkSrc: 'https://balancer.fi/',
             }
         ],
     },
@@ -227,17 +227,25 @@ export const HomeEnCopy = {
         subtitle: '',
         points: [
             {
-                title: 'DeFi developers',
-                desc: 'Avoid the need to integrate multiple yield sources, and achieve the best risk adjusted yield with just one integration. Check the <a href="https://docs.idle.finance/developers/introduction" target="_blank">documentation</a> for more info or get help at #dev-support <a href="https://discord.gg/j6QyJQu" target="_blank">Discord</a> channel',
+                linkTitle: 'Learn more',
+                btnTitle: 'Fill the form',
+                linkHref: 'https://docs.idle.finance/products/get-involved/integrators-program',
+                btnSrc: 'https://idlefinance.typeform.com/to/PUC7nO?typeform-source=docs.idle.finance',
+                title: 'DeFi<br />integrators',
+                desc: 'Avoid the need to integrate multiple yield sources, and achieve the best risk adjusted yield with just one integration, powered by ERC-4626. Join the Integrators Program and get up to a 50% profit share from the contributed TVL.',
             },
             {
-                title: 'Institutionals and DAO treasury managers',
-                desc: 'Perfect treasury diversification and yield automation solution for any risk profile. Idle’s strategies are scalable as the size of the deposit doesn’t affect the sustainability of the yields. The performance can be tracked in real-time. Visit the <a href="https://app.idle.finance/#/earn/yield-tranches" target="_blank">dashboard</a> or fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1NnQLhy5k07WnbjxSE5kff_XT74Rc3GwMyWFsCDnTcEKz1A/viewform" target="_blank">this form</a>',
+                linkTitle: 'Learn more',
+                btnTitle: 'Fill the form',
+                linkHref: 'https://docs.idle.finance/products/get-involved/institutions-program',
+                btnSrc: 'https://idlefinance.typeform.com/to/Bumd4UjV?typeform-source=docs.idle.finance',
+                title: 'Institutions and<br />Organizations',
+                desc: 'From protocols and DAOs to institutions and companies, Idle DAO provides yield optimization and risk diversification solutions for any profile. Our products support deposits of any size, maintaining sustainable yields, with real-time performance tracking and no lockup period. Join the Institutions Program and get up to a 50% profit share from the contributed TVL.',
             },
-            {
-                title: 'Individual<br />DeFi users',
-                desc: 'You want the best yield for your savings? Reliable security? Not to think about your yields on a day-to-day basis? All of that is available in one place. Visit the <a href="https://app.idle.finance/#/earn/yield-tranches" target="_blank">dashboard</a>, connect your wallet and deposit your funds today!',
-            },
+            // {
+            //     title: 'Individual<br />DeFi users',
+            //     desc: 'You want the best yield for your savings? Reliable security? Not to think about your yields on a day-to-day basis? All of that is available in one place. Visit the <a href="https://app.idle.finance/#/earn/yield-tranches" target="_blank">dashboard</a>, connect your wallet and deposit your funds today!',
+            // },
         ],
     },
     statsSection: {

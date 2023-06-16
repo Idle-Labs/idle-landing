@@ -23,15 +23,15 @@ export default class HomePage extends CommonPage {
         HeroSection,
         ProductSection,
         StatsSection,
-        IntegrationSection,
-        SecuritySection,
-        ProtocolsSection,
         PlayersSection,
+        // IntegrationSection,
+        ProtocolsSection,
+        SecuritySection,
         // AboutSection,
         // DevelopersSection,
         // RewardSection,
-        CommunitySection,
         InvestorsSection, // investors
+        CommunitySection,
     ];
 
     async setupPageAsync() {

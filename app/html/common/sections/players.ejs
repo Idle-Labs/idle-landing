@@ -7,7 +7,7 @@
     const BaseUrl = page.output.href;
 %>
 <section class="players-section" id="players">
-    <div class="players-background">
+    <!--div class="players-background">
         <div class="bg-circles">
             <picture>
                 <source data-srcset="../../../assets/img/bg/bgCircles-tablet4.svg"
@@ -17,7 +17,7 @@
                 <img class="lazy" data-load-priority="5" alt="">
             </picture>
         </div>
-    </div>
+    </div-->
     <div class="container">
         <div class="text-block">
             <div class="text-block__subtitle subtitle-anim-js">
@@ -39,6 +39,23 @@
                     </div>
                     <div class="point__desc card-desc-anim-js">
                         <p class="desc-3"><%= item.desc %></p>
+                    </div>
+                    <div class="buttons-block card-desc-anim-js">
+                        <div class="button anim-item-js">
+                            <a class="btn btn-main" href="<%= item.btnSrc %>" target="_blank" aria-label="<%= item.btnTitle %>">
+                                <span class="btn-label btn-label-2"><%= item.btnTitle %></span>
+                            </a>
+                        </div>
+                        <div class="button anim-item-js">
+                            <a class="btn btn-arrow" href="<%= item.linkHref %>" target="_blank" aria-label="<%= item.linkTitle %>">
+                                <span class="btn-label btn-label-2"><%= item.linkTitle %></span>
+                                <div class="btn-icon">
+                                    <div class="btn-icon__image">
+                                        <%= require('../../../assets/img/icons/arrow.svg?raw') %>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             <% }) %>

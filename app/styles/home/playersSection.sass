@@ -1,6 +1,7 @@
 .players-section
-    padding: gem(90) 0
-    background: url("../../assets/img/bg/blurBg.png")
+    padding-top: gem(90)
+    padding-bottom: gem(145)
+    /*background: url("../../assets/img/bg/blurBg.png")*/
     .players-background
         .bg-circles
             position: absolute
@@ -26,12 +27,11 @@
             margin-bottom: gem(14)
     .points
         display: flex
-        justify-content: space-between
+        justify-content: flex-start
     .point
-        width: gem(286)
+        width: gem(420)
         &:first-child
-            .point__title
-                width: gem(130)
+            margin-right: gem(80)
         &__logo
             margin-bottom: gem(30)
             display: flex
@@ -41,15 +41,17 @@
                 width: 100%
                 height: 100%
         &__title
-            margin-bottom: gem(39)
+            margin-bottom: gem(29)
             min-height: gem(64)
             display: flex
             flex-direction: column
         &__desc
-            width: gem(254)
+            width: auto
+            min-height: gem(180)
             .desc-3
                 opacity: 0.8
-
+        .buttons-block
+            display: flex
 
 @media only screen and (max-width : 1024px)
     .players-section
@@ -77,6 +79,7 @@
             align-items: center
             width: auto
             &:first-child
+                margin-right: 0
                 .point__title
                     width: auto
             &:not(:last-child)
@@ -85,7 +88,9 @@
                 margin-bottom: gem(20)
             &__desc
                 width: gem(550)
+                min-height: auto
                 text-align: center
+                margin-bottom: gem(30)
             &__title
                 min-height: auto
                 margin-bottom: gem(12)

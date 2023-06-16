@@ -37,17 +37,17 @@
             >
         </div>
         <video class="video-block__hero-video video-js lazy" playsinline autoplay loop muted data-load-priority="0" title="Idle finance">
-            <source type='video/webm; codecs="vp9, vorbis"' src="#"
-                data-src='../../../assets/video/hero-mobile.webm'
-                data-src481="<%= require('../../../assets/video/hero-tablet.webm') %>"
-                data-src1025="<%= require('../../../assets/video/hero-desktop.webm') %>"
-            />
-            <source type='video/mp4' src="#"
-                data-src='../../../assets/video/hero-mobile.mov'
-                data-src481="<%= require('../../../assets/video/hero-tablet.mov') %>"
-                data-src1025="<%= require('../../../assets/video/hero-desktop.mov') %>"
-            />
-            Your browser does not support the video tag.
+          <source type='video/mp4; codecs="hvc1"' src="#"
+            data-src='../../../assets/video/hero-mobile.mov'
+            data-src481="<%= require('../../../assets/video/hero-tablet.mov') %>"
+            data-src1025="<%= require('../../../assets/video/hero-desktop.mov') %>"
+          />
+          <source type='video/webm; codecs="vp9, vorbis"' src="#"
+            data-src='../../../assets/video/hero-mobile.webm'
+            data-src481="<%= require('../../../assets/video/hero-tablet.webm') %>"
+            data-src1025="<%= require('../../../assets/video/hero-desktop.webm') %>"
+          />
+          Your browser does not support the video tag.
         </video>
     </div>
     <div class="container">

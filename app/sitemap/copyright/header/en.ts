@@ -39,6 +39,10 @@ export const HeaderEnCopy = {
             linkTitle: 'Security',
             linkSrc: 'https://docs.idle.finance/developers/security',
         },
+        {
+            linkTitle: 'Partners',
+            dataAnchor: 'players',
+        },
     ],
     btnEnter: {
         btnTitle: 'Enter App',
