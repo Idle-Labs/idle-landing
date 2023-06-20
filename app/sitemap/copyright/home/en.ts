@@ -16,9 +16,9 @@ export const HomeEnCopy = {
         },
     },
     productSection: {
-        title: 'Get the yield best suited for your needs',
+        title: 'Automated, diversified<br />DeFi yields',
         subtitle: 'Yield optimization and risk tranching',
-        desc: 'Achieve capital efficiency with Idle’s products: as a leading DeFi yield aggregator, Idle offers first-rate yield optimization and risk tranching strategies. Get the best yield by using, integrating or building on top of Idle’s products. Money should never sit still.',
+        desc: 'Come bears or bulls, our vaults make it easy to stay diversified for your long-term goals. Our vaults help you manage unnecessary risk, minimize your costs, and maximize your yields — all done (you guessed it) automatically.',
         cards: [
             {
                 apy: 'APY',
@@ -194,7 +194,7 @@ export const HomeEnCopy = {
     },
     protocolsSection: {
         title: 'An ecosystem full of yield',
-        desc: 'Growing list of partners, integrators and protocols collaborating with Idle DAO',
+        desc: 'Our vaults are composable by design and seamlessly incorporated into the expansive DeFi ecosystem',
         protocols:  [
             {
                 logoSrc: 'clearpool.svg',
@@ -240,7 +240,7 @@ export const HomeEnCopy = {
                 linkHref: 'https://docs.idle.finance/products/get-involved/institutions-program',
                 btnSrc: 'https://idlefinance.typeform.com/to/Bumd4UjV?typeform-source=docs.idle.finance',
                 title: 'Institutions and<br />Organizations',
-                desc: 'From protocols and DAOs to institutions and companies, Idle DAO provides yield optimization and risk diversification solutions for any profile. Our products support deposits of any size, maintaining sustainable yields, with real-time performance tracking and no lockup period. Join the Institutions Program and get up to a 50% profit share from the contributed TVL.',
+                desc: 'From protocols and DAOs to institutions and companies, Idle DAO provides yield optimization and risk diversification solutions for any profile. Join the Institutions Program and get up to a 50% profit share from the contributed TVL.',
             },
             // {
             //     title: 'Individual<br />DeFi users',
