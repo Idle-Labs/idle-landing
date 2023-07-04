@@ -21,19 +21,37 @@
             <h2 class="title-h2 anim-item-js"><%=Strings.title %></h2>
             <p class="desc-2 anim-item-js"><%= Strings.desc %></p>
         </div>
-        <div class="protocols">
+        <div class="filters">
             <% Strings.protocols.forEach((item, i) => {
-                const protocolLogoSrc = require(`../../../assets/img/protocols/${item.logoSrc}`);
-                // if (item.logoSrc.match(/svg$/)){
-                //     require(protocolLogoSrc);
-                // }
+                const sectionId = item.id;
+                const sectionLabel = item.label;
+                %>
+                <a class="filters__tag label-2 <%= !i ? 'active' : '' %>" data-id="<%= sectionId %>" href="javascript:void(0)" aria-label="<%= sectionLabel %>">
+                    <%= sectionLabel %>
+                </a>
+                <%
+            })
             %>
-            <a class="protocols__logo" href="<%= item.linkSrc %>" target="_blank" aria-label="<%= item.linkSrc %>">
-                <div class="logo logo-anim-js-<%= i+1 %>">
-                    <img data-src="<%= protocolLogoSrc %>" class="lazy" data-load-priority="3" alt="">
-                </div>
-            </a>
-            <% }) %>
         </div>
+        <% Strings.protocols.forEach((item, i) => {
+            const sectionId = item.id;
+            %>
+            <div id="protocols-<%= sectionId %>" class="protocols">
+                <%
+                item.logos.forEach((logo, j) => {
+                    const protocolLogoSrc = require(`../../../assets/img/protocols/${logo.logoSrc}`);
+                    %>
+                    <a class="protocols__logo" href="<%= logo.linkSrc %>" target="_blank" aria-label="<%= logo.linkSrc %>">
+                        <div class="logo logo-anim-js-<%= j+1 %>">
+                            <img data-src="<%= protocolLogoSrc %>" class="lazy" data-load-priority="3" alt="">
+                        </div>
+                    </a>
+                    <%
+                })
+                %>
+            </div>
+            <%
+        })
+        %>
     </div>
 </section>

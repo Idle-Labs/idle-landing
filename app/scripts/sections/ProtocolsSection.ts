@@ -11,6 +11,7 @@ export default class ProtocolsSection extends Section {
     private _initialSetup: boolean = true;
     private _animated: boolean;
     private _rem: number;
+    private _activeSection: string | null = null
     private _currentDevice: 'desktop' | 'tablet' | 'mobile';
 
     private get _logo1(){ return this.element.querySelector<HTMLElement>('.logo-anim-js-1'); }
@@ -67,6 +68,38 @@ export default class ProtocolsSection extends Section {
         this._currentDevice = setCurrentDevice(Breakpoints);
     }
 
+    private setActiveSection() {
+        const activeSectionElement = this.element.querySelector<HTMLElement>('.filters__tag.active');
+        const activeSectionId = activeSectionElement?.dataset?.id;
+        if (activeSectionId){
+            // Hide all sections
+            const protocolsSections = this.element.querySelectorAll<HTMLElement>('.protocols');
+            protocolsSections.forEach( (item, i) => {
+                item.style.display = 'none';
+            })
+            // Show selected section
+            const protocolsSection = this.element.querySelector<HTMLElement>('#protocols-'+activeSectionId);
+            protocolsSection.style.display = 'flex';
+            console.log('this.element', this.element)
+        }
+    }
+
+    private addEventsListener() {
+        const filters = this.element.querySelectorAll<HTMLElement>(".filters__tag");
+        filters.forEach( (item, i) => {
+            item.addEventListener('click', () => {
+                filters.forEach( (filter, j) => {
+                    if (i === j){
+                        filter.className = 'filters__tag label-2 active';
+                    } else {
+                        filter.className = 'filters__tag label-2';
+                    }
+                })
+                this.setActiveSection();
+            })
+        })
+    }
+
     async setupSection() {
         if (this._initialSetup) {
             this._initialSetup = false;
@@ -74,6 +107,8 @@ export default class ProtocolsSection extends Section {
 
         this._setupAnimItems();
         await this._setCurrentDevice();
+        this.addEventsListener();
+        this.setActiveSection();
     }
 
     protected _activate() {

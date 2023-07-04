@@ -197,28 +197,94 @@ export const HomeEnCopy = {
         desc: 'Our vaults are composable by design and seamlessly incorporated into the expansive DeFi ecosystem',
         protocols:  [
             {
-                logoSrc: 'clearpool.svg',
-                linkSrc: 'https://clearpool.finance/',
+                id: 'integrators',
+                label: 'Integrators',
+                logos:[
+                    {
+                        logoSrc: 'clearpool.svg',
+                        linkSrc: 'https://clearpool.finance/',
+                    },
+                    {
+                        logoSrc: 'lido.svg',
+                        linkSrc: 'https://lido.fi/',
+                    },
+                    {
+                        logoSrc: 'enzyme.svg',
+                        linkSrc: 'https://enzyme.finance/',
+                    },
+                    {
+                        logoSrc: 'shapeshift.svg',
+                        linkSrc: 'https://shapeshift.com/',
+                    },
+                    {
+                        logoSrc: 'harvest.png',
+                        linkSrc: 'https://harvest.finance/',
+                    },
+                    {
+                        logoSrc: 'balancer.svg',
+                        linkSrc: 'https://balancer.fi/',
+                    }
+                ]
             },
             {
-                logoSrc: 'lido.svg',
-                linkSrc: 'https://lido.fi/',
+                id: 'investors',
+                label: 'Investors',
+                logos:[
+                    {
+                        logoSrc: 'clearpool.svg',
+                        linkSrc: 'https://clearpool.finance/',
+                    },
+                    {
+                        logoSrc: 'lido.svg',
+                        linkSrc: 'https://lido.fi/',
+                    },
+                    {
+                        logoSrc: 'enzyme.svg',
+                        linkSrc: 'https://enzyme.finance/',
+                    },
+                    {
+                        logoSrc: 'shapeshift.svg',
+                        linkSrc: 'https://shapeshift.com/',
+                    },
+                    {
+                        logoSrc: 'harvest.png',
+                        linkSrc: 'https://harvest.finance/',
+                    },
+                    {
+                        logoSrc: 'balancer.svg',
+                        linkSrc: 'https://balancer.fi/',
+                    }
+                ]
             },
             {
-                logoSrc: 'enzyme.svg',
-                linkSrc: 'https://enzyme.finance/',
-            },
-            {
-                logoSrc: 'shapeshift.svg',
-                linkSrc: 'https://shapeshift.com/',
-            },
-            {
-                logoSrc: 'harvest.png',
-                linkSrc: 'https://harvest.finance/',
-            },
-            {
-                logoSrc: 'balancer.svg',
-                linkSrc: 'https://balancer.fi/',
+                id: 'chains',
+                label: 'Supported chains',
+                logos:[
+                    {
+                        logoSrc: 'clearpool.svg',
+                        linkSrc: 'https://clearpool.finance/',
+                    },
+                    {
+                        logoSrc: 'lido.svg',
+                        linkSrc: 'https://lido.fi/',
+                    },
+                    {
+                        logoSrc: 'enzyme.svg',
+                        linkSrc: 'https://enzyme.finance/',
+                    },
+                    {
+                        logoSrc: 'shapeshift.svg',
+                        linkSrc: 'https://shapeshift.com/',
+                    },
+                    {
+                        logoSrc: 'harvest.png',
+                        linkSrc: 'https://harvest.finance/',
+                    },
+                    {
+                        logoSrc: 'balancer.svg',
+                        linkSrc: 'https://balancer.fi/',
+                    }
+                ]
             }
         ],
     },

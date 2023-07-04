@@ -25,15 +25,39 @@
         margin: 0 auto
         width: gem(682)
         text-align: center
-        margin-bottom: gem(90)
+        margin-bottom: gem(70)
         .title-h2
             margin-bottom: gem(20)
-    .protocols
+    .filters
         width: gem(850)
         margin: 0 auto
         display: flex
+        justify-content: center
+        padding-bottom: gem(60)
+        flex-wrap: wrap
+        &__tag
+            opacity: 0.5
+            margin: 0 gem(10)
+            padding: gem(5) gem(30)
+            border-radius: gem(80)
+            @include unhoverTransition(opacity)
+            @include unhoverTransition(background-color)
+            &:hover,
+            &.active
+                opacity: 1
+                color: #000000
+                background-color: #ffffff
+                @include hoverTransition(opacity)
+                @include hoverTransition(background-color)
+
+    .protocols
+        width: gem(850)
+        margin: 0 auto
+        display: none
         justify-content: space-between
         flex-wrap: wrap
+        &.active
+            display: flex
         &__logo
             width: gem(176)
             height: gem(50)
