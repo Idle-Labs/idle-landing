@@ -21,7 +21,7 @@
             <h2 class="title-h2 anim-item-js"><%=Strings.title %></h2>
             <p class="desc-2 anim-item-js"><%= Strings.desc %></p>
         </div>
-        <div class="filters">
+        <div id="filters-container" class="filters">
             <% Strings.protocols.forEach((item, i) => {
                 const sectionId = item.id;
                 const sectionLabel = item.label;

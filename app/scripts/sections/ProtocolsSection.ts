@@ -69,8 +69,22 @@ export default class ProtocolsSection extends Section {
     }
 
     private setActiveSection() {
-        const activeSectionElement = this.element.querySelector<HTMLElement>('.filters__tag.active');
-        const activeSectionId = activeSectionElement?.dataset?.id;
+
+        const isMobile = window.innerWidth<=480;
+
+        const filtersElement = this.element.querySelector<HTMLElement>('#filters-container');
+        const filtersParent = filtersElement.offsetParent;
+        const activeFilterElement = this.element.querySelector<HTMLElement>('.filters__tag.active');
+
+        if (isMobile){
+            const filterRequiredMargin = (filtersParent.clientWidth-activeFilterElement.clientWidth)/2;
+            const filterOffsetLeft = activeFilterElement.offsetLeft;
+            const missingOffset = filterRequiredMargin-filterOffsetLeft;
+            const filtersMarginLeft = +filtersElement.style.marginLeft.replace('px','');
+            filtersElement.style.marginLeft = (filtersMarginLeft+missingOffset)+'px';
+        }
+
+        const activeSectionId = activeFilterElement?.dataset?.id;
         if (activeSectionId){
             // Hide all sections
             const protocolsSections = this.element.querySelectorAll<HTMLElement>('.protocols');
@@ -84,6 +98,9 @@ export default class ProtocolsSection extends Section {
     }
 
     private addEventsListener() {
+
+        window.addEventListener("resize", () => this.setActiveSection());
+
         const filters = this.element.querySelectorAll<HTMLElement>(".filters__tag");
         filters.forEach( (item, i) => {
             item.addEventListener('click', () => {

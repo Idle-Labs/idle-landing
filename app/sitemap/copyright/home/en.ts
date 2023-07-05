@@ -244,48 +244,46 @@ export const HomeEnCopy = {
                     }
                 ]
             },
-            /*
             {
                 id: 'investors',
                 label: 'Investors',
                 logos:[
                     {
-                        logoSrc: 'investors/consensys.png',
+                        logoSrc: 'consensys-desktop.png',
                         linkSrc: 'https://consensys.net',
                     },
                     {
-                        logoSrc: 'investors/gumi.png',
+                        logoSrc: 'gumi-desktop.png',
                         linkSrc: 'https://www.gumi-cryptos.com',
                     },
                     {
-                        logoSrc: 'investors/green.png',
+                        logoSrc: 'green-desktop.png',
                         linkSrc: 'https://www.greenfield.one',
                     },
                     {
-                        logoSrc: 'investors/dialectic.png',
+                        logoSrc: 'dialectic-desktop.png',
                         linkSrc: 'https://dialectic.ch',
                     },
                     {
-                        logoSrc: 'investors/longhash.png',
+                        logoSrc: 'longhash-desktop.png',
                         linkSrc: 'https://www.longhashventures.com',
                     },
                     {
-                        logoSrc: 'investors/lao.png',
+                        logoSrc: 'lao-desktop.png',
                         linkSrc: 'https://www.thelao.io',
                     },
                     {
-                        logoSrc: 'investors/brcapital.png',
+                        logoSrc: 'brcapital-desktop.png',
                         linkSrc: 'https://br.capital',
                     },
                 ]
             },
-            */
             {
                 id: 'chains',
                 label: 'Supported chains',
                 logos:[
                     {
-                        logoSrc: 'ethereum.svg',
+                        logoSrc: 'ethereum-white.svg',
                         linkSrc: 'https://ethereum.org',
                     },
                     {
