@@ -80,7 +80,6 @@ export default class ProtocolsSection extends Section {
             // Show selected section
             const protocolsSection = this.element.querySelector<HTMLElement>('#protocols-'+activeSectionId);
             protocolsSection.style.display = 'flex';
-            console.log('this.element', this.element)
         }
     }
 

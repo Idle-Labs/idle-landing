@@ -51,38 +51,42 @@
                 @include hoverTransition(background-color)
 
     .protocols
-        width: gem(850)
-        margin: 0 auto
         display: none
-        justify-content: space-between
+        margin: 0 auto
         flex-wrap: wrap
+        justify-content: center
         &.active
             display: flex
         &__logo
-            width: gem(176)
-            height: gem(50)
+            width: 23%
             opacity: 1
             display: flex
+            margin-right: 2%
+            height: gem(110)
+            border-radius: 8px
+            align-items: center
+            justify-content: center
+            background-color: var(--color-tertiary-dark)
             @include unhoverTransition(opacity)
             .logo
-                width: 100%
-                height: auto
                 display: flex
+                height: gem(32)
+                align-items: center
+                justify-content: center
                 svg
                     width: 100%
                     height: 100%
-            &:not(:nth-child(3n))
-                margin-right: gem(50)
+            /*&:not(:nth-child(3n))*/
+                /*margin-right: gem(50)*/
             &:first-child
-                margin-bottom: gem(60)
+                margin-bottom: gem(40)
             &:hover
                 @include hoverTransition(opacity)
                 opacity: 0.6
             img
-                width: 100%
+                width: auto
                 height: 100%
                 display: block
-                min-height: 100%
 @media only screen and (max-width : 1024px)
     .protocols-section
         padding-bottom: gem(133)

@@ -201,88 +201,96 @@ export const HomeEnCopy = {
                 label: 'Integrators',
                 logos:[
                     {
-                        logoSrc: 'clearpool.svg',
-                        linkSrc: 'https://clearpool.finance/',
-                    },
-                    {
-                        logoSrc: 'lido.svg',
-                        linkSrc: 'https://lido.fi/',
-                    },
-                    {
                         logoSrc: 'enzyme.svg',
-                        linkSrc: 'https://enzyme.finance/',
+                        linkSrc: 'https://enzyme.finance',
                     },
                     {
                         logoSrc: 'shapeshift.svg',
-                        linkSrc: 'https://shapeshift.com/',
+                        linkSrc: 'https://shapeshift.com',
                     },
                     {
                         logoSrc: 'harvest.png',
-                        linkSrc: 'https://harvest.finance/',
+                        linkSrc: 'https://harvest.finance',
                     },
                     {
                         logoSrc: 'balancer.svg',
-                        linkSrc: 'https://balancer.fi/',
+                        linkSrc: 'https://balancer.fi',
                     }
                 ]
             },
+            {
+                id: 'yield-sources',
+                label: 'Yield sources',
+                logos:[
+                    {
+                        logoSrc: 'lido.svg',
+                        linkSrc: 'https://lido.fi',
+                    },
+                    {
+                        logoSrc: 'compound.svg',
+                        linkSrc: 'https://compound.finance',
+                    },
+                    {
+                        logoSrc: 'aave.svg',
+                        linkSrc: 'https://aave.com',
+                    },
+                    {
+                        logoSrc: 'morpho.svg',
+                        linkSrc: 'https://morpho.org',
+                    },
+                    {
+                        logoSrc: 'clearpool.svg',
+                        linkSrc: 'https://clearpool.finance',
+                    }
+                ]
+            },
+            /*
             {
                 id: 'investors',
                 label: 'Investors',
                 logos:[
                     {
-                        logoSrc: 'clearpool.svg',
-                        linkSrc: 'https://clearpool.finance/',
+                        logoSrc: 'investors/consensys.png',
+                        linkSrc: 'https://consensys.net',
                     },
                     {
-                        logoSrc: 'lido.svg',
-                        linkSrc: 'https://lido.fi/',
+                        logoSrc: 'investors/gumi.png',
+                        linkSrc: 'https://www.gumi-cryptos.com',
                     },
                     {
-                        logoSrc: 'enzyme.svg',
-                        linkSrc: 'https://enzyme.finance/',
+                        logoSrc: 'investors/green.png',
+                        linkSrc: 'https://www.greenfield.one',
                     },
                     {
-                        logoSrc: 'shapeshift.svg',
-                        linkSrc: 'https://shapeshift.com/',
+                        logoSrc: 'investors/dialectic.png',
+                        linkSrc: 'https://dialectic.ch',
                     },
                     {
-                        logoSrc: 'harvest.png',
-                        linkSrc: 'https://harvest.finance/',
+                        logoSrc: 'investors/longhash.png',
+                        linkSrc: 'https://www.longhashventures.com',
                     },
                     {
-                        logoSrc: 'balancer.svg',
-                        linkSrc: 'https://balancer.fi/',
-                    }
+                        logoSrc: 'investors/lao.png',
+                        linkSrc: 'https://www.thelao.io',
+                    },
+                    {
+                        logoSrc: 'investors/brcapital.png',
+                        linkSrc: 'https://br.capital',
+                    },
                 ]
             },
+            */
             {
                 id: 'chains',
                 label: 'Supported chains',
                 logos:[
                     {
-                        logoSrc: 'clearpool.svg',
-                        linkSrc: 'https://clearpool.finance/',
+                        logoSrc: 'ethereum.svg',
+                        linkSrc: 'https://ethereum.org',
                     },
                     {
-                        logoSrc: 'lido.svg',
-                        linkSrc: 'https://lido.fi/',
-                    },
-                    {
-                        logoSrc: 'enzyme.svg',
-                        linkSrc: 'https://enzyme.finance/',
-                    },
-                    {
-                        logoSrc: 'shapeshift.svg',
-                        linkSrc: 'https://shapeshift.com/',
-                    },
-                    {
-                        logoSrc: 'harvest.png',
-                        linkSrc: 'https://harvest.finance/',
-                    },
-                    {
-                        logoSrc: 'balancer.svg',
-                        linkSrc: 'https://balancer.fi/',
+                        logoSrc: 'polygon.svg',
+                        linkSrc: 'https://polygon.technology',
                     }
                 ]
             }

@@ -35,11 +35,12 @@
         </div>
         <% Strings.protocols.forEach((item, i) => {
             const sectionId = item.id;
+            const folder = 'protocols';
             %>
-            <div id="protocols-<%= sectionId %>" class="protocols">
+            <div id="protocols-<%= sectionId %>" class="container protocols">
                 <%
                 item.logos.forEach((logo, j) => {
-                    const protocolLogoSrc = require(`../../../assets/img/protocols/${logo.logoSrc}`);
+                    const protocolLogoSrc = require(`../../../assets/img/ecosystem/${logo.logoSrc}`);
                     %>
                     <a class="protocols__logo" href="<%= logo.linkSrc %>" target="_blank" aria-label="<%= logo.linkSrc %>">
                         <div class="logo logo-anim-js-<%= j+1 %>">
