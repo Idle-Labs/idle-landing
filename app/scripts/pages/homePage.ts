@@ -30,7 +30,7 @@ export default class HomePage extends CommonPage {
         // AboutSection,
         // DevelopersSection,
         // RewardSection,
-        InvestorsSection, // investors
+        // InvestorsSection, // investors
         CommunitySection,
     ];
 

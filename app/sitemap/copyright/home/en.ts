@@ -249,7 +249,7 @@ export const HomeEnCopy = {
                 label: 'Investors',
                 logos:[
                     {
-                        logoSrc: 'consensys-desktop.png',
+                        logoSrc: 'consensys-desktop.svg',
                         linkSrc: 'https://consensys.net',
                     },
                     {
@@ -257,7 +257,7 @@ export const HomeEnCopy = {
                         linkSrc: 'https://www.gumi-cryptos.com',
                     },
                     {
-                        logoSrc: 'green-desktop.png',
+                        logoSrc: 'green-desktop.svg',
                         linkSrc: 'https://www.greenfield.one',
                     },
                     {
@@ -266,14 +266,14 @@ export const HomeEnCopy = {
                     },
                     {
                         logoSrc: 'longhash-desktop.png',
-                        linkSrc: 'https://www.longhashventures.com',
+                        linkSrc: 'https://www.longhash.vc',
                     },
                     {
                         logoSrc: 'lao-desktop.png',
                         linkSrc: 'https://www.thelao.io',
                     },
                     {
-                        logoSrc: 'brcapital-desktop.png',
+                        logoSrc: 'brcapital-desktop.svg',
                         linkSrc: 'https://br.capital',
                     },
                 ]
@@ -524,7 +524,7 @@ export const HomeEnCopy = {
             },
             {
                 logoSrc: 'longhash',
-                linkSrc: 'https://www.longhashventures.com/',
+                linkSrc: 'https://www.longhash.vc/',
             },
             {
                 logoSrc: 'lao',
