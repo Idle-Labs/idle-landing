@@ -22,10 +22,12 @@ export default class ProtocolsSection extends Section {
     private get _logo6(){ return this.element.querySelector<HTMLElement>('.logo-anim-js-6'); }
 
     private _setupAnimItems(){
-        gsap.set([this._logo1, this._logo2, this._logo3, this._logo4, this._logo5, this._logo6], { autoAlpha: 0 });
+        // gsap.set([this._logo1, this._logo2, this._logo3, this._logo4, this._logo5, this._logo6], { autoAlpha: 0 });
     }
 
     protected _show = () => {
+        return;
+
         if (this._animated) return;
 
         const offsetY = AnimationValues.distance * this._rem;
