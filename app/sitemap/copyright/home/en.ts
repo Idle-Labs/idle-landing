@@ -261,20 +261,12 @@ export const HomeEnCopy = {
                         linkSrc: 'https://www.greenfield.one',
                     },
                     {
-                        logoSrc: 'dialectic-desktop.png',
-                        linkSrc: 'https://dialectic.ch',
-                    },
-                    {
                         logoSrc: 'longhash-desktop.png',
                         linkSrc: 'https://www.longhash.vc',
                     },
                     {
                         logoSrc: 'lao-desktop.png',
                         linkSrc: 'https://www.thelao.io',
-                    },
-                    {
-                        logoSrc: 'brcapital-desktop.svg',
-                        linkSrc: 'https://br.capital',
                     },
                 ]
             },
