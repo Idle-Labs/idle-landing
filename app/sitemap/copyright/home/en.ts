@@ -215,6 +215,10 @@ export const HomeEnCopy = {
                     {
                         logoSrc: 'balancer.svg',
                         linkSrc: 'https://balancer.fi',
+                    },
+                    {
+                        logoSrc: 'popcorndao.png',
+                        linkSrc: 'https://pop.network',
                     }
                 ]
             },
@@ -268,6 +272,10 @@ export const HomeEnCopy = {
                         logoSrc: 'lao-desktop.png',
                         linkSrc: 'https://www.thelao.io',
                     },
+                    {
+                        logoSrc: 'fasanara.svg',
+                        linkSrc: 'https://www.fasanara.com',
+                    },
                 ]
             },
             {
@@ -287,24 +295,24 @@ export const HomeEnCopy = {
         ],
     },
     playersSection: {
-        title: 'Made for the next generation of financial players',
-        subtitle: '',
+        title: 'Ready to partner up?',
+        subtitle: 'Join our Partner Program<br />and get up to <a href="https://docs.idle.finance/products/get-involved" target="_blank">50% fee share</a>',
         points: [
             {
+                btnTitle: 'Join',
                 linkTitle: 'Learn more',
-                btnTitle: 'Fill the form',
                 linkHref: 'https://docs.idle.finance/products/get-involved/integrators-program',
                 btnSrc: 'https://idlefinance.typeform.com/to/PUC7nO?typeform-source=docs.idle.finance',
                 title: 'DeFi<br />integrators',
-                desc: 'Avoid the need to integrate multiple yield sources, and achieve the best risk adjusted yield with just one integration, powered by ERC-4626. Join the Integrators Program and get up to a 50% profit share from the contributed TVL.',
+                desc: 'Avoid the need to integrate multiple yield sources, and achieve the best risk adjusted yield with just one integration, powered by ERC-4626.',
             },
             {
+                btnTitle: 'Join',
                 linkTitle: 'Learn more',
-                btnTitle: 'Fill the form',
                 linkHref: 'https://docs.idle.finance/products/get-involved/institutions-program',
                 btnSrc: 'https://idlefinance.typeform.com/to/Bumd4UjV?typeform-source=docs.idle.finance',
                 title: 'Institutions and<br />Organizations',
-                desc: 'From protocols and DAOs to institutions and companies, Idle DAO provides yield optimization and risk diversification solutions for any profile. Join the Institutions Program and get up to a 50% profit share from the contributed TVL.',
+                desc: 'From DAOs to institutions, Idle DAO provides yield optimization and risk diversification solutions for any treasury manager.',
             },
             // {
             //     title: 'Individual<br />DeFi users',

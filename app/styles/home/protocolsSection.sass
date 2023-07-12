@@ -1,5 +1,8 @@
 .protocols-section
     min-height: gem(640)
+    .container
+        width: gem(840)
+        min-width: gem(840)
     .protocols-background
         .bg-ellipse1
             position: absolute
@@ -59,7 +62,7 @@
         &.active
             display: flex
         &__logo
-            width: 23%
+            width: 30%
             opacity: 1
             display: flex
             margin-right: 2%
@@ -81,7 +84,7 @@
             /*&:not(:nth-child(3n))*/
                 /*margin-right: gem(50)*/
             &:first-child
-                margin-bottom: gem(30)
+                margin-bottom: gem(20)
             &:hover
                 @include hoverTransition(opacity)
                 opacity: 0.6

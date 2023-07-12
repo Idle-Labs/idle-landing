@@ -19,13 +19,19 @@
         </div>
     </div-->
     <div class="container">
-        <div class="text-block">
+        <!--div class="text-block">
             <div class="text-block__subtitle subtitle-anim-js">
                 <span class="subtitle-1"><%= Strings.subtitle %></span>
             </div>
             <h2 class="title-h2 title-anim-js"><%= Strings.title %></h2>
-        </div>
+        </div-->
         <div class="points">
+            <div class="point text-block">
+                <h2 class="text-block__title title-h3 title-anim-js"><%= Strings.title %></h2>
+                <div class="text-block__subtitle subtitle-anim-js">
+                    <span class="subtitle-1"><%= Strings.subtitle %></span>
+                </div>
+            </div>
             <% Strings.points.forEach((item, i) => { ;%>
                 <div class="point">
                     <div
@@ -42,12 +48,12 @@
                     </div>
                     <div class="buttons-block card-desc-anim-js">
                         <div class="button anim-item-js">
-                            <a class="btn btn-main" href="<%= item.btnSrc %>" target="_blank" aria-label="<%= item.btnTitle %>">
+                            <a class="btn btn-main" href="<%= item.btnSrc %>" target="_blank" rel="nofollow noopener noreferrer" aria-label="<%= item.btnTitle %>">
                                 <span class="btn-label btn-label-2"><%= item.btnTitle %></span>
                             </a>
                         </div>
                         <div class="button anim-item-js">
-                            <a class="btn btn-arrow" href="<%= item.linkHref %>" target="_blank" aria-label="<%= item.linkTitle %>">
+                            <a class="btn btn-arrow" href="<%= item.linkHref %>" target="_blank" rel="nofollow noopener noreferrer" aria-label="<%= item.linkTitle %>">
                                 <span class="btn-label btn-label-2"><%= item.linkTitle %></span>
                                 <div class="btn-icon">
                                     <div class="btn-icon__image">

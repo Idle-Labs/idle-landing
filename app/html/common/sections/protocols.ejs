@@ -41,7 +41,7 @@
                 item.logos.forEach((logo, j) => {
                     const protocolLogoSrc = require(`../../../assets/img/ecosystem/${logo.logoSrc}`);
                     %>
-                    <a class="protocols__logo" href="<%= logo.linkSrc %>" target="_blank" aria-label="<%= logo.linkSrc %>">
+                    <a class="protocols__logo" href="<%= logo.linkSrc %>" target="_blank" rel="nofollow noopener noreferrer" aria-label="<%= logo.linkSrc %>">
                         <div class="logo">
                             <img data-src="<%= protocolLogoSrc %>" class="lazy" data-load-priority="3" alt="">
                         </div>
