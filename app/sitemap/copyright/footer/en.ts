@@ -10,8 +10,8 @@ export const FooterEnCopy = {
         links:[
             {
                 target: '_blank',
-                title:'Brand assets',
-                link:'https://docs.idle.finance/other/brand-assets'
+                title:'IPFS App',
+                link:'https://ipfs.idle.finance'
             },
             {
                 target: '_self',
@@ -39,12 +39,16 @@ export const FooterEnCopy = {
                     link: 'https://www.notion.so/idlelabs/ffe8115b7b53489ab0a7f84e656e4bb0?v=916250f54ff24daabad72cf095fd6d88',
                 },
                 {
-                    title: 'How Idle works',
+                    title: 'Products',
                     link: 'https://docs.idle.finance/products/introduction',
                 },
+                // {
+                //     title: 'FAQs',
+                //     link: 'https://docs.idle.finance/other/faqs',
+                // },
                 {
-                    title: 'FAQs',
-                    link: 'https://docs.idle.finance/other/faqs',
+                    title: 'Brand assets',
+                    link: 'https://docs.idle.finance/other/brand-assets',
                 },
                 {
                     title: 'Analytics',
@@ -71,7 +75,7 @@ export const FooterEnCopy = {
             links: [
                 {
                     title: 'Dashboard',
-                    link: 'https://idle.finance/#/governance',
+                    link: 'https://www.tally.xyz/gov/idle',
                 },
                 {
                     title: 'Forum',
@@ -133,10 +137,12 @@ export const FooterEnCopy = {
                     title: 'GitHub',
                     link: 'https://github.com/Idle-Finance/',
                 },
+                /*
                 {
                     title: 'Grants (IGP)',
                     link: 'https://docs.idle.finance/governance/idle-grants-program',
                 },
+                */
             ],
         },
     },

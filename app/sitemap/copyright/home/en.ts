@@ -474,7 +474,7 @@ export const HomeEnCopy = {
         ],
         btnAboutGovernance: {
             btnTitle: 'Enter Governance',
-            btnSrc: 'https://www.tally.xyz/gov/eip155:1:0x3D5Fc645320be0A085A32885F078F7121e5E5375',
+            btnSrc: 'https://www.tally.xyz/gov/idle',
         },
         btnAboutCommunity: {
             btnTitle: 'Visit Forum',
