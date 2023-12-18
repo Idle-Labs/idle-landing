@@ -289,6 +289,10 @@ export const HomeEnCopy = {
                     {
                         logoSrc: 'polygon.svg',
                         linkSrc: 'https://polygon.technology',
+                    },
+                    {
+                        logoSrc: 'optimism.svg',
+                        linkSrc: 'https://www.optimism.io',
                     }
                 ]
             }
