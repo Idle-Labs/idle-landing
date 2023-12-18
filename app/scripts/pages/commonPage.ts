@@ -22,8 +22,8 @@ export default abstract class CommonPage extends Page {
     async loadApiData() {
         if (this._sections[2] && this._sections[1]){
           const [
-            dataResult,
-            dataPolygonResult,
+            pools,
+            chainsTvls,
             dataTokenTerminalResult
           // @ts-ignore
           ] = await Promise.allSettled([
@@ -32,25 +32,50 @@ export default abstract class CommonPage extends Page {
                 Authorization: `Bearer ${IDLE_API_KEY}`
               }
             }),
-            axios.get('https://api-polygon.idle.finance/tvls', {
-              headers: {
-                Authorization: `Bearer ${IDLE_API_KEY}`
-              }
-            }),
-            // axios.get('https://api.tokenterminal.com/v2/internal/metrics/fees?project_ids=idle-finance&interval=365d',{
+            // @ts-ignore
+            Promise.allSettled([
+              axios.get('https://api.idle.finance/tvls', {
+                headers: {
+                  Authorization: `Bearer ${IDLE_API_KEY}`
+                }
+              }),
+              axios.get('https://api-polygon.idle.finance/tvls', {
+                headers: {
+                  Authorization: `Bearer ${IDLE_API_KEY}`
+                }
+              }),
+              axios.get('https://api-optimism.idle.finance/tvls', {
+                headers: {
+                  Authorization: `Bearer ${IDLE_API_KEY}`
+                }
+              }),
+              axios.get('https://api-zkevm.idle.finance/tvls', {
+                headers: {
+                  Authorization: `Bearer ${IDLE_API_KEY}`
+                }
+              }),
+            ]),
+            // axios.get('https://api.tokenterminal.com/v2/internal/metrics/fees?project_ids=idle-finance&interval=180d',{
             //   headers: {
-            //     Authorization: `Bearer b781852e-554f-4c19-bafb-75ff6d45529a`
+            //     Authorization: `Bearer c0e5035a-64f6-4d2c-b5f6-ac1d1cb3da2f`
             //   }
             // })
           ]);
 
+          // console.log('pools', pools)
+          // console.log('chainsTvls', chainsTvls)
           // console.log('dataTokenTerminalResult', dataTokenTerminalResult)
 
-          const data = dataResult.status === 'fulfilled' ? dataResult.value : null;
-          const dataPolygon = dataPolygonResult.status === 'fulfilled' ? dataPolygonResult.value : null;
+          const data = pools.status === 'fulfilled' ? pools.value : null;
+          // const dataPolygon = dataPolygonResult.status === 'fulfilled' ? dataPolygonResult.value : null;
           // const dataTokenTerminal = dataTokenTerminalResult.status === 'fulfilled' ? dataTokenTerminalResult.value : null;
 
-          let totalTvl = 0;
+          const totalTvl = chainsTvls.value.reduce( (totalTvl, chainTvl) => {
+            if (chainTvl.status === 'fulfilled'){
+              return totalTvl + parseFloat(chainTvl.value.data.totalTVL)
+            }
+            return totalTvl
+          }, 0);
           const statsSectionElement = this._sections[2]._config.el;
           const productSectionElement = this._sections[1]._config.el;
 
@@ -66,9 +91,9 @@ export default abstract class CommonPage extends Page {
                 strategy = 'best-yield';
               }
 
-              if (parseFloat(item.tvl)){
-                totalTvl += parseFloat(item.tvl);
-              }
+              // if (parseFloat(item.tvl)){
+              //   totalTvl += parseFloat(item.tvl);
+              // }
 
               if (!strategy || item.isPaused || parseFloat(item.tvl)<10000) return;
 
@@ -231,9 +256,9 @@ export default abstract class CommonPage extends Page {
             */
           }
 
-          if (dataPolygon && dataPolygon.data && parseFloat(dataPolygon.data.totalTVL)){
-            totalTvl += parseFloat(dataPolygon.data.totalTVL);
-          }
+          // if (dataPolygon && dataPolygon.data && parseFloat(dataPolygon.data.totalTVL)){
+          //   totalTvl += parseFloat(dataPolygon.data.totalTVL);
+          // }
 
           statsSectionElement.querySelector('#total-locked-value').innerHTML = '$'+abbreviateNumber(totalTvl,1);
         }

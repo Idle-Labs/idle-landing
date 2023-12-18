@@ -327,7 +327,7 @@ export const HomeEnCopy = {
             subtitle: 'Total Value Locked (TVL)',
         },
         interestValue: {
-            title: '$9.5M',
+            title: '+$10M',
             subtitle: 'Interest generated for LPs',
         },
         gasValue: {
