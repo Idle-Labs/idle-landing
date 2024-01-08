@@ -50,6 +50,36 @@ const PagePP: SitePage = {
     },
 };
 
+const PageRdS: SitePage = {
+    id: 'risks-disclosure-statement',
+    templateName: 'app/html/risks-disclosure-statement.ejs',
+    entryPoint: './app/scripts/pages/tosPage.ts',
+    output: {
+        locale: 'en',
+        copy: undefined,
+        image: 'og-image.png',
+        href: '/risks-disclosure-statement',
+        path: 'risks-disclosure-statement.html',
+        title: 'Idle Finance - Risks Disclosure Statement',
+        description: 'Idle offers first-rate yield optimization and risk tranching strategies. Get the best yield by using, integrating or building on top of Idle’s products.'
+    },
+};
+
+const PageLegalNotice: SitePage = {
+    id: 'legal-notice',
+    templateName: 'app/html/legal-notice.ejs',
+    entryPoint: './app/scripts/pages/tosPage.ts',
+    output: {
+        locale: 'en',
+        copy: undefined,
+        image: 'og-image.png',
+        href: '/legal-notice',
+        path: 'legal-notice.html',
+        title: 'Idle Finance - Legal Notice',
+        description: 'Idle offers first-rate yield optimization and risk tranching strategies. Get the best yield by using, integrating or building on top of Idle’s products.'
+    },
+};
+
 const Page404: SitePage = {
     id: '404',
     entryPoint: [
@@ -116,9 +146,11 @@ const pages: SitePage[] = [
     Home,
     PagePP,
     PageTos,
+    PageRdS,
     Page404,
     NoScript,
     NotSupported,
+    PageLegalNotice
 ];
 
 export default pages;

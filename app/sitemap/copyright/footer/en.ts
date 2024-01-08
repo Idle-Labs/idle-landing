@@ -24,6 +24,16 @@ export const FooterEnCopy = {
                 link: '/privacy-policy',
             },
             {
+                target: '_self',
+                title: 'Risks Disclosure Statement',
+                link: '/risks-disclosure-statement',
+            },
+            {
+                target: '_self',
+                title: 'Legal Notice',
+                link: '/legal-notice',
+            },
+            {
                 target: '_blank',
                 title: 'Cookie Policy',
                 link: 'https://www.iubenda.com/privacy-policy/61211749/cookie-policy',
