@@ -24,16 +24,6 @@ export const FooterEnCopy = {
                 link: '/privacy-policy',
             },
             {
-                target: '_self',
-                title: 'Risks Disclosure Statement',
-                link: '/risks-disclosure-statement',
-            },
-            {
-                target: '_self',
-                title: 'Legal Notice',
-                link: '/legal-notice',
-            },
-            {
                 target: '_blank',
                 title: 'Cookie Policy',
                 link: 'https://www.iubenda.com/privacy-policy/61211749/cookie-policy',
@@ -137,7 +127,7 @@ export const FooterEnCopy = {
             ],
         },
         developers: {
-            title: 'Developers',
+            title: 'Resources',
             links: [
                 {
                     title: 'Documentation',
@@ -146,6 +136,21 @@ export const FooterEnCopy = {
                 {
                     title: 'GitHub',
                     link: 'https://github.com/Idle-Finance/',
+                },
+                {
+                    target: '_self',
+                    title: 'Risks Disclosure',
+                    link: '/risks-disclosure-statement',
+                },
+                {
+                    target: '_self',
+                    title: 'Legal Notice',
+                    link: '/legal-notice',
+                },
+                {
+                    target: '_self',
+                    title: 'Restricted Persons',
+                    link: '/restricted-persons',
                 },
                 /*
                 {

@@ -80,6 +80,21 @@ const PageLegalNotice: SitePage = {
     },
 };
 
+const RestrictedPersons: SitePage = {
+    id: 'restricted-persons',
+    templateName: 'app/html/restricted-persons.ejs',
+    entryPoint: './app/scripts/pages/tosPage.ts',
+    output: {
+        locale: 'en',
+        copy: undefined,
+        image: 'og-image.png',
+        href: '/restricted-persons',
+        path: 'restricted-persons.html',
+        title: 'Idle Finance - Restricted Persons',
+        description: 'Idle offers first-rate yield optimization and risk tranching strategies. Get the best yield by using, integrating or building on top of Idle’s products.'
+    },
+};
+
 const Page404: SitePage = {
     id: '404',
     entryPoint: [
@@ -150,7 +165,8 @@ const pages: SitePage[] = [
     Page404,
     NoScript,
     NotSupported,
-    PageLegalNotice
+    PageLegalNotice,
+    RestrictedPersons
 ];
 
 export default pages;
