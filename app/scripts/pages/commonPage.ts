@@ -76,6 +76,7 @@ export default abstract class CommonPage extends Page {
             }
             return totalTvl
           }, 0);
+          
           const statsSectionElement = this._sections[2]._config.el;
           const productSectionElement = this._sections[1]._config.el;
 
@@ -114,7 +115,11 @@ export default abstract class CommonPage extends Page {
               try {
                 tokenImg.src = require(`../../assets/img/tokens/${item.tokenName.toUpperCase()}.svg`);
               } catch (err) {
-                tokenImg.src = require(`../../assets/img/tokens/${item.tokenName.toUpperCase()}.png`);
+                try {
+                  tokenImg.src = require(`../../assets/img/tokens/${item.tokenName.toUpperCase()}.png`);
+                } catch (err) {
+                  tokenImg.src = require(`../../assets/img/tokens/ETH.svg`);
+                }
               }
 
               // Add token image
