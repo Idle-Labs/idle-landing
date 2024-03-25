@@ -9,6 +9,25 @@ import ScrollTopButton from 'app/modules/scrollTopButton';
 import { abbreviateNumber } from "js-abbreviation-number";
 import MobileMenu, { createMobileMenu } from 'app/modules/mobile-menu';
 
+
+function formatMoney (amount: number, decimalCount = 2, decimal = ".", thousands = ","): string | null {
+  try {
+    decimalCount = Math.abs(decimalCount);
+    decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+    const negativeSign = amount < 0 ? "-" : "";
+
+    // @ts-ignore
+    let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+    let j = (i.length > 3) ? i.length % 3 : 0;
+
+    // @ts-ignore
+    return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+  } catch (e) {
+    return null;
+  }
+}
+
 export default abstract class CommonPage extends Page {
     private _mobileMenu: MobileMenu;
     private _scrollTopButton: ScrollTopButton;
@@ -17,6 +36,74 @@ export default abstract class CommonPage extends Page {
         super.scroll();
 
         stickyHeader.update(this.scrollPosition);
+    }
+
+    setupTextCarousel() {
+        var TxtRotate = function(el, toRotate, period) {
+          this.toRotate = toRotate;
+          this.el = el;
+          this.loopNum = 0;
+          this.period = parseInt(period, 10) || 2000;
+          this.txt = '';
+          this.tick();
+          this.isDeleting = false;
+        };
+
+        TxtRotate.prototype.tick = function() {
+          var i = this.loopNum % this.toRotate.length;
+          var fullTxt = this.toRotate[i];
+
+          if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+          } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+          }
+
+          this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+          var that = this;
+          var delta;
+          // var delta = 300 - Math.random() * 100;
+
+          // if (this.isDeleting) { delta /= 2; }
+
+          // Finished typing
+          if (!this.isDeleting && this.txt === fullTxt) {
+            delta = this.period;
+            this.isDeleting = true;
+          // Finished deleting
+          } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.loopNum++;
+            delta = 500;
+          } else {
+            delta = 150;
+          }
+
+          if (this.isDeleting) { delta /= 2; }
+
+          setTimeout(function() {
+            that.tick();
+          }, delta);
+        };
+
+        window.onload = function() {
+          var elements = document.getElementsByClassName('txt-rotate');
+          for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-rotate');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtRotate(elements[i], JSON.parse(toRotate), period);
+            }
+          }
+          // INJECT CSS
+          /*
+          var css = document.createElement("style");
+          css.type = "text/css";
+          css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+          document.body.appendChild(css);
+          */
+        };
     }
 
     async loadApiData() {
@@ -77,7 +164,7 @@ export default abstract class CommonPage extends Page {
             return totalTvl
           }, 0);
           
-          const statsSectionElement = this._sections[2]._config.el;
+          // const statsSectionElement = this._sections[2]._config.el;
           const productSectionElement = this._sections[1]._config.el;
 
           if (data && data.data){
@@ -265,7 +352,7 @@ export default abstract class CommonPage extends Page {
           //   totalTvl += parseFloat(dataPolygon.data.totalTVL);
           // }
 
-          statsSectionElement.querySelector('#total-locked-value').innerHTML = '$'+abbreviateNumber(totalTvl,1);
+          document.querySelector('#total-locked-value').innerHTML = '$'+formatMoney(totalTvl, 0);
         }
 
         const handleFormSubmit = (e) => {
@@ -320,6 +407,7 @@ export default abstract class CommonPage extends Page {
         this._mobileMenu = createMobileMenu();
         this._scrollTopButton = new ScrollTopButton();
 
+        this.setupTextCarousel();
         this.loadApiData();
 
         anchors(true, this._mobileMenu);

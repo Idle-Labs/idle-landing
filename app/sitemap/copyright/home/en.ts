@@ -3,7 +3,7 @@ import { span } from './../../helpers';
 
 export const HomeEnCopy = {
     heroSection: {
-        title: 'The Yield Automation Protocol',
+        title: 'Your unique edge for<br /><span class="txt-rotate" data-period="3000" data-rotate=\'[ "sustainable", "risk-adjusted", "aggregated", "boosted" ]\'></span> Yields',
         desc: 'DeFi yields aren’t easy to manage.<br />Idle makes you feel like they are',
         discover: 'Discover more',
         btnEnter: {
@@ -14,6 +14,32 @@ export const HomeEnCopy = {
             btnTitle: 'Get involved',
             btnSrc: 'https://docs.idle.finance/products/get-involved',
         },
+        investors:[
+            {
+                logoSrc: 'consensys-desktop.svg',
+                linkSrc: 'https://consensys.net',
+            },
+            {
+                logoSrc: 'gumi-desktop.png',
+                linkSrc: 'https://www.gumi-cryptos.com',
+            },
+            {
+                logoSrc: 'green-desktop.svg',
+                linkSrc: 'https://www.greenfield.one',
+            },
+            {
+                logoSrc: 'longhash-desktop.png',
+                linkSrc: 'https://www.longhash.vc',
+            },
+            {
+                logoSrc: 'lao-desktop.png',
+                linkSrc: 'https://www.thelao.io',
+            },
+            {
+                logoSrc: 'fasanara.svg',
+                linkSrc: 'https://www.fasanara.com',
+            },
+        ]
     },
     productSection: {
         title: 'Automated, diversified<br />DeFi yields',

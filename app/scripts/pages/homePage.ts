@@ -22,7 +22,7 @@ export default class HomePage extends CommonPage {
     _sectionTypes: SectionCtor[] = [
         HeroSection,
         ProductSection,
-        StatsSection,
+        // StatsSection,
         PlayersSection,
         // IntegrationSection,
         ProtocolsSection,

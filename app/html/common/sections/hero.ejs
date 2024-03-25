@@ -27,57 +27,121 @@
             </picture>
         </div>
     </div>
-    <div class="video-block">
-        <div class="video-block__placeholder">
-            <img
-                class="img-placeholder imagePreloader0"
-                alt="placeholder image"
-                data-load-priority="0"
-                src="../../../assets/img/video-placeholder.png"
-            >
-        </div>
-        <video class="video-block__hero-video video-js lazy" playsinline autoplay loop muted data-load-priority="0" title="Idle finance">
-          <source type='video/mp4; codecs="hvc1"' src="#"
-            data-src='../../../assets/video/hero-mobile.mov'
-            data-src481="<%= require('../../../assets/video/hero-tablet.mov') %>"
-            data-src1025="<%= require('../../../assets/video/hero-desktop.mov') %>"
-          />
-          <source type='video/webm; codecs="vp9, vorbis"' src="#"
-            data-src='../../../assets/video/hero-mobile.webm'
-            data-src481="<%= require('../../../assets/video/hero-tablet.webm') %>"
-            data-src1025="<%= require('../../../assets/video/hero-desktop.webm') %>"
-          />
-          Your browser does not support the video tag.
-        </video>
-    </div>
     <div class="container">
         <div class="hero-text">
             <div class="text-block">
                 <h1 class="title-h1 title-anim-js"><%= Strings.title %></h1>
-                <p class="desc-1 anim-item-js"><%= Strings.desc %></p>
             </div>
-
-            <div class="buttons-block">
-                <div class="button anim-item-js">
-                    <a class="btn btn-main" href="<%= Strings.btnEnter.btnSrc %>" target="_blank" aria-label="<%= Strings.btnEnter.btnTitle %>">
-                        <span class="btn-label btn-label-2"><%= Strings.btnEnter.btnTitle %></span>
-                    </a>
+        </div>
+        <div class="vaults-container">
+            <div class="vault__card">
+                <div class="vault__header">
+                    <img class="logo" src="https://app.idle.finance/images/borrowers/portofino.svg" alt="logo">
+                    <div class="title">
+                        <h2 class="title-h4">Portofino Technologies</h2>
+                        <p class="desc-3">Institutional Credit</p>
+                    </div>
                 </div>
-                <div class="button anim-item-js">
-                    <a class="btn btn-arrow" href="<%= Strings.btnRead.btnSrc %>" target="_blank" aria-label="<%= Strings.btnRead.btnTitle %>">
-                        <span class="btn-label btn-label-2"><%= Strings.btnRead.btnTitle %></span>
-                        <div class="btn-icon">
-                            <div class="btn-icon__image">
-                                <%= require('../../../assets/img/icons/arrow.svg?raw') %>
-                            </div>
+                <div class="vault__performance">
+                    <p class="desc-3">Up to</p>
+                    <p class="title-h3">40% <span class="text-gray">APY</span></p>
+                </div>
+                <div class="vault__footer">
+                    <div class="footer-left">
+                        <p class="tvl subtitle-3">$13,250,232 TVL</p>
+                        <div class="tokens">
+                            <img class="token" src="../../../assets/img/tokens/USDT.svg" alt="USDT" />
+                            <img class="token" src="../../../assets/img/tokens/USDC.svg" alt="USDC" />
+                            <img class="token" src="../../../assets/img/tokens/DAI.svg" alt="DAI" />
                         </div>
-                    </a>
+                    </div>
+                    <div class="footer-right">
+                        <button class="splide__arrow">
+                            <%= require('../../../assets/img/product/arrowRight.svg?raw') %>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="vault__card">
+                <div class="vault__header">
+                    <img class="logo" src="https://app.idle.finance/images/borrowers/portofino.svg" alt="logo">
+                    <div class="title">
+                        <h2 class="title-h4">Portofino Technologies</h2>
+                        <p class="desc-3">Institutional Credit</p>
+                    </div>
+                </div>
+                <div class="vault__performance">
+                    <p class="desc-3">Up to</p>
+                    <p class="title-h3">40% <span class="text-gray">APY</span></p>
+                </div>
+                <div class="vault__footer">
+                    <div class="footer-left">
+                        <p class="tvl subtitle-3">$13,250,232 TVL</p>
+                        <div class="tokens">
+                            <img class="token" src="../../../assets/img/tokens/USDT.svg" alt="USDT" />
+                            <img class="token" src="../../../assets/img/tokens/USDC.svg" alt="USDC" />
+                            <img class="token" src="../../../assets/img/tokens/DAI.svg" alt="DAI" />
+                        </div>
+                    </div>
+                    <div class="footer-right">
+                        <button class="splide__arrow">
+                            <%= require('../../../assets/img/product/arrowRight.svg?raw') %>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="vault__card">
+                <div class="vault__header">
+                    <img class="logo" src="https://app.idle.finance/images/borrowers/portofino.svg" alt="logo">
+                    <div class="title">
+                        <h2 class="title-h4">Portofino Technologies</h2>
+                        <p class="desc-3">Institutional Credit</p>
+                    </div>
+                </div>
+                <div class="vault__performance">
+                    <p class="desc-3">Up to</p>
+                    <p class="title-h3">40% <span class="text-gray">APY</span></p>
+                </div>
+                <div class="vault__footer">
+                    <div class="footer-left">
+                        <p class="tvl subtitle-3">$13,250,232 TVL</p>
+                        <div class="tokens">
+                            <img class="token" src="../../../assets/img/tokens/USDT.svg" alt="USDT" />
+                            <img class="token" src="../../../assets/img/tokens/USDC.svg" alt="USDC" />
+                            <img class="token" src="../../../assets/img/tokens/DAI.svg" alt="DAI" />
+                        </div>
+                    </div>
+                    <div class="footer-right">
+                        <button class="splide__arrow">
+                            <%= require('../../../assets/img/product/arrowRight.svg?raw') %>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="hero-discover-more anchor-item" data-anchor="product">
+    <div class="hero__footer">
+        <div class="footer__investors">
+            <%
+            Strings.investors.forEach((logo, j) => {
+                const protocolLogoSrc = require(`../../../assets/img/ecosystem/${logo.logoSrc}`);
+                %>
+                <a class="investor__logo" href="<%= logo.linkSrc %>" target="_blank" rel="nofollow noopener noreferrer" aria-label="<%= logo.linkSrc %>">
+                    <img data-src="<%= protocolLogoSrc %>" class="lazy" data-load-priority="3" alt="">
+                </a>
+                <%
+            })
+            %>
+        </div>
+        <div class="footer__stats">
+            <div class="stats__value">
+                <p class="subtitle-2">TVL</p>
+                <h3 id="total-locked-value" class="title-h3">$13,250,232 TVL</h3>
+            </div>
+        </div>
+    </div>
+    <!--div class="hero-discover-more anchor-item" data-anchor="product">
         <%= require('../../../assets/img/icons/arrowDown.svg?raw') %>
         <a href="#" class="desc-2"><%= Strings.discover %></a>
-    </div>
+    </div-->
 </section>

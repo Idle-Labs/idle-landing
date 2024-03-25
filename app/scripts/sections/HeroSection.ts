@@ -25,16 +25,16 @@ export default class HeroSection extends Section {
     private get _discoverMore(){ return this.element.querySelector<HTMLElement>('.hero-discover-more'); }
 
     async setupVideo() {
-        if (this.element.querySelector('.video-js')) {
-            this._video = await new Video({ el: this.element.querySelector('.video-js') }).setup();
-        }
+        // if (this.element.querySelector('.video-js')) {
+        //     this._video = await new Video({ el: this.element.querySelector('.video-js') }).setup();
+        // }
     }
 
     private _setupAnimItems() {
         this._splitText = new SplitText(this._title, { type: 'lines' });
         this._titleLines = this._splitText.lines;
 
-        gsap.set([this._titleLines, this._animationItems, this._discoverMore], { autoAlpha: 0 });
+        gsap.set([this._titleLines], { autoAlpha: 0 });
     }
 
     protected _show = () => {
