@@ -3,7 +3,7 @@ import { span } from './../../helpers';
 
 export const HomeEnCopy = {
     heroSection: {
-        title: 'Your unique edge for<br /><span class="txt-rotate" data-period="3000" data-rotate=\'[ "DeFi", "Optimized", "Risk-adjusted", "Institutional", "Leveraged", "Sustainable" ]\'></span> Yields',
+        title: 'Your Unique Edge For<div class="second-row"><span class="txt-rotate" data-period="3000" data-rotate=\'[ "On-chain", "Optimized", "Risk-adjusted", "Institutional", "Leveraged", "Sustainable" ]\'></span><span class="static">Yields</span></div>',
         desc: 'DeFi yields aren’t easy to manage.<br />Idle makes you feel like they are',
         discover: 'Discover more',
         btnEnter: {

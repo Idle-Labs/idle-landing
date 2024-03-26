@@ -112,17 +112,29 @@ export default abstract class CommonPage extends Page {
     async loadApiData() {
       if (this._sections[2] && this._sections[1]){
         const [
-          pools,
+          chainsPools,
           chainsTvls,
           dataTokenTerminalResult
         // @ts-ignore
         ] = await Promise.allSettled([
-          axios.get('https://api.idle.finance/pools', {
-          // axios.get('http://localhost:3333/pools', {
-            headers: {
-              Authorization: `Bearer ${IDLE_API_KEY}`
-            }
-          }),
+          // axios.get('https://api.idle.finance/pools', {
+          Promise.allSettled([
+            axios.get('http://localhost:3333/pools', {
+              headers: {
+                Authorization: `Bearer ${IDLE_API_KEY}`
+              }
+            }).then( r => ({...r, chainName: 'mainnet'}) ),
+            axios.get('http://localhost:3335/pools', {
+              headers: {
+                Authorization: `Bearer ${IDLE_API_KEY}`
+              }
+            }).then( r => ({...r, chainName: 'zkevm'}) ),
+            axios.get('http://localhost:3336/pools', {
+              headers: {
+                Authorization: `Bearer ${IDLE_API_KEY}`
+              }
+            }).then( r => ({...r, chainName: 'optimism'}) ),
+          ])
           // @ts-ignore
           Promise.allSettled([
             axios.get('https://api.idle.finance/tvls', {
@@ -154,10 +166,9 @@ export default abstract class CommonPage extends Page {
         ]);
 
         // console.log('pools', pools)
+        // console.log('chainsPools', chainsPools)
         // console.log('chainsTvls', chainsTvls)
         // console.log('dataTokenTerminalResult', dataTokenTerminalResult)
-
-        const data = pools.status === 'fulfilled' ? pools.value : null;
         // const dataPolygon = dataPolygonResult.status === 'fulfilled' ? dataPolygonResult.value : null;
         // const dataTokenTerminal = dataTokenTerminalResult.status === 'fulfilled' ? dataTokenTerminalResult.value : null;
 
@@ -172,34 +183,42 @@ export default abstract class CommonPage extends Page {
         const heroSectionElement = this._sections[0]._config.el;
         const productSectionElement = this._sections[1]._config.el;
 
-        if (data && data.data){
+        // console.log('data', data)
+        const pools = chainsPools.status === 'fulfilled' ? chainsPools.value : null;
+        if (pools){
+          const aggregatedVaults = pools.reduce( (aggregatedVaults, {status, value}) => {
+            if (status === 'rejected') return aggregatedVaults
+            value.data.forEach( vault => {
+              if (!vault.vaultType) return aggregatedVaults
 
-          const insertedItems = {};
-
-          const aggregatedVaults = data.data.reduce( (aggregatedVaults, vault) => {
-            if (!vault.vaultType) return aggregatedVaults
-
-            const vaultKey = `${vault.protocolName}_${vault.borrowerName}`
-            if (!aggregatedVaults[vaultKey]){
-              aggregatedVaults[vaultKey] = {
-                ...vault,
-                weight: 0,
-                maxApy: 0,
-                tokens: [],
-                chains: [],
-                totalTvl: 0,
+              const vaultKey = `${vault.protocolName}_${vault.borrowerName}`
+              if (!aggregatedVaults[vaultKey]){
+                aggregatedVaults[vaultKey] = {
+                  ...vault,
+                  weight: 0,
+                  maxApy: 0,
+                  tokens: [],
+                  chains: [],
+                  totalTvl: 0,
+                }
               }
-            }
 
-            if (!aggregatedVaults[vaultKey].tokens.includes(vault.tokenName)){
-              aggregatedVaults[vaultKey].tokens.push(vault.tokenName)
-            }
-            // aggregatedVaults[vaultKey].chains.push()
-            aggregatedVaults[vaultKey].maxApy = Math.max(aggregatedVaults[vaultKey].maxApy, vault.apr)
-            aggregatedVaults[vaultKey].totalTvl = aggregatedVaults[vaultKey].totalTvl+parseFloat(vault.tvl)
-            aggregatedVaults[vaultKey].weight = aggregatedVaults[vaultKey].totalTvl*aggregatedVaults[vaultKey].maxApy
+              if (!aggregatedVaults[vaultKey].chains.includes(value.chainName)){
+                aggregatedVaults[vaultKey].chains.push(value.chainName)
+              }
+
+              if (!aggregatedVaults[vaultKey].tokens.includes(vault.tokenName)){
+                aggregatedVaults[vaultKey].tokens.push(vault.tokenName)
+              }
+              // aggregatedVaults[vaultKey].chains.push()
+              aggregatedVaults[vaultKey].maxApy = Math.max(aggregatedVaults[vaultKey].maxApy, vault.apr)
+              aggregatedVaults[vaultKey].totalTvl = aggregatedVaults[vaultKey].totalTvl+parseFloat(vault.tvl)
+              aggregatedVaults[vaultKey].weight = aggregatedVaults[vaultKey].totalTvl*aggregatedVaults[vaultKey].maxApy
+            })
             return aggregatedVaults
           }, {})
+
+          // console.log('aggregatedVaults', aggregatedVaults)
 
           const bestVaultsByType = sortArrayByKey(Object.values(aggregatedVaults), 'weight', 'desc').reduce( (bestVaultsByType, vault) => {
             if (!bestVaultsByType[vault.vaultType]){
@@ -222,19 +241,19 @@ export default abstract class CommonPage extends Page {
             heroVaultsCard.querySelector(".vault__header .title-h4").innerHTML = vault.borrowerName || vault.protocolName
             heroVaultsCard.querySelector(".vault__header .desc-3").innerHTML = vault.vaultType
 
-            let apr = parseFloat(vault.maxApy).toFixed(2)+'%'
+            let apr = parseFloat(vault.maxApy).toFixed(1)
             if (parseFloat(vault.maxApy)>9999){
-              apr = '>9999%';
+              apr = '>9999';
             }
-            heroVaultsCard.querySelector(".vault__performance .title-h3").innerHTML = `${apr} <span class="text-gray">APY</span>`
-            heroVaultsCard.querySelector(".vault__footer .tvl").innerHTML = '$'+formatMoney(vault.tvl, 0)
+            heroVaultsCard.querySelector(".vault__performance .title-h3").innerHTML = `${apr}<small>%</small> <span class="text-gray">APY</span>`
+            heroVaultsCard.querySelector(".vault__footer .tvl .subtitle-3").innerHTML = '$'+formatMoney(vault.tvl, 0)
 
             // Add tokens
             const tokensContainer = heroVaultsCard.querySelector(".vault__footer .tokens")
             tokensContainer.innerHTML = '';
-            vault.tokens.forEach( (tokenName) => {
+            vault.tokens.forEach( (tokenName, index) => {
               const tokenImg = document.createElement("img");
-              tokenImg.className="token__logo";
+              tokenImg.className="logo";
 
               try {
                 tokenImg.src = require(`../../assets/img/tokens/${tokenName.toUpperCase()}.svg`);
@@ -246,11 +265,42 @@ export default abstract class CommonPage extends Page {
                 }
               }
 
+              if (index){
+                tokenImg.style="margin-left: -0.04rem";
+              }
+
               // Add token image
               tokensContainer.append(tokenImg);
             })
+
+            // Add chains
+            const chainsContainer = heroVaultsCard.querySelector(".vault__footer .chains")
+            chainsContainer.innerHTML = '';
+            vault.chains.forEach( (chainName, index) => {
+              const chainImg = document.createElement("img");
+              chainImg.className="logo";
+
+              try {
+                chainImg.src = require(`../../assets/img/chains/${chainName}.svg`);
+              } catch (err) {
+                try {
+                  chainImg.src = require(`../../assets/img/chains/${chainName}.png`);
+                } catch (err) {
+                  chainImg.src = require(`../../assets/img/chains/ETH.svg`);
+                }
+              }
+
+              if (index){
+                chainImg.style="margin-left: -0.04rem";
+              }
+
+              // Add token image
+              chainsContainer.append(chainImg);
+            })
           })
 
+          /*
+          const insertedItems = {};
           data.data.forEach( (item, index) => {
             let strategy = null;
             if (/Tranche/i.test(item.strategy)) {
@@ -377,6 +427,8 @@ export default abstract class CommonPage extends Page {
           Object.keys(insertedItems).forEach( strategy => {
             startCarousel(strategy)
           })
+
+          */
           /*
           const bestTokens = data.data.reduce( (output,item) => {
             let key = null;

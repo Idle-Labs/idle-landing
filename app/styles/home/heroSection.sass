@@ -50,9 +50,16 @@
                 text-align: center
                 font-size: gem(56)
                 margin-bottom: gem(24)
+                .second-row
+                    gap: 0.2rem
+                    width: auto
+                    display: flex
+                    flex-direction: row
+                    justify-content: center
                 .txt-rotate
                     color: #6AE4FF
-                    width: gem(350)
+                    /*width: gem(350)*/
+                    text-align: right
                     display: inline-block
             .desc-1
                 margin-bottom: gem(40)
@@ -68,22 +75,22 @@
         .vault__card
             display: flex
             width: gem(300)
-            padding: gem(12)
             cursor: pointer
+            padding: gem(12)
             border-radius: gem(16)
             flex-direction: column
             background-color: #202A3E
             @include hoverTransition(background)
             &:hover
-                background-color: #202A3E80
+                background-color: #202A3E85
             .vault__header
                 display: flex
                 flex-direction: row
                 align-items: flex-start
                 margin-bottom: gem(16)
                 .vault__logo
-                    width: gem(42)
-                    height: gem(42)
+                    width: gem(38)
+                    height: gem(38)
                     margin-right: gem(8)
                 .title
                     min-width: 0
@@ -102,6 +109,8 @@
                         color: #CDD0D6
             .vault__performance
                 margin-bottom: gem(16)
+                small
+                    font-size: 80%
                 .desc-3
                     line-height: 1
                     color: #CDD0D6
@@ -113,35 +122,56 @@
                 align-items: center
                 justify-content: space-between
                 .footer-left
+                    gap: gem(8)
                     display: flex
                     flex-direction: row
                     align-items: center
                     justify-content: flex-start
                     .tvl
-                        height: gem(26)
-                        padding: gem(4) gem(8)
-                        background-color: #404F6A
-                        border-radius: gem(24)
-                    .tokens
-                        height: gem(26)
+                        gap: gem(2)
                         display: flex
-                        padding: gem(2)
-                        margin-left: gem(8)
+                        height: gem(26)
+                        flex-direction: row
+                        align-items: center
+                        padding: gem(4) gem(8)
+                        border-radius: gem(24)
+                        background-color: #404F6A
+                        justify-content: flex-start
+                        .tokens
+                            padding-top: 0
+                            padding-left: 0
+                            padding-right: 0
+                            padding-bottom: 0
+                            background-color: none
+                    .rounded-gray
+                        display: flex
+                        padding-top: gem(4)
                         align-items: center
                         flex-direction: row
-                        padding-left: gem(10)
+                        padding-left: gem(6)
+                        padding-right: gem(6)
                         border-radius: gem(24)
+                        padding-bottom: gem(4)
                         justify-content: center
                         background-color: #404F6A
-                        .token__logo
-                            left: gem(-4)
+                    .logos
+                        display: flex
+                        height: gem(18)
+                        align-items: center
+                        flex-direction: row
+                        justify-content: center
+                        &.tokens
+                            margin-right: gem(6)
+                            padding-right: gem(6)
+                            border-right: 1px solid #bbbfc5
+                        .logo
                             width: gem(17)
-                            height: gem(17)
-                            position: relative
+                            height: auto
+                            aspect-ratio: 1
                 .footer-right
                     .splide__arrow
                         border: none
-                        opacity: 0.7
+                        opacity: 0.9
                         display: flex
                         width: gem(26)
                         height: gem(26)
@@ -279,12 +309,24 @@
             width: gem(480)
             height: gem(430)
         .container
-            padding-top: gem(287)
+            padding-top: gem(0)
         .hero-text
             .text-block
                 width: 100%
                 .title-h1
+                    line-height: 1.1
+                    font-size: gem(50)
                     margin-bottom: gem(13)
+                    .second-row
+                        gap: 0
+                        width: auto
+                        display: flex
+                        margin-top: gem(5);
+                        flex-direction: column
+                        justify-content: center
+                    .txt-rotate
+                        height: gem(55)
+                        text-align: center
                 .desc-1
                     width: 100%
                     margin-bottom: gem(32)
