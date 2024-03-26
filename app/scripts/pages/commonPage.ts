@@ -214,6 +214,8 @@ export default abstract class CommonPage extends Page {
               aggregatedVaults[vaultKey].maxApy = Math.max(aggregatedVaults[vaultKey].maxApy, vault.apr)
               aggregatedVaults[vaultKey].totalTvl = aggregatedVaults[vaultKey].totalTvl+parseFloat(vault.tvl)
               aggregatedVaults[vaultKey].weight = aggregatedVaults[vaultKey].totalTvl*aggregatedVaults[vaultKey].maxApy
+
+              console.log(vaultKey, parseFloat(vault.tvl), aggregatedVaults[vaultKey].totalTvl)
             })
             return aggregatedVaults
           }, {})
@@ -246,7 +248,7 @@ export default abstract class CommonPage extends Page {
               apr = '>9999';
             }
             heroVaultsCard.querySelector(".vault__performance .title-h3").innerHTML = `${apr}<small>%</small> <span class="text-gray">APY</span>`
-            heroVaultsCard.querySelector(".vault__footer .tvl .subtitle-3").innerHTML = '$'+formatMoney(vault.tvl, 0)
+            heroVaultsCard.querySelector(".vault__footer .tvl .subtitle-3").innerHTML = '$'+formatMoney(vault.totalTvl, 0)
 
             // Add tokens
             const tokensContainer = heroVaultsCard.querySelector(".vault__footer .tokens")
