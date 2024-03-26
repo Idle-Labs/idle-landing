@@ -36,7 +36,7 @@
         <div class="vaults-container">
             <div class="vault__card">
                 <div class="vault__header">
-                    <img class="logo" src="https://app.idle.finance/images/borrowers/portofino.svg" alt="logo">
+                    <img class="vault__logo" src="https://app.idle.finance/images/borrowers/portofino.svg" alt="logo">
                     <div class="title">
                         <h2 class="title-h4">Portofino Technologies</h2>
                         <p class="desc-3">Institutional Credit</p>
@@ -44,15 +44,12 @@
                 </div>
                 <div class="vault__performance">
                     <p class="desc-3">Up to</p>
-                    <p class="title-h3">40% <span class="text-gray">APY</span></p>
+                    <p class="title-h3">0% <span class="text-gray">APY</span></p>
                 </div>
                 <div class="vault__footer">
                     <div class="footer-left">
-                        <p class="tvl subtitle-3">$13,250,232 TVL</p>
+                        <p class="tvl subtitle-3">$0 TVL</p>
                         <div class="tokens">
-                            <img class="token" src="../../../assets/img/tokens/USDT.svg" alt="USDT" />
-                            <img class="token" src="../../../assets/img/tokens/USDC.svg" alt="USDC" />
-                            <img class="token" src="../../../assets/img/tokens/DAI.svg" alt="DAI" />
                         </div>
                     </div>
                     <div class="footer-right">
@@ -64,7 +61,7 @@
             </div>
             <div class="vault__card">
                 <div class="vault__header">
-                    <img class="logo" src="https://app.idle.finance/images/borrowers/portofino.svg" alt="logo">
+                    <img class="vault__logo" src="https://app.idle.finance/images/borrowers/portofino.svg" alt="logo">
                     <div class="title">
                         <h2 class="title-h4">Portofino Technologies</h2>
                         <p class="desc-3">Institutional Credit</p>
@@ -72,15 +69,12 @@
                 </div>
                 <div class="vault__performance">
                     <p class="desc-3">Up to</p>
-                    <p class="title-h3">40% <span class="text-gray">APY</span></p>
+                    <p class="title-h3">0% <span class="text-gray">APY</span></p>
                 </div>
                 <div class="vault__footer">
                     <div class="footer-left">
-                        <p class="tvl subtitle-3">$13,250,232 TVL</p>
+                        <p class="tvl subtitle-3">$0 TVL</p>
                         <div class="tokens">
-                            <img class="token" src="../../../assets/img/tokens/USDT.svg" alt="USDT" />
-                            <img class="token" src="../../../assets/img/tokens/USDC.svg" alt="USDC" />
-                            <img class="token" src="../../../assets/img/tokens/DAI.svg" alt="DAI" />
                         </div>
                     </div>
                     <div class="footer-right">
@@ -92,7 +86,7 @@
             </div>
             <div class="vault__card">
                 <div class="vault__header">
-                    <img class="logo" src="https://app.idle.finance/images/borrowers/portofino.svg" alt="logo">
+                    <img class="vault__logo" src="https://app.idle.finance/images/borrowers/portofino.svg" alt="logo">
                     <div class="title">
                         <h2 class="title-h4">Portofino Technologies</h2>
                         <p class="desc-3">Institutional Credit</p>
@@ -100,15 +94,12 @@
                 </div>
                 <div class="vault__performance">
                     <p class="desc-3">Up to</p>
-                    <p class="title-h3">40% <span class="text-gray">APY</span></p>
+                    <p class="title-h3">0% <span class="text-gray">APY</span></p>
                 </div>
                 <div class="vault__footer">
                     <div class="footer-left">
-                        <p class="tvl subtitle-3">$13,250,232 TVL</p>
+                        <p class="tvl subtitle-3">$0 TVL</p>
                         <div class="tokens">
-                            <img class="token" src="../../../assets/img/tokens/USDT.svg" alt="USDT" />
-                            <img class="token" src="../../../assets/img/tokens/USDC.svg" alt="USDC" />
-                            <img class="token" src="../../../assets/img/tokens/DAI.svg" alt="DAI" />
                         </div>
                     </div>
                     <div class="footer-right">
@@ -122,16 +113,19 @@
     </div>
     <div class="hero__footer">
         <div class="footer__investors">
-            <%
-            Strings.investors.forEach((logo, j) => {
-                const protocolLogoSrc = require(`../../../assets/img/ecosystem/${logo.logoSrc}`);
-                %>
-                <a class="investor__logo" href="<%= logo.linkSrc %>" target="_blank" rel="nofollow noopener noreferrer" aria-label="<%= logo.linkSrc %>">
-                    <img data-src="<%= protocolLogoSrc %>" class="lazy" data-load-priority="3" alt="">
-                </a>
+            <p class="subtitle-2">Trusted by</p>
+            <div class="investors__logos">
                 <%
-            })
-            %>
+                Strings.investors.forEach((logo, j) => {
+                    const protocolLogoSrc = require(`../../../assets/img/ecosystem/${logo.logoSrc}`);
+                    %>
+                    <a class="investor__logo" href="<%= logo.linkSrc %>" target="_blank" rel="nofollow noopener noreferrer" aria-label="<%= logo.linkSrc %>">
+                        <img data-src="<%= protocolLogoSrc %>" class="lazy" data-load-priority="3" alt="">
+                    </a>
+                    <%
+                })
+                %>
+            </div>
         </div>
         <div class="footer__stats">
             <div class="stats__value">

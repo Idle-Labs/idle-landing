@@ -1,5 +1,8 @@
 .hero-section
+    display: flex
     min-height: 100vh
+    flex-direction: column
+    justify-content: space-between
     padding-top: var(--header-height)
     margin-bottom: gem(74)
     position: relative
@@ -34,7 +37,7 @@
                 display: block
     .container
         display: flex
-        padding-top: gem(90)
+        padding-top: gem(20)
         align-items: center
         flex-direction: column
         justify-content: center
@@ -49,6 +52,8 @@
                 margin-bottom: gem(24)
                 .txt-rotate
                     color: #6AE4FF
+                    width: gem(350)
+                    display: inline-block
             .desc-1
                 margin-bottom: gem(40)
                 width: gem(370)
@@ -64,15 +69,19 @@
             display: flex
             width: gem(300)
             padding: gem(12)
+            cursor: pointer
             border-radius: gem(16)
             flex-direction: column
             background-color: #202A3E
+            @include hoverTransition(background)
+            &:hover
+                background-color: #202A3E80
             .vault__header
                 display: flex
                 flex-direction: row
                 align-items: flex-start
                 margin-bottom: gem(16)
-                .logo
+                .vault__logo
                     width: gem(42)
                     height: gem(42)
                     margin-right: gem(8)
@@ -116,18 +125,19 @@
                     .tokens
                         height: gem(26)
                         display: flex
-                        padding: gem(4)
+                        padding: gem(2)
                         margin-left: gem(8)
                         align-items: center
                         flex-direction: row
-                        padding-left: gem(8)
+                        padding-left: gem(10)
                         border-radius: gem(24)
                         justify-content: center
                         background-color: #404F6A
-                        img
+                        .token__logo
+                            left: gem(-4)
                             width: gem(17)
                             height: gem(17)
-                            margin-left: gem(-4)
+                            position: relative
                 .footer-right
                     .splide__arrow
                         border: none
@@ -144,22 +154,37 @@
                         &:hover
                             opacity: 1
     .hero__footer
-        bottom: 0
         width: 100%
         display: flex
-        position: absolute
         flex-direction: row
-        padding: gem(24) gem(52)
+        align-items: flex-end
+        padding: gem(42) gem(52)
         justify-content: space-between
         .footer__investors
-            gap: gem(24)
             display: flex
-            flex-direction: row
-            .investor__logo
-                height: gem(24)
-                img
-                    width: auto
-                    height: 100%
+            align-self: stretch
+            flex-direction: column
+            justify-content: space-between
+            .subtitle-2
+                color: #CDD0D6
+            .investors__logos
+                gap: gem(24)
+                display: flex
+                align-items: center
+                flex-direction: row
+                .investor__logo
+                    opacity: 0.7
+                    height: gem(24)
+                    filter: grayscale(1)
+                    display: inline-flex
+                    @include hoverTransition(filter)
+                    @include hoverTransition(opacity)
+                    &:hover
+                        opacity: 1
+                        filter: grayscale(0)
+                    img
+                        width: auto
+                        height: 100%
         .footer__stats
             gap: gem(24)
             display: flex
@@ -169,6 +194,10 @@
                 gap: gem(8)
                 display: flex
                 flex-direction: column
+                .subtitle-2
+                    color: #CDD0D6
+                .title-h3
+                    line-height: 1
     .hero-discover-more
         display: flex
         flex-direction: column

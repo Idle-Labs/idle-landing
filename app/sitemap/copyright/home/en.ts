@@ -3,7 +3,7 @@ import { span } from './../../helpers';
 
 export const HomeEnCopy = {
     heroSection: {
-        title: 'Your unique edge for<br /><span class="txt-rotate" data-period="3000" data-rotate=\'[ "sustainable", "risk-adjusted", "aggregated", "boosted" ]\'></span> Yields',
+        title: 'Your unique edge for<br /><span class="txt-rotate" data-period="3000" data-rotate=\'[ "DeFi", "Optimized", "Risk-adjusted", "Institutional", "Leveraged", "Sustainable" ]\'></span> Yields',
         desc: 'DeFi yields aren’t easy to manage.<br />Idle makes you feel like they are',
         discover: 'Discover more',
         btnEnter: {
@@ -16,24 +16,16 @@ export const HomeEnCopy = {
         },
         investors:[
             {
-                logoSrc: 'consensys-desktop.svg',
+                logoSrc: 'consensys-white.svg',
                 linkSrc: 'https://consensys.net',
+            },
+            {
+                logoSrc: 'rockawayx.svg',
+                linkSrc: 'https://rockawayx.com',
             },
             {
                 logoSrc: 'gumi-desktop.png',
                 linkSrc: 'https://www.gumi-cryptos.com',
-            },
-            {
-                logoSrc: 'green-desktop.svg',
-                linkSrc: 'https://www.greenfield.one',
-            },
-            {
-                logoSrc: 'longhash-desktop.png',
-                linkSrc: 'https://www.longhash.vc',
-            },
-            {
-                logoSrc: 'lao-desktop.png',
-                linkSrc: 'https://www.thelao.io',
             },
             {
                 logoSrc: 'fasanara.svg',

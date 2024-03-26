@@ -25,6 +25,7 @@ export default class HeroSection extends Section {
     private get _discoverMore(){ return this.element.querySelector<HTMLElement>('.hero-discover-more'); }
 
     async setupVideo() {
+        this._video = null
         // if (this.element.querySelector('.video-js')) {
         //     this._video = await new Video({ el: this.element.querySelector('.video-js') }).setup();
         // }
