@@ -1,8 +1,10 @@
 import Breakpoints from 'app/appBreakpoints';
 import Section from 'app/core/section';
+import createSplideSlider, { MyTransition } from 'app/modules/slider';
 
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
+import Splide from '@splidejs/splide';
 
 import { AnimationValues } from 'app/utils/animation';
 import Video from 'app/components/common/video';
@@ -11,6 +13,7 @@ import setCurrentDevice from 'app/utils/currentDevice';
 gsap.registerPlugin(SplitText);
 
 export default class HeroSection extends Section {
+    private _slider: Splide;
     private _initialSetup: boolean = true;
     private _currentDevice: 'desktop' | 'tablet' | 'mobile';
     private _prevDevice: 'desktop' | 'tablet' | 'mobile';
@@ -29,6 +32,27 @@ export default class HeroSection extends Section {
         // if (this.element.querySelector('.video-js')) {
         //     this._video = await new Video({ el: this.element.querySelector('.video-js') }).setup();
         // }
+    }
+
+    private _setupSlider() {
+        if (this.element.querySelector('.splide')) {
+            this._slider = createSplideSlider(this.element.querySelector('.splide'), {
+                type: 'slide',
+                arrows: true,
+                perPage: 2,
+                easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+                breakpoints: {
+                    1024: {
+                        padding: { left: 0, right: 0 },
+                    },
+                    480: {
+                        perPage: 1,
+                        padding: { left: 0, right: 0 },
+                    },
+                },
+            });
+            this._slider.mount({}, MyTransition);
+        }
     }
 
     private _setupAnimItems() {
@@ -70,11 +94,22 @@ export default class HeroSection extends Section {
         }
 
         if (this._video) this._video.resize(width, height);
+
+        if (this._prevDevice !== this._currentDevice && this._currentDevice !== 'desktop') {
+            this._slider?.destroy();
+            this._setupSlider();
+        }
+        if (this._prevDevice !== this._currentDevice && this._currentDevice === 'desktop') {
+            this._slider?.destroy();
+        }
     }
 
     async setupSection() {
         if (this._initialSetup) {
             this._initialSetup = false;
+        }
+        if (this._currentDevice !== 'desktop') {
+            this._setupSlider();
         }
 
         this._setupAnimItems();

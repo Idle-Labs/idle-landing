@@ -35,6 +35,38 @@
                 width: 100%
                 height: 100%
                 display: block
+    .splide
+        &__list
+            display: flex
+        &__pagination
+            display: none
+        &__arrows
+            display: none
+            justify-content: flex-end
+            padding-right: gem(52)
+            margin-bottom: gem(48)
+            height: auto
+        &__arrow--prev,
+        &__arrow--next
+            background: var(--color-white)
+            border: none
+            border-radius: 50%
+            display: flex
+            justify-content: center
+            align-items: center
+            cursor: pointer
+            width: gem(50)
+            height: gem(50)
+            @include unhoverTransition(opacity)
+            svg
+                width: gem(10)
+                height: gem(16)
+            &:disabled,
+            &[disabled]
+                @include hoverTransition(opacity)
+                opacity: 0.4
+        &__arrow--next
+            margin-left: gem(22)
     .container
         display: flex
         padding-top: gem(20)
@@ -73,6 +105,7 @@
         flex-direction: row
         justify-content: center
         .vault__card
+            gap: gem(16)
             display: flex
             width: gem(300)
             cursor: pointer
@@ -87,14 +120,12 @@
                 display: flex
                 flex-direction: row
                 align-items: flex-start
-                margin-bottom: gem(16)
                 .vault__logo
                     width: gem(38)
                     height: gem(38)
                     margin-right: gem(8)
                 .title
                     min-width: 0
-                    height: 100%
                     display: flex
                     flex-direction: column
                     justify-content: space-between
@@ -108,7 +139,6 @@
                         line-height: 1
                         color: #CDD0D6
             .vault__performance
-                margin-bottom: gem(16)
                 small
                     font-size: 80%
                 .desc-3
@@ -188,7 +218,7 @@
         display: flex
         flex-direction: row
         align-items: flex-end
-        padding: gem(42) gem(52)
+        padding: gem(38) gem(52)
         justify-content: space-between
         .footer__investors
             display: flex
@@ -282,11 +312,38 @@
                 margin: 0 auto
         .hero-discover-more
             display: none
+        .slider-container
+            position: relative
+            width: var(--container-width)
+            min-width: var(--container-width)
+            margin: 0 auto
+            overflow: hidden
+        .splide
+            display: flex
+            flex-direction: column
+            &__list
+                padding-left: gem(15)
+            &__arrows
+                display: flex
+                order: 2
+                padding-right: 0
+                justify-content: center
+                margin-bottom: 0
+                margin-top: gem(40)
+            &__arrow--next
+                margin-left: gem(25)
+
+@media all and (min-width: 481px)
+
+    .hero-section
+        .splide
+            &__list
+                justify-content: center
 
 @media all and (max-width: 480px)
 
     .hero-section
-        padding-bottom: gem(56)
+        padding-bottom: gem(0)
         .hero-background
             .bg-ellipse1
                 top: gem(-16)
@@ -311,6 +368,7 @@
         .container
             padding-top: gem(0)
         .hero-text
+            margin-bottom: gem(43)
             .text-block
                 width: 100%
                 .title-h1
@@ -336,3 +394,25 @@
                 .button
                     &:first-child
                         margin-bottom: gem(11)
+        .hero__footer
+            gap: gem(15)
+            padding: gem(22)
+            align-items: flex-end
+            flex-direction: column-reverse
+        .vaults-container
+            justify-content: flex-start
+            .vault__card
+                gap: gem(24)
+        .slider-container
+            overflow: visible
+        .splide__arrows
+            position: absolute
+            z-index: 1
+        .splide__arrow--prev,
+        .splide__arrow--next
+            width: gem(40)
+            height: gem(40)
+            position: absolute
+            top: gem(25)
+        .splide__arrow--next
+            right: gem(-335)
