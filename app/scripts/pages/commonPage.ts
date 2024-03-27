@@ -277,28 +277,30 @@ export default abstract class CommonPage extends Page {
 
             // Add chains
             const chainsContainer = heroVaultsCard.querySelector(".vault__footer .chains")
-            chainsContainer.innerHTML = '';
-            vault.chains.forEach( (chainName, index) => {
-              const chainImg = document.createElement("img");
-              chainImg.className="logo";
+            if (chainsContainer){
+              chainsContainer.innerHTML = '';
+              vault.chains.forEach( (chainName, index) => {
+                const chainImg = document.createElement("img");
+                chainImg.className="logo";
 
-              try {
-                chainImg.src = require(`../../assets/img/chains/${chainName}.svg`);
-              } catch (err) {
                 try {
-                  chainImg.src = require(`../../assets/img/chains/${chainName}.png`);
+                  chainImg.src = require(`../../assets/img/chains/${chainName}.svg`);
                 } catch (err) {
-                  chainImg.src = require(`../../assets/img/chains/ETH.svg`);
+                  try {
+                    chainImg.src = require(`../../assets/img/chains/${chainName}.png`);
+                  } catch (err) {
+                    chainImg.src = require(`../../assets/img/chains/ETH.svg`);
+                  }
                 }
-              }
 
-              if (index){
-                chainImg.style="margin-left: -0.04rem";
-              }
+                if (index){
+                  chainImg.style="margin-left: -0.04rem";
+                }
 
-              // Add token image
-              chainsContainer.append(chainImg);
-            })
+                // Add token image
+                chainsContainer.append(chainImg);
+              })
+            }
           })
 
           /*

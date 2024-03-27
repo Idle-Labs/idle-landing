@@ -16,19 +16,19 @@ export const HomeEnCopy = {
         },
         investors:[
             {
-                logoSrc: 'consensys-white.svg',
+                logoSrc: 'consensys-hero.svg',
                 linkSrc: 'https://consensys.net',
             },
             {
-                logoSrc: 'rockawayx.svg',
+                logoSrc: 'rockawayx-hero.svg',
                 linkSrc: 'https://rockawayx.com',
             },
             {
-                logoSrc: 'gumi-desktop.png',
+                logoSrc: 'gumi-hero.svg',
                 linkSrc: 'https://www.gumi-cryptos.com',
             },
             {
-                logoSrc: 'fasanara.svg',
+                logoSrc: 'fasanara-hero.svg',
                 linkSrc: 'https://www.fasanara.com',
             },
         ]
