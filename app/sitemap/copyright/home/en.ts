@@ -3,7 +3,7 @@ import { span } from './../../helpers';
 
 export const HomeEnCopy = {
     heroSection: {
-        title: 'Your Unique Edge For<div class="second-row"><span class="txt-rotate" data-period="3000" data-rotate=\'[ "On-chain", "Optimized", "Risk-adjusted", "Institutional", "Leveraged", "Sustainable" ]\'></span><span class="static">Yields</span></div>',
+        title: '<span class="phrase-1">Your Unique</span> <span class="phrase-2">Edge For</span><div class="second-row"><span class="txt-rotate" data-period="3000" data-rotate=\'[ "On-chain", "Optimized", "Risk-adjusted", "Institutional", "Leveraged", "Sustainable" ]\'></span><span class="static">Yields</span></div>',
         desc: 'DeFi yields aren’t easy to manage.<br />Idle makes you feel like they are',
         discover: 'Discover more',
         btnEnter: {
@@ -20,10 +20,6 @@ export const HomeEnCopy = {
                 linkSrc: 'https://consensys.net',
             },
             {
-                logoSrc: 'rockawayx-hero.svg',
-                linkSrc: 'https://rockawayx.com',
-            },
-            {
                 logoSrc: 'gumi-hero.svg',
                 linkSrc: 'https://www.gumi-cryptos.com',
             },
@@ -31,6 +27,10 @@ export const HomeEnCopy = {
                 logoSrc: 'fasanara-hero.svg',
                 linkSrc: 'https://www.fasanara.com',
             },
+            {
+                logoSrc: 'greenfield-hero.svg',
+                linkSrc: 'https://www.greenfield.one',
+            }
         ]
     },
     productSection: {
@@ -214,6 +214,7 @@ export const HomeEnCopy = {
         title: 'An ecosystem full of yield',
         desc: 'Our vaults are composable by design and seamlessly incorporated into the expansive DeFi ecosystem',
         protocols:  [
+            /*
             {
                 id: 'integrators',
                 label: 'Integrators',
@@ -240,6 +241,7 @@ export const HomeEnCopy = {
                     }
                 ]
             },
+            */
             {
                 id: 'yield-sources',
                 label: 'Yield sources',

@@ -46,26 +46,28 @@
                 <div class="splide__track">
                     <div class="splide__list vaults-container">
                         <div class="splide__slide">
-                            <div class="vault__card">
+                            <a class="vault__card" href="<%= Strings.btnEnter.btnSrc %>" target="_blank">
                                 <div class="vault__header">
-                                    <img class="vault__logo" src="https://app.idle.finance/images/borrowers/portofino.svg" alt="logo">
+                                    <div class="vault__logo">
+                                        <img class="logo" src="https://app.idle.finance/images/borrowers/fasanara.svg" />
+                                    </div>
                                     <div class="title">
-                                        <h2 class="title-h4">Portofino Technologies</h2>
+                                        <h2 class="title-h4">Fasanara Investments</span></h2>
                                         <p class="desc-3">Institutional Credit</p>
                                     </div>
                                 </div>
                                 <div class="vault__performance">
                                     <p class="desc-3">Up to</p>
-                                    <p class="title-h3">0% <span class="text-gray">APY</span></p>
+                                    <p class="title-h3">22.7<small>%</small> <span class="text-gray">APY</span></p>
                                 </div>
                                 <div class="vault__footer">
                                     <div class="footer-left">
                                         <div class="tvl">
-                                            <p class="subtitle-3">$0</p>
+                                            <p class="subtitle-3">$4,598,472</p>
                                             <p class="subtitle-3">TVL</p>
                                         </div>
                                         <div class="rounded-gray">
-                                            <div class="tokens logos"></div>
+                                            <div class="tokens logos"><img class="logo" src="/assets/img/USDT.svg" /><img class="logo ml" src="/assets/img/USDC.svg" /></div>
                                             <!--div class="chains logos"></div-->
                                         </div>
                                     </div>
@@ -75,30 +77,31 @@
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="splide__slide">
-                            <div class="vault__card">
+                            <a class="vault__card" href="<%= Strings.btnEnter.btnSrc %>" target="_blank">
                                 <div class="vault__header">
-                                    <img class="vault__logo" src="https://app.idle.finance/images/borrowers/portofino.svg" alt="logo">
+                                    <div class="vault__logo">
+                                        <img class="logo" src="https://app.idle.finance/images/protocols/ethena.svg" />
+                                    </div>
                                     <div class="title">
-                                        <h2 class="title-h4">Portofino Technologies</h2>
-                                        <p class="desc-3">Institutional Credit</p>
+                                        <h2 class="title-h4">Ethena</h2>
+                                        <p class="desc-3">Diversified Basis Yield</p>
                                     </div>
                                 </div>
                                 <div class="vault__performance">
                                     <p class="desc-3">Up to</p>
-                                    <p class="title-h3">0% <span class="text-gray">APY</span></p>
+                                    <p class="title-h3">25.5<small>%</small> <span class="text-gray">APY</span></p>
                                 </div>
                                 <div class="vault__footer">
                                     <div class="footer-left">
                                         <div class="tvl">
-                                            <p class="subtitle-3">$0</p>
+                                            <p class="subtitle-3">$913,373</p>
                                             <p class="subtitle-3">TVL</p>
                                         </div>
                                         <div class="rounded-gray">
-                                            <div class="tokens logos"></div>
-                                            <!--div class="chains logos"></div-->
+                                            <div class="tokens logos"><img class="logo" src="/assets/img/USDE.svg" /></div>
                                         </div>
                                     </div>
                                     <div class="footer-right">
@@ -107,29 +110,29 @@
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="splide__slide">
-                            <div class="vault__card">
+                            <a class="vault__card" href="<%= Strings.btnEnter.btnSrc %>" target="_blank">
                                 <div class="vault__header">
-                                    <img class="vault__logo" src="https://app.idle.finance/images/borrowers/portofino.svg" alt="logo">
+                                    <div class="vault__logo"><img class="logo" src="https://app.idle.finance/images/protocols/instadapp.png"></div>
                                     <div class="title">
-                                        <h2 class="title-h4">Portofino Technologies</h2>
-                                        <p class="desc-3">Institutional Credit</p>
+                                        <h2 class="title-h4">Instadapp</h2>
+                                        <p class="desc-3">Leveraged staking</p>
                                     </div>
                                 </div>
                                 <div class="vault__performance">
                                     <p class="desc-3">Up to</p>
-                                    <p class="title-h3">0% <span class="text-gray">APY</span></p>
+                                    <p class="title-h3">7.8<small>%</small> <span class="text-gray">APY</span></p>
                                 </div>
                                 <div class="vault__footer">
                                     <div class="footer-left">
                                         <div class="tvl">
-                                            <p class="subtitle-3">$0</p>
+                                            <p class="subtitle-3">$298,138</p>
                                             <p class="subtitle-3">TVL</p>
                                         </div>
                                         <div class="rounded-gray">
-                                            <div class="tokens logos"></div>
+                                            <div class="tokens logos"><img class="logo" src="/assets/img/STETH.svg" /></div>
                                             <!--div class="chains logos"></div-->
                                         </div>
                                     </div>
@@ -139,7 +142,7 @@
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -164,8 +167,12 @@
         </div>
         <div class="footer__stats">
             <div class="stats__value">
-                <p class="subtitle-2">TVL</p>
-                <h3 id="total-locked-value" class="title-h3">$13,250,232 TVL</h3>
+                <p class="subtitle-2">Current TVL</p>
+                <h3 id="total-locked-value" class="title-h3">-</h3>
+            </div>
+            <div class="stats__value">
+                <p class="subtitle-2">Generated Yield</p>
+                <h3 id="total-yield-generated" class="title-h3">-</h3>
             </div>
         </div>
     </div>

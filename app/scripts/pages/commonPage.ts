@@ -1,7 +1,9 @@
 import axios from 'axios';
 import Page from 'app/core/page';
+import { CountUp } from 'countup.js';
 import Lazy from 'app/components/lazy';
 import anchors from 'app/modules/anchors';
+import { Odometer } from 'odometer_countup';
 import { IDLE_API_KEY } from 'app/core/configs';
 import stickyHeader from 'app/modules/stickyHeader';
 import { createDropdowns } from 'app/modules/dropDown';
@@ -35,6 +37,10 @@ function sortArrayByKey(array: any[], key: string, order = 'asc') {
 }
 
 export default abstract class CommonPage extends Page {
+    private _totalTVL: number
+    private _totalYield: number
+    private _tvlCounter: CountUp
+    private _yieldCounter: CountUp
     private _mobileMenu: MobileMenu;
     private _scrollTopButton: ScrollTopButton;
 
@@ -42,6 +48,48 @@ export default abstract class CommonPage extends Page {
         super.scroll();
 
         stickyHeader.update(this.scrollPosition);
+    }
+
+    setupTvlCounter(totalTvl, avgAPY) {
+      this._totalTVL = totalTvl
+      this._tvlCounter = new CountUp("total-locked-value", this._totalTVL, {
+        plugin: new Odometer({ duration: 1.3, lastDigitDelay: 0 }),
+        duration: 2.0,
+        formattingFn: (n) => '$'+formatMoney(n, 0),
+        onCompleteCallback: () => {
+          const yieldPerYear = totalTvl*avgAPY/100
+          const yieldPerSecond = Math.max(0, yieldPerYear/31536000)
+          const intervalSeconds = Math.max(1, 1/yieldPerSecond)
+          if (yieldPerSecond){
+            setTimeout(() => {
+              this._totalTVL += yieldPerSecond*intervalSeconds;
+              this._tvlCounter.update(this._totalTVL);
+            }, intervalSeconds*1000);
+          }
+        }
+      });
+      this._tvlCounter.start();
+    }
+
+    setupYieldCounter(totalYield, avgAPY) {
+      this._totalYield = totalYield
+      this._yieldCounter = new CountUp("total-yield-generated", this._totalYield, {
+        plugin: new Odometer({ duration: 1.3, lastDigitDelay: 0 }),
+        duration: 2.0,
+        formattingFn: (n) => '$'+formatMoney(n, 0),
+        onCompleteCallback: () => {
+          const yieldPerYear = totalYield*avgAPY/100;
+          const yieldPerSecond = Math.max(0, yieldPerYear/31536000);
+          const intervalSeconds = Math.max(1, 1/yieldPerSecond)
+          if (yieldPerSecond){
+            setTimeout(() => {
+              this._totalYield += yieldPerSecond*intervalSeconds;
+              this._yieldCounter.update(this._totalYield);
+            }, intervalSeconds*1000);
+          }
+        }
+      });
+      this._yieldCounter.start();
     }
 
     setupTextCarousel() {
@@ -111,52 +159,38 @@ export default abstract class CommonPage extends Page {
 
     async loadApiData() {
       if (this._sections[2] && this._sections[1]){
+
+        const axiosConfig = {
+          headers: {
+            Authorization: `Bearer ${IDLE_API_KEY}`
+          }
+        }
+
         const [
           chainsPools,
           chainsTvls,
           dataTokenTerminalResult
         // @ts-ignore
         ] = await Promise.allSettled([
-          // axios.get('https://api.idle.finance/pools', {
-          Promise.allSettled([
-            axios.get('http://localhost:3333/pools', {
-              headers: {
-                Authorization: `Bearer ${IDLE_API_KEY}`
-              }
-            }).then( r => ({...r, chainName: 'mainnet'}) ),
-            axios.get('http://localhost:3335/pools', {
-              headers: {
-                Authorization: `Bearer ${IDLE_API_KEY}`
-              }
-            }).then( r => ({...r, chainName: 'zkevm'}) ),
-            axios.get('http://localhost:3336/pools', {
-              headers: {
-                Authorization: `Bearer ${IDLE_API_KEY}`
-              }
-            }).then( r => ({...r, chainName: 'optimism'}) ),
-          ])
           // @ts-ignore
           Promise.allSettled([
-            axios.get('https://api.idle.finance/tvls', {
-              headers: {
-                Authorization: `Bearer ${IDLE_API_KEY}`
-              }
-            }),
-            axios.get('https://api-polygon.idle.finance/tvls', {
-              headers: {
-                Authorization: `Bearer ${IDLE_API_KEY}`
-              }
-            }),
-            axios.get('https://api-optimism.idle.finance/tvls', {
-              headers: {
-                Authorization: `Bearer ${IDLE_API_KEY}`
-              }
-            }),
-            axios.get('https://api-zkevm.idle.finance/tvls', {
-              headers: {
-                Authorization: `Bearer ${IDLE_API_KEY}`
-              }
-            }),
+            // axios.get('http://localhost:3333/pools', {
+            axios.get('https://api.idle.finance/pools', axiosConfig).then( r => ({...r, chainName: 'mainnet'}) ),
+            // axios.get('http://localhost:3335/pools', {
+            axios.get('https://api-polygon.idle.finance/pools', axiosConfig).then( r => ({...r, chainName: 'zkevm'}) ),
+            // axios.get('http://localhost:3336/pools', {
+            axios.get('https://api-optimism.idle.finance/pools', axiosConfig).then( r => ({...r, chainName: 'optimism'}) ),
+          ]),
+          // @ts-ignore
+          Promise.allSettled([
+            // axios.get('http://localhost:3333/tvls', {
+            axios.get('https://api.idle.finance/tvls', axiosConfig),
+            // axios.get('http://localhost:3334/tvls', {
+            axios.get('https://api-polygon.idle.finance/tvls', axiosConfig),
+            // axios.get('http://localhost:3336/tvls', {
+            axios.get('https://api-optimism.idle.finance/tvls', axiosConfig),
+            // axios.get('http://localhost:3335/tvls', {
+            axios.get('https://api-zkevm.idle.finance/tvls', axiosConfig),
           ]),
           // axios.get('https://api.tokenterminal.com/v2/internal/metrics/fees?project_ids=idle-finance&interval=180d',{
           //   headers: {
@@ -178,6 +212,21 @@ export default abstract class CommonPage extends Page {
           }
           return totalTvl
         }, 0);
+
+        let totalAvgAPY = chainsTvls.value.reduce( (totalAvgAPY, chainTvl, index) => {
+          if (chainTvl.status === 'fulfilled'){
+            // console.log(index, chainTvl.value.data.avgAPY, chainTvl.value.data.totalTVL)
+            return totalAvgAPY + parseFloat(chainTvl.value.data.avgAPY)*parseFloat(chainTvl.value.data.totalTVL)
+          }
+          return totalAvgAPY
+        }, 0);
+
+        if (totalTvl>0){
+          totalAvgAPY = totalAvgAPY/totalTvl
+        }
+
+        // console.log('totalTvl', totalTvl)
+        // console.log('totalAvgAPY', totalAvgAPY)
         
         // const statsSectionElement = this._sections[2]._config.el;
         const heroSectionElement = this._sections[0]._config.el;
@@ -188,7 +237,7 @@ export default abstract class CommonPage extends Page {
         if (pools){
           const aggregatedVaults = pools.reduce( (aggregatedVaults, {status, value}) => {
             if (status === 'rejected') return aggregatedVaults
-            value.data.forEach( vault => {
+            value.data.forEach( (vault: any) => {
               if (!vault.vaultType) return aggregatedVaults
 
               const vaultKey = `${vault.protocolName}_${vault.borrowerName}`
@@ -215,30 +264,39 @@ export default abstract class CommonPage extends Page {
               aggregatedVaults[vaultKey].totalTvl = aggregatedVaults[vaultKey].totalTvl+parseFloat(vault.tvl)
               aggregatedVaults[vaultKey].weight = aggregatedVaults[vaultKey].totalTvl*aggregatedVaults[vaultKey].maxApy
 
-              console.log(vaultKey, parseFloat(vault.tvl), aggregatedVaults[vaultKey].totalTvl)
+              // console.log(vaultKey, parseFloat(vault.tvl), aggregatedVaults[vaultKey].totalTvl)
             })
             return aggregatedVaults
           }, {})
 
           // console.log('aggregatedVaults', aggregatedVaults)
 
-          const bestVaultsByType = sortArrayByKey(Object.values(aggregatedVaults), 'weight', 'desc').reduce( (bestVaultsByType, vault) => {
-            if (!bestVaultsByType[vault.vaultType]){
-              bestVaultsByType[vault.vaultType] = vault
+          const insertedTypes = {}
+          const bestVaultsByType = sortArrayByKey(Object.values(aggregatedVaults), 'weight', 'desc').reduce( (bestVaultsByType, vault, index) => {
+            const key = vault.vaultType
+            if (!insertedTypes[key]){
+              bestVaultsByType.push(vault)
+              insertedTypes[key] = 1
             }
             return bestVaultsByType
-          }, {})
+          }, [])
 
           // console.log('bestVaultsByType', bestVaultsByType)
 
           const heroVaults = Object.values(bestVaultsByType).slice(0, 3)
 
           const heroVaultsCards = heroSectionElement.querySelectorAll('.vault__card')
-          heroVaults.forEach( (vault, index) => {
+          heroVaults.forEach( (vault: any, index) => {
             const heroVaultsCard = heroVaultsCards[index]
 
-            // console.log('heroVaultsCard', index, heroVaultsCard)
-            heroVaultsCard.querySelector(".vault__header .vault__logo").src = vault.vaultImage
+            const vaultLogoContainer = heroVaultsCard.querySelector(".vault__header .vault__logo")
+            if (vaultLogoContainer){
+              vaultLogoContainer.innerHTML = '';
+              const vaultImage = document.createElement("img");
+              vaultImage.className="logo"
+              vaultImage.src = vault.vaultImage
+              vaultLogoContainer.append(vaultImage)
+            }
             
             heroVaultsCard.querySelector(".vault__header .title-h4").innerHTML = vault.borrowerName || vault.protocolName
             heroVaultsCard.querySelector(".vault__header .desc-3").innerHTML = vault.vaultType
@@ -268,7 +326,7 @@ export default abstract class CommonPage extends Page {
               }
 
               if (index){
-                tokenImg.style="margin-left: -0.04rem";
+                tokenImg.className+=" ml";
               }
 
               // Add token image
@@ -276,6 +334,7 @@ export default abstract class CommonPage extends Page {
             })
 
             // Add chains
+            /*
             const chainsContainer = heroVaultsCard.querySelector(".vault__footer .chains")
             if (chainsContainer){
               chainsContainer.innerHTML = '';
@@ -294,13 +353,14 @@ export default abstract class CommonPage extends Page {
                 }
 
                 if (index){
-                  chainImg.style="margin-left: -0.04rem";
+                  chainImg.className+=" ml";
                 }
 
                 // Add token image
                 chainsContainer.append(chainImg);
               })
             }
+            */
           })
 
           /*
@@ -488,7 +548,9 @@ export default abstract class CommonPage extends Page {
         //   totalTvl += parseFloat(dataPolygon.data.totalTVL);
         // }
 
-        document.querySelector('#total-locked-value').innerHTML = '$'+formatMoney(totalTvl, 0);
+        this.setupTvlCounter(totalTvl, totalAvgAPY)
+        this.setupYieldCounter(20057166, totalAvgAPY)
+        // document.querySelector('#total-yield-generated').innerHTML = '$'+formatMoney(totalTvl, 0);
       }
 
       const handleFormSubmit = (e) => {

@@ -32,6 +32,7 @@
     "gsap": "file:./gsap-by-johny.tgz",
     "js-abbreviation-number": "^1.4.0",
     "lottie-web": "^5.7.8",
+    "odometer_countup": "^1.0.4",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "regenerator-runtime": "^0.13.7",

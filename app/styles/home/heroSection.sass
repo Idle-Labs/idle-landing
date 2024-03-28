@@ -4,7 +4,7 @@
     flex-direction: column
     justify-content: space-between
     padding-top: var(--header-height)
-    margin-bottom: gem(74)
+    margin-bottom: gem(120)
     position: relative
     .hero-background
         .bg-ellipse1,
@@ -69,7 +69,7 @@
             margin-left: gem(22)
     .container
         display: flex
-        padding-top: gem(20)
+        padding-top: 0
         align-items: center
         flex-direction: column
         justify-content: center
@@ -116,15 +116,55 @@
             @include hoverTransition(background)
             &:hover
                 background-color: #202A3E85
+            .spinner
+                display: inline-block
+                border-top: 2px solid #ccc;
+                border-right: 2px solid #ccc;
+                border-bottom-style: solid;
+                border-left-style: solid;
+                border-radius: 99999px;
+                border-bottom-width: 2px;
+                border-left-width: 2px;
+                border-bottom-color: transparent;
+                border-left-color: transparent;
+                animation: 0.45s linear 0s infinite normal none running spinner-animation;
+                width: gem(15)
+                height: gem(15)
+                &.mr
+                    margin-right: gem(5)
+                &.big
+                    width: gem(25)
+                    height: gem(25)
+                    &.mr
+                        margin-right: gem(10)
+            .loader
+                width: 100%
+                height: 15px
+                border-radius: 20px
+                display: inline-block
+                background-size: 1000%
+                background-position: right
+                animation: sweep 2s ease-in-out infinite alternate
+                background-image: linear-gradient(90deg, #2D3748, #4A5568, #718096, #4A5568)
             .vault__header
                 display: flex
                 flex-direction: row
-                align-items: flex-start
+                align-items: stretch
                 .vault__logo
+                    display: flex
                     width: gem(38)
                     height: gem(38)
+                    border-radius: 50%
                     margin-right: gem(8)
+                    background-size: 1000%
+                    background-position: right
+                    animation: sweep 2s ease-in-out infinite alternate
+                    background-image: linear-gradient(90deg, #2D3748, #4A5568, #718096, #4A5568)
+                    img
+                        width: auto
+                        height: 100%
                 .title
+                    flex: 1
                     min-width: 0
                     display: flex
                     flex-direction: column
@@ -144,8 +184,12 @@
                 .desc-3
                     line-height: 1
                     color: #CDD0D6
+                .title-h3
+                    display: flex
+                    align-items: center
                 .text-gray
                     color: #555B67
+                    padding-left: gem(5)
             .vault__footer
                 display: flex
                 flex-direction: row
@@ -167,6 +211,9 @@
                         border-radius: gem(24)
                         background-color: #404F6A
                         justify-content: flex-start
+                        .subtitle-3
+                            display: flex
+                            align-items: center
                         .tokens
                             padding-top: 0
                             padding-left: 0
@@ -198,6 +245,8 @@
                             width: gem(17)
                             height: auto
                             aspect-ratio: 1
+                            &.ml
+                                margin-left: gem(-4)
                 .footer-right
                     .splide__arrow
                         border: none
@@ -218,7 +267,7 @@
         display: flex
         flex-direction: row
         align-items: flex-end
-        padding: gem(38) gem(52)
+        padding: gem(30) gem(52)
         justify-content: space-between
         .footer__investors
             display: flex
@@ -246,13 +295,14 @@
                         width: auto
                         height: 100%
         .footer__stats
-            gap: gem(24)
+            gap: gem(28)
             display: flex
             flex-direction: row
             justify-content: space-between
             .stats__value
                 gap: gem(8)
                 display: flex
+                min-width: gem(170)
                 flex-direction: column
                 .subtitle-2
                     color: #CDD0D6
@@ -341,8 +391,8 @@
                 justify-content: center
 
 @media all and (max-width: 480px)
-
     .hero-section
+        min-height: 90vh
         padding-bottom: gem(0)
         .hero-background
             .bg-ellipse1
@@ -372,9 +422,11 @@
             .text-block
                 width: 100%
                 .title-h1
-                    line-height: 1.1
-                    font-size: gem(50)
-                    margin-bottom: gem(13)
+                    line-height: 1.2
+                    font-size: gem(36)
+                    margin-bottom: gem(0)
+                    .phrase-2
+                        display: block
                     .second-row
                         gap: 0
                         width: auto
@@ -383,7 +435,7 @@
                         flex-direction: column
                         justify-content: center
                     .txt-rotate
-                        height: gem(55)
+                        height: gem(50)
                         text-align: center
                 .desc-1
                     width: 100%
@@ -397,12 +449,30 @@
         .hero__footer
             gap: gem(15)
             padding: gem(22)
-            align-items: flex-end
+            align-items: center
+            padding-bottom: gem(15)
             flex-direction: column-reverse
+            .footer__stats
+                width: 100%
+                .stats__value
+                    align-items: flex-start
+            .footer__investors
+                display: none
+                .subtitle-2
+                    display: none
         .vaults-container
             justify-content: flex-start
             .vault__card
                 gap: gem(24)
+                .vault__performance
+                    .desc-3
+                        margin-bottom: gem(5)
+                    .title-h3
+                        font-size: gem(28)
+                .vault__footer
+                    .tvl
+                        .subtitle-3
+                            font-size: gem(12)
         .slider-container
             overflow: visible
         .splide__arrows
@@ -416,3 +486,16 @@
             top: gem(25)
         .splide__arrow--next
             right: gem(-335)
+
+
+@keyframes spinner-animation
+    0%
+        transform: rotate(0deg);
+    100%
+        transform: rotate(360deg);
+
+@keyframes sweep
+    0%
+        background-position: right
+    100%
+        background-position: left

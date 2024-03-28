@@ -21,12 +21,12 @@ import InvestorsSection from 'app/sections/InvestorsSection';
 export default class HomePage extends CommonPage {
     _sectionTypes: SectionCtor[] = [
         HeroSection,
-        ProductSection,
+        // ProductSection,
         // StatsSection,
-        PlayersSection,
         // IntegrationSection,
         ProtocolsSection,
         SecuritySection,
+        PlayersSection,
         // AboutSection,
         // DevelopersSection,
         // RewardSection,
