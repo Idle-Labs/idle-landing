@@ -60,6 +60,7 @@ export default abstract class CommonPage extends Page {
           const yieldPerYear = totalTvl*avgAPY/100
           const yieldPerSecond = Math.max(0, yieldPerYear/31536000)
           const intervalSeconds = Math.max(1, 1/yieldPerSecond)
+          // console.log('totalTvl', totalTvl, 'avgAPY', avgAPY, 'yieldPerYear', yieldPerYear, 'yieldPerSecond', yieldPerSecond)
           if (yieldPerSecond){
             setTimeout(() => {
               this._totalTVL += yieldPerSecond*intervalSeconds;
@@ -81,6 +82,7 @@ export default abstract class CommonPage extends Page {
           const yieldPerYear = totalYield*avgAPY/100;
           const yieldPerSecond = Math.max(0, yieldPerYear/31536000);
           const intervalSeconds = Math.max(1, 1/yieldPerSecond)
+          // console.log('totalYield', totalYield, 'avgAPY', avgAPY, 'yieldPerYear', yieldPerYear, 'yieldPerSecond', yieldPerSecond)
           if (yieldPerSecond){
             setTimeout(() => {
               this._totalYield += yieldPerSecond*intervalSeconds;
@@ -216,7 +218,8 @@ export default abstract class CommonPage extends Page {
         let totalAvgAPY = chainsTvls.value.reduce( (totalAvgAPY, chainTvl, index) => {
           if (chainTvl.status === 'fulfilled'){
             // console.log(index, chainTvl.value.data.avgAPY, chainTvl.value.data.totalTVL)
-            return totalAvgAPY + parseFloat(chainTvl.value.data.avgAPY)*parseFloat(chainTvl.value.data.totalTVL)
+            const avgAPY = Math.min(199, Math.max(1, parseFloat(chainTvl.value.data.avgAPY)))
+            return totalAvgAPY + avgAPY*parseFloat(chainTvl.value.data.totalTVL)
           }
           return totalAvgAPY
         }, 0);
@@ -227,6 +230,8 @@ export default abstract class CommonPage extends Page {
 
         // console.log('totalTvl', totalTvl)
         // console.log('totalAvgAPY', totalAvgAPY)
+
+        totalAvgAPY = Math.min(199, Math.max(1, totalAvgAPY))
         
         // const statsSectionElement = this._sections[2]._config.el;
         const heroSectionElement = this._sections[0]._config.el;
