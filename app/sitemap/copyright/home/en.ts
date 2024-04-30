@@ -8,7 +8,7 @@ export const HomeEnCopy = {
         discover: 'Discover more',
         btnEnter: {
             btnTitle: 'Enter App',
-            btnSrc: 'https://app.idle.finance/',
+            btnSrc: 'https://app.idle.finance/#/earn',
         },
         btnRead: {
             btnTitle: 'Get involved',
