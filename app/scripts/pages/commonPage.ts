@@ -176,11 +176,11 @@ export default abstract class CommonPage extends Page {
         ] = await Promise.allSettled([
           // @ts-ignore
           Promise.allSettled([
-            // axios.get('http://localhost:3333/pools', {
+            // axios.get('http://localhost:3333/pools').then( r => ({...r, chainName: 'mainnet'}) ),
             axios.get('https://api.idle.finance/pools', axiosConfig).then( r => ({...r, chainName: 'mainnet'}) ),
-            // axios.get('http://localhost:3335/pools', {
+            // axios.get('http://localhost:3335/pools').then( r => ({...r, chainName: 'zkevm'}) ),
             axios.get('https://api-polygon.idle.finance/pools', axiosConfig).then( r => ({...r, chainName: 'zkevm'}) ),
-            // axios.get('http://localhost:3336/pools', {
+            // axios.get('http://localhost:3336/pools').then( r => ({...r, chainName: 'optimism'}) ),
             axios.get('https://api-optimism.idle.finance/pools', axiosConfig).then( r => ({...r, chainName: 'optimism'}) ),
           ]),
           // @ts-ignore
@@ -243,9 +243,9 @@ export default abstract class CommonPage extends Page {
           const aggregatedVaults = pools.reduce( (aggregatedVaults, {status, value}) => {
             if (status === 'rejected') return aggregatedVaults
             value.data.forEach( (vault: any) => {
-              if (!vault.vaultType) return aggregatedVaults
+              if (!vault.vaultType || !vault.vaultImage) return aggregatedVaults
 
-              const vaultKey = `${vault.protocolName}_${vault.borrowerName}`
+              const vaultKey = `${vault.protocolName}_${vault.borrowerName || vault.vaultType}`
               if (!aggregatedVaults[vaultKey]){
                 aggregatedVaults[vaultKey] = {
                   ...vault,
@@ -265,7 +265,7 @@ export default abstract class CommonPage extends Page {
                 aggregatedVaults[vaultKey].tokens.push(vault.tokenName)
               }
               // aggregatedVaults[vaultKey].chains.push()
-              aggregatedVaults[vaultKey].maxApy = Math.max(aggregatedVaults[vaultKey].maxApy, vault.apr)
+              aggregatedVaults[vaultKey].maxApy = Math.max(aggregatedVaults[vaultKey].maxApy, vault.totalApy)
               aggregatedVaults[vaultKey].totalTvl = aggregatedVaults[vaultKey].totalTvl+parseFloat(vault.tvl)
               aggregatedVaults[vaultKey].weight = aggregatedVaults[vaultKey].totalTvl*aggregatedVaults[vaultKey].maxApy
 
@@ -303,7 +303,7 @@ export default abstract class CommonPage extends Page {
               vaultLogoContainer.append(vaultImage)
             }
             
-            heroVaultsCard.querySelector(".vault__header .title-h4").innerHTML = vault.borrowerName || vault.protocolName
+            heroVaultsCard.querySelector(".vault__header .title-h4").innerHTML = vault.borrowerName || vault.protocolName || vault.poolName
             heroVaultsCard.querySelector(".vault__header .desc-3").innerHTML = vault.vaultType
 
             let apr = parseFloat(vault.maxApy).toFixed(1)
