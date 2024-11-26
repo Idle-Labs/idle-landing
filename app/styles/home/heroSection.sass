@@ -35,6 +35,36 @@
                 width: 100%
                 height: 100%
                 display: block
+    #banner
+        width: auto
+        display: flex
+        margin: 0 auto
+        cursor: pointer
+        position: relative
+        padding-left: gem(52)
+        padding-right: gem(52)
+        border-radius: gem(16)
+        justify-content: center
+        background-color: #202A3E
+        .desc-2
+            font-size: gem(16)
+        .splide__arrow
+            right: gem(4)
+            top: gem(3)
+            border: none
+            opacity: 0.9
+            display: flex
+            width: gem(26)
+            height: gem(26)
+            cursor: pointer
+            position: absolute
+            border-radius: 50%
+            align-items: center
+            justify-content: center
+            background: var(--color-white)
+            @include hoverTransition(opacity)
+            &:hover
+                opacity: 1
     .splide
         &__list
             display: flex

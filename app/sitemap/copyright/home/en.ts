@@ -5,6 +5,7 @@ export const HomeEnCopy = {
     title:
       '<span class="phrase-1">Your Unique</span> <span class="phrase-2">Edge For</span><div class="second-row"><span class="txt-rotate" data-period="3000" data-rotate=\'[ "On-chain", "Optimized", "Risk-adjusted", "Institutional", "Leveraged", "Sustainable" ]\'></span><span class="static">Yields</span></div>',
     desc: "DeFi yields aren’t easy to manage.<br />Idle makes you feel like they are",
+    banner: "Idle Institutional new Credit Vaults are live 🎉",
     discover: "Discover more",
     btnEnter: {
       btnTitle: "Enter App",
