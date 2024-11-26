@@ -35,36 +35,21 @@
                 width: 100%
                 height: 100%
                 display: block
-    #banner
+    #banner-mobile
         width: auto
-        display: flex
+        height: auto
+        display: none
         margin: 0 auto
         cursor: pointer
+        margin-bottom: gem(20)
         position: relative
-        padding-left: gem(52)
-        padding-right: gem(52)
+        padding-left: gem(10)
+        padding-right: gem(10)
         border-radius: gem(16)
         justify-content: center
-        background-color: #202A3E
+        background: radial-gradient(circle, #08218f 40%, #298acb 100%) left top / 300%
         .desc-2
             font-size: gem(16)
-        .splide__arrow
-            right: gem(4)
-            top: gem(3)
-            border: none
-            opacity: 0.9
-            display: flex
-            width: gem(26)
-            height: gem(26)
-            cursor: pointer
-            position: absolute
-            border-radius: 50%
-            align-items: center
-            justify-content: center
-            background: var(--color-white)
-            @include hoverTransition(opacity)
-            &:hover
-                opacity: 1
     .splide
         &__list
             display: flex
@@ -424,7 +409,10 @@
                 justify-content: center
 
 @media all and (max-width: 480px)
+    #banner-mobile
+        display: flex !important
     .hero-section
+        padding-top: gem(60)
         min-height: 90vh
         padding-bottom: gem(0)
         .hero-background
