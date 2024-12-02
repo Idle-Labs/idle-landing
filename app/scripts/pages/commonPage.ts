@@ -198,24 +198,27 @@ export default abstract class CommonPage extends Page {
       };
 
       const [
-        chainsPools,
+        vaultsResults,
+        tokensResults,
+        categoriesResults,
+        operatorsResults,
+        vaultsLatestBlocks,
         vaultsPerformances,
         // @ts-ignore
       ] = await Promise.allSettled([
-        // @ts-ignore
-        Promise.allSettled([
-          axios
-            .get("https://api.idle.finance/pools", axiosConfig)
-            .then((r) => ({ ...r, chainName: "mainnet" })),
-          axios
-            .get("https://api-zkevm.idle.finance/pools", axiosConfig)
-            .then((r) => ({ ...r, chainName: "zkevm" })),
-          axios
-            .get("https://api-optimism.idle.finance/pools", axiosConfig)
-            .then((r) => ({ ...r, chainName: "optimism" })),
-        ]),
+        axios.get("https://api-v2.idle.finance/v1/vaults", axiosConfig2),
+        axios.get("https://api-v2.idle.finance/v1/tokens", axiosConfig2),
         axios.get(
-          "https://api-staging.idle.finance/v1/vaults/performances",
+          "https://api-v2.idle.finance/v1/vault-categories",
+          axiosConfig2
+        ),
+        axios.get("https://api-v2.idle.finance/v1/operators", axiosConfig2),
+        axios.get(
+          "https://api-v2.idle.finance/v1/vault-latest-blocks",
+          axiosConfig2
+        ),
+        axios.get(
+          "https://api-v2.idle.finance/v1/vaults/performances",
           axiosConfig2
         ),
       ]);
@@ -226,352 +229,178 @@ export default abstract class CommonPage extends Page {
       const heroSectionElement = this._sections[0]._config.el;
       // const productSectionElement = this._sections[1]._config.el;
 
-      const pools =
-        chainsPools.status === "fulfilled" ? chainsPools.value : null;
-      if (pools) {
-        const aggregatedVaults = pools.reduce(
-          (aggregatedVaults, { status, value }) => {
-            if (status === "rejected") return aggregatedVaults;
-            value.data.forEach((vault: any) => {
-              if (!vault.vaultType || !vault.vaultImage)
-                return aggregatedVaults;
+      const vaults =
+        vaultsResults.status === "fulfilled"
+          ? vaultsResults.value.data.data
+          : [];
+      const tokens =
+        tokensResults.status === "fulfilled"
+          ? tokensResults.value.data.data
+          : [];
+      const categories =
+        categoriesResults.status === "fulfilled"
+          ? categoriesResults.value.data.data
+          : [];
+      const operators =
+        operatorsResults.status === "fulfilled"
+          ? operatorsResults.value.data.data
+          : [];
+      const latestBlocks =
+        vaultsLatestBlocks.status === "fulfilled"
+          ? vaultsLatestBlocks.value.data.data
+          : [];
 
-              const vaultKey = `${vault.protocolName}_${
-                vault.borrowerName || vault.vaultType
-              }`;
-              if (!aggregatedVaults[vaultKey]) {
-                aggregatedVaults[vaultKey] = {
-                  ...vault,
-                  weight: 0,
-                  maxApy: 0,
-                  tokens: [],
-                  chains: [],
-                  totalTvl: 0,
-                };
-              }
+      // console.log({ vaults, tokens, categories, operators, latestBlocks });
 
-              if (
-                !aggregatedVaults[vaultKey].chains.includes(value.chainName)
-              ) {
-                aggregatedVaults[vaultKey].chains.push(value.chainName);
-              }
-
-              if (
-                !aggregatedVaults[vaultKey].tokens.includes(vault.tokenName)
-              ) {
-                aggregatedVaults[vaultKey].tokens.push(vault.tokenName);
-              }
-              // aggregatedVaults[vaultKey].chains.push()
-              aggregatedVaults[vaultKey].maxApy = Math.max(
-                aggregatedVaults[vaultKey].maxApy,
-                vault.totalApy
-              );
-              aggregatedVaults[vaultKey].totalTvl =
-                aggregatedVaults[vaultKey].totalTvl + parseFloat(vault.tvl);
-              aggregatedVaults[vaultKey].weight =
-                aggregatedVaults[vaultKey].totalTvl *
-                aggregatedVaults[vaultKey].maxApy;
-
-              // console.log(vaultKey, parseFloat(vault.tvl), aggregatedVaults[vaultKey].totalTvl)
-            });
+      const aggregatedVaults = latestBlocks.reduce(
+        (aggregatedVaults, vaultLatestBlock) => {
+          const vault = vaults.find((v) => v._id === vaultLatestBlock.vaultId);
+          if (
+            !vault ||
+            vault.status !== "READY" ||
+            vault.visibility !== "PRODUCTION" ||
+            !vault.operatorIds
+          ) {
             return aggregatedVaults;
-          },
-          {}
+          }
+
+          const foundAPR = vaultLatestBlock.APRs.find((APR) =>
+            ["BASE", "GROSS"].includes(APR.type)
+          );
+          const vaultAPR = foundAPR.rate || 0;
+          const tvlUSD = Number(vaultLatestBlock.TVL.USD) / 1e6;
+          if (!vaultAPR || !tvlUSD) {
+            return aggregatedVaults;
+          }
+
+          const token = tokens.find((t) => t._id === vault.tokenId);
+          const category = categories.find((c) => c._id === vault.categoryId);
+          const operatorId = vault.operatorIds ? vault.operatorIds[0] : null;
+          const operator = operators.find((o) => o._id === operatorId);
+
+          const vaultKey = `${vault.protocol}_${vault.contractType}_${operatorId}`;
+          if (!aggregatedVaults[vaultKey]) {
+            aggregatedVaults[vaultKey] = {
+              ...vault,
+              vaultKey,
+              token,
+              category,
+              operator,
+              operatorId,
+              weight: 0,
+              maxApy: 0,
+              tokens: [],
+              totalTvl: 0,
+            };
+          }
+
+          if (!aggregatedVaults[vaultKey].tokens.includes(token.symbol)) {
+            aggregatedVaults[vaultKey].tokens.push(token.symbol);
+          }
+
+          aggregatedVaults[vaultKey].maxApy = Math.max(
+            aggregatedVaults[vaultKey].maxApy,
+            vaultAPR
+          );
+          aggregatedVaults[vaultKey].totalTvl =
+            aggregatedVaults[vaultKey].totalTvl + tvlUSD;
+
+          aggregatedVaults[vaultKey].weight =
+            aggregatedVaults[vaultKey].totalTvl *
+            aggregatedVaults[vaultKey].maxApy;
+
+          return aggregatedVaults;
+        },
+        {}
+      );
+
+      const insertedTypes = {};
+      const bestVaultsByType = sortArrayByKey(
+        Object.values(aggregatedVaults),
+        "weight",
+        "desc"
+      ).reduce((bestVaultsByType, vault, index) => {
+        const key = vault.vaultKey;
+        if (!insertedTypes[key]) {
+          bestVaultsByType.push(vault);
+          insertedTypes[key] = 1;
+        }
+        return bestVaultsByType;
+      }, []);
+
+      const heroVaults = Object.values(bestVaultsByType).slice(0, 3);
+
+      const heroVaultsCards =
+        heroSectionElement.querySelectorAll(".vault__card");
+
+      heroVaults.forEach((aggregatedVault: any, index) => {
+        const heroVaultsCard = heroVaultsCards[index];
+
+        const vaultLogoContainer = heroVaultsCard.querySelector(
+          ".vault__header .vault__logo"
         );
+        if (vaultLogoContainer && aggregatedVault.operator) {
+          vaultLogoContainer.innerHTML = "";
+          const vaultImage = document.createElement("img");
+          vaultImage.className = "logo";
+          vaultImage.src = require(`../../assets/img/operators/${aggregatedVault.operator.code}.svg`);
+          vaultLogoContainer.append(vaultImage);
+        }
 
-        // console.log('aggregatedVaults', aggregatedVaults)
+        heroVaultsCard.id = aggregatedVault._id;
 
-        const insertedTypes = {};
-        const bestVaultsByType = sortArrayByKey(
-          Object.values(aggregatedVaults),
-          "weight",
-          "desc"
-        ).reduce((bestVaultsByType, vault, index) => {
-          const key = vault.vaultType;
-          if (!insertedTypes[key]) {
-            bestVaultsByType.push(vault);
-            insertedTypes[key] = 1;
-          }
-          return bestVaultsByType;
-        }, []);
+        if (aggregatedVault.contractType === "CDO_EPOCH") {
+          // @ts-ignore
+          heroVaultsCard.href = "https://credit.idle.finance";
+        }
 
-        // console.log('bestVaultsByType', bestVaultsByType)
+        heroVaultsCard.querySelector(".vault__header .title-h4").innerHTML =
+          aggregatedVault.operator?.name || aggregatedVault.name;
+        // aggregatedVault.protocol ||
 
-        const heroVaults = Object.values(bestVaultsByType).slice(0, 3);
-
-        const heroVaultsCards =
-          heroSectionElement.querySelectorAll(".vault__card");
-        heroVaults.forEach((vault: any, index) => {
-          const heroVaultsCard = heroVaultsCards[index];
-
-          const vaultLogoContainer = heroVaultsCard.querySelector(
-            ".vault__header .vault__logo"
-          );
-          if (vaultLogoContainer) {
-            vaultLogoContainer.innerHTML = "";
-            const vaultImage = document.createElement("img");
-            vaultImage.className = "logo";
-            vaultImage.src = vault.vaultImage;
-            vaultLogoContainer.append(vaultImage);
-          }
-
-          heroVaultsCard.querySelector(".vault__header .title-h4").innerHTML =
-            vault.borrowerName || vault.protocolName || vault.poolName;
+        if (aggregatedVault.category) {
           heroVaultsCard.querySelector(".vault__header .desc-3").innerHTML =
-            vault.vaultType;
+            aggregatedVault.category.name.en_EN;
+        }
 
-          let apr = parseFloat(vault.maxApy).toFixed(1);
-          if (parseFloat(vault.maxApy) > 9999) {
-            apr = ">9999";
-          }
-          heroVaultsCard.querySelector(
-            ".vault__performance .title-h3"
-          ).innerHTML = `${apr}<small>%</small> <span class="text-gray">APY</span>`;
-          heroVaultsCard.querySelector(
-            ".vault__footer .tvl .subtitle-3"
-          ).innerHTML = "$" + formatMoney(vault.totalTvl, 0);
+        let apr = parseFloat(aggregatedVault.maxApy).toFixed(1);
+        if (parseFloat(aggregatedVault.maxApy) > 9999) {
+          apr = ">9999";
+        }
+        heroVaultsCard.querySelector(
+          ".vault__performance .title-h3"
+        ).innerHTML = `${apr}<small>%</small> <span class="text-gray">APY</span>`;
+        heroVaultsCard.querySelector(
+          ".vault__footer .tvl .subtitle-3"
+        ).innerHTML = "$" + formatMoney(aggregatedVault.totalTvl, 0);
 
-          // Add tokens
-          const tokensContainer = heroVaultsCard.querySelector(
-            ".vault__footer .tokens"
-          );
-          tokensContainer.innerHTML = "";
-          vault.tokens.forEach((tokenName, index) => {
-            const tokenImg = document.createElement("img");
-            tokenImg.className = "logo";
+        // Add tokens
+        const tokensContainer = heroVaultsCard.querySelector(
+          ".vault__footer .tokens"
+        );
+        tokensContainer.innerHTML = "";
+        aggregatedVault.tokens.forEach((tokenName, index) => {
+          const tokenImg = document.createElement("img");
+          tokenImg.className = "logo";
 
+          try {
+            tokenImg.src = require(`../../assets/img/tokens/${tokenName.toUpperCase()}.svg`);
+          } catch (err) {
             try {
-              tokenImg.src = require(`../../assets/img/tokens/${tokenName.toUpperCase()}.svg`);
+              tokenImg.src = require(`../../assets/img/tokens/${tokenName.toUpperCase()}.png`);
             } catch (err) {
-              try {
-                tokenImg.src = require(`../../assets/img/tokens/${tokenName.toUpperCase()}.png`);
-              } catch (err) {
-                tokenImg.src = require(`../../assets/img/tokens/ETH.svg`);
-              }
+              tokenImg.src = require(`../../assets/img/tokens/ETH.svg`);
             }
+          }
 
-            if (index) {
-              tokenImg.className += " ml";
-            }
+          if (index) {
+            tokenImg.className += " ml";
+          }
 
-            // Add token image
-            tokensContainer.append(tokenImg);
-          });
-
-          // Add chains
-          /*
-            const chainsContainer = heroVaultsCard.querySelector(".vault__footer .chains")
-            if (chainsContainer){
-              chainsContainer.innerHTML = '';
-              vault.chains.forEach( (chainName, index) => {
-                const chainImg = document.createElement("img");
-                chainImg.className="logo";
-
-                try {
-                  chainImg.src = require(`../../assets/img/chains/${chainName}.svg`);
-                } catch (err) {
-                  try {
-                    chainImg.src = require(`../../assets/img/chains/${chainName}.png`);
-                  } catch (err) {
-                    chainImg.src = require(`../../assets/img/chains/ETH.svg`);
-                  }
-                }
-
-                if (index){
-                  chainImg.className+=" ml";
-                }
-
-                // Add token image
-                chainsContainer.append(chainImg);
-              })
-            }
-            */
+          // Add token image
+          tokensContainer.append(tokenImg);
         });
-
-        /*
-          const insertedItems = {};
-          data.data.forEach( (item, index) => {
-            let strategy = null;
-            if (/Tranche/i.test(item.strategy)) {
-              strategy = 'tranches'
-            } else {
-              strategy = 'best-yield';
-            }
-
-            // if (parseFloat(item.tvl)){
-            //   totalTvl += parseFloat(item.tvl);
-            // }
-
-            if (!strategy || item.isPaused || parseFloat(item.tvl)<10000) return;
-
-            if (!insertedItems[strategy]){
-              insertedItems[strategy] = 0;
-            }
-            insertedItems[strategy]++;
-
-            const carouselItem = document.createElement("div");
-            carouselItem.className = 'carousel_item';
-
-            const carouselItemToken = document.createElement("div");
-            carouselItemToken.className = 'carousel_item__token';
-
-            const tokenImg = document.createElement("img");
-            tokenImg.className="token__logo";
-
-            try {
-              tokenImg.src = require(`../../assets/img/tokens/${item.tokenName.toUpperCase()}.svg`);
-            } catch (err) {
-              try {
-                tokenImg.src = require(`../../assets/img/tokens/${item.tokenName.toUpperCase()}.png`);
-              } catch (err) {
-                tokenImg.src = require(`../../assets/img/tokens/ETH.svg`);
-              }
-            }
-
-            // Add token image
-            carouselItemToken.append(tokenImg);
-
-            // Carousel item TVL
-            const carouselItemTvl = document.createElement("div");
-            carouselItemTvl.className = 'carousel_item__tvl';
-
-            const carouselItemTvlLabel = document.createElement("div");
-            carouselItemTvlLabel.className = 'subtitle-3';
-            carouselItemTvlLabel.innerHTML = 'TVL';
-
-            const carouselItemTvlValue = document.createElement("div");
-            carouselItemTvlValue.className = 'title-h4';
-            carouselItemTvlValue.innerHTML = '$'+abbreviateNumber(item.tvl, 1);
-
-            carouselItemTvl.append(carouselItemTvlLabel);
-            carouselItemTvl.append(carouselItemTvlValue);
-
-            // Carousel item TVL
-            const carouselItemApr = document.createElement("div");
-            carouselItemApr.className = 'carousel_item__apr';
-
-            const carouselItemAprLabel = document.createElement("div");
-            carouselItemAprLabel.className = 'subtitle-3';
-            carouselItemAprLabel.innerHTML = 'APR';
-
-            const carouselItemAprValue = document.createElement("div");
-            carouselItemAprValue.className = 'title-h4';
-
-            let apr = parseFloat(item.apr).toFixed(2)+'%'
-            if (parseFloat(item.apr)>9999){
-              apr = '>9999%';
-            }
-
-            carouselItemAprValue.innerHTML = apr;
-
-            carouselItemApr.append(carouselItemAprLabel);
-            carouselItemApr.append(carouselItemAprValue);
-
-            // Append all elements
-            carouselItem.append(carouselItemToken);
-            carouselItem.append(carouselItemTvl);
-            carouselItem.append(carouselItemApr);
-
-            productSectionElement.querySelector('.'+strategy+'-strategy .carousel_slider').append(carouselItem);
-          })
-
-          const activeItems = {};
-
-          const startCarousel = (strategy) => {
-
-            if (insertedItems[strategy]<=1){
-              return;
-            }
-
-            const itemEl = productSectionElement.querySelector('.'+strategy+'-strategy .carousel_item');
-            const sliderEl = productSectionElement.querySelector('.'+strategy+'-strategy .carousel_slider');
-            const progressEl = productSectionElement.querySelector('.'+strategy+'-strategy .carousel_progress');
-            progressEl.className += ' start';
-
-            if (activeItems[strategy] === undefined){
-              activeItems[strategy] = 0;
-            }
-
-            window.setTimeout(() => {
-              if (activeItems[strategy]==insertedItems[strategy]-1){
-                activeItems[strategy] = 0;
-              } else {
-                activeItems[strategy]++;
-              }
-
-              // Move slider
-              // @ts-ignore
-              sliderEl.style.left = -(activeItems[strategy]*itemEl.offsetWidth)+'px';
-              // Remove start element
-              // @ts-ignore
-              progressEl.className = progressEl.className.replace(' start','');
-              
-              // Resume carousel
-              setTimeout(() => {
-                startCarousel(strategy);
-              }, 20);
-            }, 5000);
-          }
-
-          Object.keys(insertedItems).forEach( strategy => {
-            startCarousel(strategy)
-          })
-
-          */
-        /*
-          const bestTokens = data.data.reduce( (output,item) => {
-            let key = null;
-            if (item.poolName.match(/Tranche/)) {
-              if (item.poolName.match(/Senior/)) {
-                key = 'senior';
-              } else if (item.poolName.match(/Junior/)) {
-                key = 'junior';
-              }
-            } else {
-              key = 'best-yield';
-            }
-            if (key && parseFloat(item.underlyingTVL)>=10000 && (!output[key] || output[key].apr<item.apr)) {
-              output[key] = item;
-            }
-
-            if (parseFloat(item.tvl)){
-              totalTvl += parseFloat(item.tvl);
-            }
-
-            return output;
-          },{
-            'junior':null,
-            'senior':null,
-            'best-yield':null
-          });
-
-          Object.keys(bestTokens).forEach( strategy => {
-            const poolInfo = bestTokens[strategy];
-            const tokenName = poolInfo.tokenName;
-            let apr = poolInfo.apr.toFixed(2)+'%';
-            if (parseFloat(poolInfo.apr)>9999){
-                apr = '>9999%';
-            }
-
-            const tokenImg = document.createElement("img");
-            tokenImg.className="token__logo";
-
-            try {
-                tokenImg.src = require(`../../assets/img/tokens/${tokenName.toUpperCase()}.svg`);
-            } catch (err) {
-                tokenImg.src = require(`../../assets/img/tokens/${tokenName.toUpperCase()}.png`);
-            }
-
-            productSectionElement.querySelector('.'+strategy+'-strategy .token').prepend(tokenImg);
-            productSectionElement.querySelector('.'+strategy+'-strategy .percent.value-2').innerHTML = apr;
-            productSectionElement.querySelector('.'+strategy+'-strategy .token .value-2').innerHTML = tokenName;
-          });
-          */
-      }
-
-      // if (dataPolygon && dataPolygon.data && parseFloat(dataPolygon.data.totalTVL)){
-      //   totalTvl += parseFloat(dataPolygon.data.totalTVL);
-      // }
+      });
 
       this.setupTvlCounter(totalTvl, totalAvgAPY);
       this.setupYieldCounter(20057166, totalAvgAPY);

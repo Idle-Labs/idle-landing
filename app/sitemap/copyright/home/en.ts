@@ -258,23 +258,23 @@ export const HomeEnCopy = {
         label: "Yield sources",
         logos: [
           {
-            logoSrc: "lido.svg",
+            logoSrc: "lido-full.svg",
             linkSrc: "https://lido.fi",
           },
           {
-            logoSrc: "compound.svg",
+            logoSrc: "compound-full.svg",
             linkSrc: "https://compound.finance",
           },
           {
-            logoSrc: "aave.svg",
+            logoSrc: "aave-full.svg",
             linkSrc: "https://aave.com",
           },
           {
-            logoSrc: "morpho.svg",
+            logoSrc: "morpho-full.svg",
             linkSrc: "https://morpho.org",
           },
           {
-            logoSrc: "clearpool.svg",
+            logoSrc: "clearpool-full.svg",
             linkSrc: "https://clearpool.finance",
           },
         ],
@@ -304,7 +304,7 @@ export const HomeEnCopy = {
             linkSrc: "https://www.thelao.io",
           },
           {
-            logoSrc: "fasanara.svg",
+            logoSrc: "fasanara-desktop.svg",
             linkSrc: "https://www.fasanara.com",
           },
         ],
@@ -324,6 +324,10 @@ export const HomeEnCopy = {
           {
             logoSrc: "optimism.svg",
             linkSrc: "https://www.optimism.io",
+          },
+          {
+            logoSrc: "arbitrum-white.svg",
+            linkSrc: "https://arbitrum.io",
           },
         ],
       },
@@ -515,11 +519,11 @@ export const HomeEnCopy = {
         subtitle: "Votes delegated",
       },
       {
-        title: "115",
+        title: "146",
         subtitle: "Delegated addresses",
       },
       {
-        title: "22",
+        title: "23",
         subtitle: "Proposals",
       },
     ],
