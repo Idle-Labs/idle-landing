@@ -185,12 +185,6 @@ export default abstract class CommonPage extends Page {
 
   async loadApiData() {
     if (this._sections[2] && this._sections[1]) {
-      const axiosConfig = {
-        headers: {
-          Authorization: `Bearer ${IDLE_API_KEY}`,
-        },
-      };
-
       const axiosConfig2 = {
         headers: {
           Authorization: `Bearer ${IDLE_API_V2_KEY}`,
