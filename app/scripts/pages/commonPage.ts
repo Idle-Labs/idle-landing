@@ -258,9 +258,7 @@ export default abstract class CommonPage extends Page {
             return aggregatedVaults;
           }
 
-          const foundAPR = vaultLatestBlock.APRs.find((APR) =>
-            ["BASE", "GROSS"].includes(APR.type)
-          );
+          const foundAPR = vaultLatestBlock.APRs.GROSS;
           const vaultAPR = foundAPR.rate || 0;
           const tvlUSD = Number(vaultLatestBlock.TVL.USD) / 1e6;
           if (!vaultAPR || !tvlUSD) {
