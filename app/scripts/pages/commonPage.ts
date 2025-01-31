@@ -351,7 +351,7 @@ export default abstract class CommonPage extends Page {
 
         if (aggregatedVault.category) {
           heroVaultsCard.querySelector(".vault__header .desc-3").innerHTML =
-            aggregatedVault.category.name.en_EN;
+            aggregatedVault.category.name.en;
         }
 
         let apr = parseFloat(aggregatedVault.maxApy).toFixed(1);
