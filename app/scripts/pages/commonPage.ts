@@ -268,6 +268,10 @@ export default abstract class CommonPage extends Page {
           const category = categories.find((c) => c._id === vault.categoryId);
           const operatorId = vault.operatorIds ? vault.operatorIds[0] : null;
           const operator = operators.find((o) => o._id === operatorId);
+          const isProtected =
+            "kyc" in vault && "hideSensitiveData" in vault.kyc
+              ? !!vault.kyc.hideSensitiveData
+              : false;
 
           const vaultKey = `${vault.protocol}_${vault.contractType}_${operatorId}`;
           if (!aggregatedVaults[vaultKey]) {
@@ -275,6 +279,7 @@ export default abstract class CommonPage extends Page {
               ...vault,
               vaultKey,
               token,
+              isProtected,
               category,
               operator,
               operatorId,
@@ -334,7 +339,13 @@ export default abstract class CommonPage extends Page {
           vaultLogoContainer.innerHTML = "";
           const vaultImage = document.createElement("img");
           vaultImage.className = "logo";
-          vaultImage.src = require(`../../assets/img/operators/${aggregatedVault.operator.code}.svg`);
+          try {
+            vaultImage.src = require(`../../assets/img/operators/${aggregatedVault.operator.code}.svg`);
+          } catch (err) {
+            try {
+              vaultImage.src = require(`../../assets/img/operators/${aggregatedVault.operator.code}.png`);
+            } catch (err) {}
+          }
           vaultLogoContainer.append(vaultImage);
         }
 
@@ -342,7 +353,7 @@ export default abstract class CommonPage extends Page {
 
         if (aggregatedVault.contractType === "CDO_EPOCH") {
           // @ts-ignore
-          heroVaultsCard.href = "https://credit.idle.finance";
+          heroVaultsCard.href = "https://app.pareto.credit";
         }
 
         heroVaultsCard.querySelector(".vault__header .title-h4").innerHTML =
@@ -354,13 +365,29 @@ export default abstract class CommonPage extends Page {
             aggregatedVault.category.name.en;
         }
 
-        let apr = parseFloat(aggregatedVault.maxApy).toFixed(1);
-        if (parseFloat(aggregatedVault.maxApy) > 9999) {
-          apr = ">9999";
+        if (aggregatedVault.isProtected) {
+          const protectedImage = document.createElement("img");
+          protectedImage.width = 42;
+          protectedImage.height = 42;
+          protectedImage.style.fill = "#ccc";
+          protectedImage.src = require(`../../assets/img/protected.svg`);
+          const apyContainer = heroVaultsCard.querySelector(
+            ".vault__performance .title-h3"
+          );
+          apyContainer.innerHTML = "";
+          apyContainer.append(protectedImage);
+          apyContainer.innerHTML += '<span class="text-gray">APY</span>';
+        } else {
+          let apr = parseFloat(aggregatedVault.maxApy).toFixed(1);
+          if (parseFloat(aggregatedVault.maxApy) > 9999) {
+            apr = ">9999";
+          }
+
+          heroVaultsCard.querySelector(
+            ".vault__performance .title-h3"
+          ).innerHTML = `${apr}<small>%</small> <span class="text-gray">APY</span>`;
         }
-        heroVaultsCard.querySelector(
-          ".vault__performance .title-h3"
-        ).innerHTML = `${apr}<small>%</small> <span class="text-gray">APY</span>`;
+
         heroVaultsCard.querySelector(
           ".vault__footer .tvl .subtitle-3"
         ).innerHTML = "$" + formatMoney(aggregatedVault.totalTvl, 0);
