@@ -200,7 +200,10 @@ export default abstract class CommonPage extends Page {
         vaultsPerformances,
         // @ts-ignore
       ] = await Promise.allSettled([
-        axios.get("https://api-v2.idle.finance/v1/vaults", axiosConfig2),
+        axios.get(
+          "https://api-v2.idle.finance/v1/vaults?fields=status,visibility,operatorIds,tokenId,categoryId,protocol,contractType,kyc",
+          axiosConfig2
+        ),
         axios.get("https://api-v2.idle.finance/v1/tokens", axiosConfig2),
         axios.get(
           "https://api-v2.idle.finance/v1/vault-categories",
@@ -252,7 +255,7 @@ export default abstract class CommonPage extends Page {
           if (
             !vault ||
             vault.status !== "READY" ||
-            vault.visibility !== "PRODUCTION" ||
+            vault.visibility !== "PUBLIC" ||
             !vault.operatorIds
           ) {
             return aggregatedVaults;
